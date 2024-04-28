@@ -1,25 +1,50 @@
+'use client'
 /**
- * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
+ * This config is used to set up Sanity Studio that's mounted on the `app/studio/[[...index]]/Studio.tsx` route
  */
 
-import {visionTool} from '@sanity/vision'
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
+import { visionTool } from '@sanity/vision'
+import { defineConfig } from 'sanity'
+import { presentationTool } from 'sanity/presentation'
+import { structureTool } from 'sanity/structure'
 
-// Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import {apiVersion, dataset, projectId} from './sanity/env'
-import {schema} from './sanity/schema'
+import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
+import { locate } from '@/sanity/plugins/locate'
+import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
+import home from '@/sanity/schemas/singletons/home'
+import settings from '@/sanity/schemas/singletons/settings'
+
+const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'blrplt'
 
 export default defineConfig({
-  basePath: '/studio',
-  projectId,
-  dataset,
-  // Add and edit the content schema in the './sanity/schema' folder
-  schema,
+  basePath: studioUrl,
+  projectId: projectId || '',
+  dataset: dataset || '',
+  title,
+  schema: {
+    // If you want more content types, you can add them to this array
+    types: [
+      // Singletons
+      home,
+      settings,
+      // Objects
+    ],
+  },
   plugins: [
-    structureTool(),
-    // Vision is a tool that lets you query your content with GROQ in the studio
+    structureTool({
+      structure: pageStructure([home, settings]),
+    }),
+    presentationTool({
+      locate,
+      previewUrl: {
+        previewMode: {
+          enable: '/api/draft',
+        },
+      },
+    }),
+    singletonPlugin([home.name, settings.name]),
+    // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({defaultApiVersion: apiVersion}),
+    visionTool({ defaultApiVersion: apiVersion }),
   ],
 })

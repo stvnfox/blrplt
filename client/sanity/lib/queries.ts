@@ -1,3 +1,21 @@
-import { groq } from "next-sanity";
+import { groq } from 'next-sanity'
 
-export const HEADER_QUERY = groq`*[_type == "pages"][0].header`;
+export const homePageQuery = groq`
+  *[_type == "home"][0]{
+    _id,
+    overview,
+    title,
+  }
+`
+
+export const settingsQuery = groq`
+  *[_type == "settings"][0]{
+    footer,
+    menuItems[]->{
+      _type,
+      "slug": slug.current,
+      title
+    },
+    ogImage,
+  }
+`
