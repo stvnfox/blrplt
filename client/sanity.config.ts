@@ -11,8 +11,12 @@ import { structureTool } from 'sanity/structure'
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import { locate } from '@/sanity/plugins/locate'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
+import cta from '@/sanity/schemas/objects/cta'
+import header from '@/sanity/schemas/objects/header'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
+import headerImage from '@/sanity/schemas/types/headerImage'
+import sectionSelector from '@/sanity/schemas/types/sectionSelector'
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'blrplt'
 
@@ -28,6 +32,11 @@ export default defineConfig({
       home,
       settings,
       // Objects
+      header,
+      cta,
+      // Types
+      sectionSelector,
+      headerImage
     ],
   },
   plugins: [
