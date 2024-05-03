@@ -71,11 +71,25 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'showImage',
+      title: 'Show image',
+      type: 'boolean',
+      description: 'This field is where you can choose if you want to show a header image or not.',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'image',
       title: 'Image',
       type: 'headerImage',
       description: 'This field is where you can upload an image.',
-      validation: (rule) => rule.required(),
+      hidden: ({ parent }) => !parent.showImage,
+      validation: (rule) => rule.custom(fields => {
+        if (fields.showImage && !fields.image) {
+          return 'Image is required when an image is shown.'
+        }
+        return true
+      
+      }),
     }),
     defineField({
       name: 'imagePosition',
@@ -86,13 +100,20 @@ export default defineType({
         list: ['Left', 'Right'],
         layout: 'radio',
       },
-      validation: (rule) => rule.required(),
+      hidden: ({ parent }) => !parent.showImage,
+      validation: (rule) => rule.custom(fields => {
+        if (fields.showImage && !fields.imagePosition) {
+          return 'Image position is required when an image is shown.'
+        }
+        return true
+      }),
     }),
     defineField({
       name: 'isFullWidth',
       title: 'Full width',
       type: 'boolean',
       description: 'This field is where you can choose if the image needs to be full width or not.',
+      hidden: ({ parent }) => !parent.showImage,
     }),
   ],
   preview: {
