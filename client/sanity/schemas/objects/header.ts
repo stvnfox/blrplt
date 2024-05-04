@@ -67,53 +67,16 @@ export default defineType({
       name: 'cta',
       title: 'Call to action',
       type: 'cta',
-      description: 'This field is where you describe your call to action button.',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'showImage',
-      title: 'Show image',
-      type: 'boolean',
-      description: 'This field is where you can choose if you want to show a header image or not.',
+      description:
+        'This field is where you describe your call to action button.',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'image',
       title: 'Image',
       type: 'headerImage',
-      description: 'This field is where you can upload an image.',
-      hidden: ({ parent }) => !parent.showImage,
-      validation: (rule) => rule.custom(fields => {
-        if (fields.showImage && !fields.image) {
-          return 'Image is required when an image is shown.'
-        }
-        return true
-      
-      }),
-    }),
-    defineField({
-      name: 'imagePosition',
-      title: 'Image position',
-      type: 'string',
-      description: 'This field is where you can choose the position of the image.',
-      options: {
-        list: ['Left', 'Right'],
-        layout: 'radio',
-      },
-      hidden: ({ parent }) => !parent.showImage,
-      validation: (rule) => rule.custom(fields => {
-        if (fields.showImage && !fields.imagePosition) {
-          return 'Image position is required when an image is shown.'
-        }
-        return true
-      }),
-    }),
-    defineField({
-      name: 'isFullWidth',
-      title: 'Full width',
-      type: 'boolean',
-      description: 'This field is where you can choose if the image needs to be full width or not.',
-      hidden: ({ parent }) => !parent.showImage,
+      description:
+        "This field is where you can upload an image an set all it's values.",
     }),
   ],
   preview: {
@@ -151,10 +114,5 @@ export default defineType({
       link: 'pricing',
       ariaLabel: 'Click here to find out more about our unique selling points',
     },
-    image: {
-      altText: 'This is an image.',
-    },
-    imagePosition: 'Right',
-    isFullWidth: false,
-  }
+  },
 })
