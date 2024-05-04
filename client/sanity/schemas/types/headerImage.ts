@@ -70,6 +70,14 @@ export default defineType({
         }
         return false
       },
+      validation: (Rule) =>
+        Rule.custom((fieldValue, context) => {
+          // @ts-expect-error context from Sanity is not typed
+          if (context.document?.header.image.showImage && !fieldValue) {
+            return 'Alt text is required when "Show Image" is true'
+          }
+          return true
+        }),
     }),
     defineField({
       name: 'imagePosition',
