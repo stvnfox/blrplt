@@ -16,6 +16,16 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'themePicker',
+      title: 'Theme',
+      type: 'string',
+      description: 'Choose the theme for your site.',
+      options: {
+        list: ['dark', 'light'],
+      },
+      initialValue: 'dark',
+    }),
+    defineField({
       name: 'menuItems',
       title: 'Menu Item list',
       description: 'Links displayed on the header of your site.',
@@ -69,11 +79,21 @@ export default defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'favicon',
+      title: 'Favicon',
+      type: 'image',
+      description: 'The icon displayed in the browser tab.',
+      options: {
+        hotspot: true,
+        accept: 'image/svg+xml',
+      },
+    }),
   ],
   preview: {
     prepare() {
       return {
-        title: 'Menu Items',
+        title: 'General settings',
       }
     },
   },
