@@ -61,5 +61,12 @@ export const locate: DocumentLocationResolver = (params, context) => {
     )
   }
 
+  if (params.type === 'waitingList') {
+    return {
+      message: 'This document is used to render the waiting list page',
+      tone: 'positive',
+    } satisfies DocumentLocationsState
+  }
+
   return null
 }

@@ -15,6 +15,7 @@ import cta from '@/sanity/schemas/objects/cta'
 import header from '@/sanity/schemas/objects/header'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
+import waitingList from '@/sanity/schemas/singletons/waitingList'
 import headerImage from '@/sanity/schemas/types/headerImage'
 import sectionSelector from '@/sanity/schemas/types/sectionSelector'
 
@@ -31,17 +32,18 @@ export default defineConfig({
       // Singletons
       home,
       settings,
+      waitingList,
       // Objects
       header,
       cta,
       // Types
       sectionSelector,
-      headerImage
+      headerImage,
     ],
   },
   plugins: [
     structureTool({
-      structure: pageStructure([home, settings]),
+      structure: pageStructure([home, settings, waitingList]),
     }),
     presentationTool({
       locate,
@@ -51,7 +53,7 @@ export default defineConfig({
         },
       },
     }),
-    singletonPlugin([home.name, settings.name]),
+    singletonPlugin([home.name, settings.name, waitingList.name]),
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
