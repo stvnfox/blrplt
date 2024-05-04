@@ -10,6 +10,14 @@ export default defineType({
   // liveEdit: true,
   fields: [
     defineField({
+      name: 'waitingList',
+      title: 'Waiting list',
+      description:
+        'Choose whether you want to display the waiting list template or the homepage template on your website. Selecting this option will determine the initial page your visitors see when accessing your site.',
+      type: 'boolean',
+      initialValue: false,
+    }),
+    defineField({
       name: 'menuItems',
       title: 'Menu Item list',
       description: 'Links displayed on the header of your site.',
