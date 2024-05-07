@@ -9,28 +9,26 @@ import { Suspense } from 'react'
 import { Footer } from '@/components/global/Footer'
 import { Navbar } from '@/components/global/Navbar'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
-import { loadHomePage, loadSettings } from '@/sanity/loader/loadQuery'
+import { loadSettings } from '@/sanity/loader/loadQuery'
 
 const LiveVisualEditing = dynamic(
   () => import('@/sanity/loader/LiveVisualEditing'),
 )
 
 export async function generateMetadata(): Promise<Metadata> {
-  const [{ data: settings }, { data: homePage }] = await Promise.all([
-    loadSettings(),
-    loadHomePage(),
-  ])
+  const { data } = await loadSettings()
 
-  const ogImage = urlForOpenGraphImage(settings?.ogImage)
+  const ogImage = urlForOpenGraphImage(data?.ogImage)
+
   return {
-    title: homePage?.title
+    title: data?.ogTitle
       ? {
-          template: `%s | ${homePage.title}`,
-          default: homePage.title || 'Personal website',
+          template: `%s | ${data.ogTitle}`,
+          default: data.ogTitle || 'Product title',
         }
       : undefined,
-    description: homePage?.overview
-      ? toPlainText(homePage.overview)
+    description: data?.ogDescription
+      ? toPlainText(data.ogDescription)
       : undefined,
     openGraph: {
       images: ogImage ? [ogImage] : [],

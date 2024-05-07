@@ -10,12 +10,17 @@ export const homePageQuery = groq`
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
+    waitingList,
+    themePicker,
     footer,
     menuItems[]->{
       _type,
       "slug": slug.current,
       title
     },
+    ogTitle,
+    ogDescription,
     ogImage,
+    favicon,
   }
 `

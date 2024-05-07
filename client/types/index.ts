@@ -1,6 +1,8 @@
 import type { PortableTextBlock } from 'next-sanity'
 import type { Image } from 'sanity'
 
+import { WaitingListForm, WaitingListSocial } from './waitingList'
+
 export interface MenuItem {
   _type: string
   slug?: string
@@ -14,7 +16,21 @@ export interface HomePagePayload {
 }
 
 export interface SettingsPayload {
+  waitingList?: boolean
+  themePicker?: string
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
+  ogTitle?: string
+  ogDescription?: PortableTextBlock[]
   ogImage?: Image
+  favicon?: Image
+}
+
+export interface WaitingListPayload {
+  title: string
+  introduction?: PortableTextBlock[]
+  form?: WaitingListForm 
+  successMessage?: string
+  errorMessage?: string
+  socials?: WaitingListSocial[]
 }

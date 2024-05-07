@@ -71,6 +71,55 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'ogTitle',
+      title: 'Open Graph Title',
+      description: 'This is the title of the page.',
+      type: 'string',
+      initialValue: 'blrplt',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'ogDescription',
+      title: 'Open Graph Description',
+      description: 'This is the description of the page.',
+      type: 'array',
+      of: [
+        // Paragraphs
+        defineArrayMember({
+          lists: [],
+          marks: {
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'Link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'Url',
+                  },
+                ],
+              },
+            ],
+            decorators: [
+              {
+                title: 'Italic',
+                value: 'em',
+              },
+              {
+                title: 'Strong',
+                value: 'strong',
+              },
+            ],
+          },
+          styles: [],
+          type: 'block',
+        }),
+      ],
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'ogImage',
       title: 'Open Graph Image',
       type: 'image',
