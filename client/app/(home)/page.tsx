@@ -1,32 +1,13 @@
-import dynamic from 'next/dynamic'
-import { draftMode } from 'next/headers'
-import Link from 'next/link'
-
-import { HomePage } from '@/components/pages/home/HomePage'
-import { studioUrl } from '@/sanity/lib/api'
-import { loadHomePage } from '@/sanity/loader/loadQuery'
-const HomePagePreview = dynamic(
-  () => import('@/components/pages/home/HomePagePreview'),
-)
+import HomePage from '@/components/pages/home/HomePage'
+import WaitingList from '@/components/pages/waiting/WaitingList'
+import { loadSettings } from '@/sanity/loader/loadQuery'
 
 export default async function IndexRoute() {
-  const initial = await loadHomePage()
+  const isWaitingList = (await loadSettings()).data.waitingList
 
-  if (draftMode().isEnabled) {
-    return <HomePagePreview initial={initial} />
+  if(isWaitingList) {
+    return <WaitingList/>
+  } else {
+    return <HomePage/>
   }
-
-  if (!initial.data) {
-    return (
-      <div className="text-center">
-        You don&rsquo;t have a homepage yet,{' '}
-        <Link href={`${studioUrl}/desk/home`} className="underline">
-          create one now
-        </Link>
-        !
-      </div>
-    )
-  }
-
-  return <HomePage data={initial.data} />
 }

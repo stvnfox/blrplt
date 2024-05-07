@@ -6,10 +6,10 @@ import { Page } from '@/components/pages/home/_components/Page'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadHomePage } from '@/sanity/loader/loadQuery'
 const PagePreview = dynamic(
-  () => import('@/components/pages/home/_components/Preview'),
+  () => import('@/components/pages/waiting/_components/Preview'),
 )
 
-export default async function HomePage() {
+export default async function WaitingList() {
   const initial = await loadHomePage()
 
   if (draftMode().isEnabled) {
