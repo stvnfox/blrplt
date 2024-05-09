@@ -24,10 +24,9 @@ export const settingsQuery = groq`
     waitingList,
     themePicker,
     footer,
-    menuItems[]->{
-      _type,
-      "slug": slug.current,
-      title
+    menuItems[]{
+      section,
+      _key,
     },
     openGraph{
       ogTitle,

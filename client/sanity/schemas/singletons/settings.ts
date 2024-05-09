@@ -28,16 +28,24 @@ export default defineType({
     defineField({
       name: 'menuItems',
       title: 'Menu Item list',
-      description: 'Links displayed on the header of your site.',
+      description: 'Links displayed in the navigation of your site.',
       type: 'array',
       of: [
         {
-          title: 'Reference',
-          type: 'reference',
-          to: [
-            {
-              type: 'home',
-            },
+          title: 'Menu item',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'section',
+              title: 'Section name',
+              type: 'string',
+              options: {
+                list: [{ title: 'Unique selling points', value: 'Unique selling points' }, { title: 'Pricing', value: 'Pricing' }, { title: "FAQ", value: 'FAQ' }, { title: "Testimonials", value: 'Testimonials' }, { title: 'Contact', value: 'Contact' }],
+                layout: 'dropdown',
+              },
+              description:
+                'Choose the section you want to add to your navigation.',
+            }),
           ],
         },
       ],

@@ -5,9 +5,8 @@ import { OpenGraph } from './openGraph'
 import { WaitingListForm, WaitingListSocial } from './waitingList'
 
 export interface MenuItem {
-  _type: string
-  slug?: string
-  title?: string
+  _key: string
+  section: string
 }
 
 export interface HomePagePayload {

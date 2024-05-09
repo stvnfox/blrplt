@@ -3,6 +3,14 @@ import type { Image } from 'sanity'
 
 import { dataset, projectId } from '@/sanity/lib/api'
 
+enum HrefType {
+  USPS = 'Unique selling points',
+  PRICING = 'Pricing',
+  FAQ = 'FAQ',
+  TESTIMONIALS = 'Testimonials',
+  CONTACT = 'Contact',
+}
+
 const imageBuilder = createImageUrlBuilder({
   projectId: projectId || '',
   dataset: dataset || '',
@@ -22,13 +30,21 @@ export function urlForOpenGraphImage(image: Image | undefined) {
 }
 
 export function resolveHref(
-  documentType?: string,
+  url?: string,
 ): string | undefined {
-  switch (documentType) {
-    case 'home':
-      return '/'
+  switch (url) {
+    case HrefType.USPS:
+      return '#unique-selling-points'
+    case HrefType.PRICING:
+      return '#pricing'
+    case HrefType.FAQ:
+      return '#faq'
+    case HrefType.TESTIMONIALS:
+      return '#testimonials'
+    case HrefType.CONTACT:
+      return '#contact'
     default:
-      console.warn('Invalid document type:', documentType)
+      console.warn('Invalid document type:', url)
       return undefined
   }
 }
