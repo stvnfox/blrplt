@@ -29,9 +29,11 @@ export const settingsQuery = groq`
       "slug": slug.current,
       title
     },
-    ogTitle,
-    ogDescription,
-    ogImage,
+    openGraph{
+      ogTitle,
+      ogDescription,
+      ogImage,
+    },
     favicon,
   }
 `

@@ -17,18 +17,18 @@ const LiveVisualEditing = dynamic(
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await loadSettings()
-
-  const ogImage = urlForOpenGraphImage(data?.ogImage)
+  const openGraph = data?.openGraph
+  const ogImage = urlForOpenGraphImage(openGraph?.ogImage)
 
   return {
-    title: data?.ogTitle
+    title: openGraph?.ogTitle
       ? {
-          template: `%s | ${data.ogTitle}`,
-          default: data.ogTitle || 'Product title',
+          template: `%s | ${openGraph?.ogTitle}`,
+          default: openGraph.ogTitle || 'Product title',
         }
       : undefined,
-    description: data?.ogDescription
-      ? toPlainText(data.ogDescription)
+    description: openGraph?.ogDescription
+      ? toPlainText(openGraph?.ogDescription)
       : undefined,
     openGraph: {
       images: ogImage ? [ogImage] : [],

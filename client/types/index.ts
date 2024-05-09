@@ -1,6 +1,7 @@
 import type { PortableTextBlock } from 'next-sanity'
 import type { Image } from 'sanity'
 
+import { OpenGraph } from './openGraph'
 import { WaitingListForm, WaitingListSocial } from './waitingList'
 
 export interface MenuItem {
@@ -20,9 +21,7 @@ export interface SettingsPayload {
   themePicker?: string
   footer?: PortableTextBlock[]
   menuItems?: MenuItem[]
-  ogTitle?: string
-  ogDescription?: PortableTextBlock[]
-  ogImage?: Image
+  openGraph?: OpenGraph
   favicon?: Image
 }
 

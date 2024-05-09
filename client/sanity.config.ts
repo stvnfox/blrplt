@@ -13,6 +13,7 @@ import { locate } from '@/sanity/plugins/locate'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
 import cta from '@/sanity/schemas/objects/cta'
 import header from '@/sanity/schemas/objects/header'
+import openGraph from '@/sanity/schemas/objects/openGraph'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
 import waitingList from '@/sanity/schemas/singletons/waitingList'
@@ -36,6 +37,7 @@ export default defineConfig({
       // Objects
       header,
       cta,
+      openGraph,
       // Types
       sectionSelector,
       headerImage,
