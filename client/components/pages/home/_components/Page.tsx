@@ -10,12 +10,12 @@ export interface HomePageProps {
 
 export function Page({ data, encodeDataAttribute }: HomePageProps) {
   // Default to an empty object to allow previews on non-existent documents
-  const { overview = [], title = '' } = data ?? {}
+  const { introduction = [], title = '' } = data ?? {}
 
   return (
     <div className="space-y-20">
       {/* Header */}
-      {title && <Header centered title={title} description={overview} />}
+      {title && <Header centered title={title} introduction={introduction} />}
     </div>
   )
 }

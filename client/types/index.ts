@@ -12,7 +12,7 @@ export interface MenuItem {
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
-  overview?: PortableTextBlock[]
+  introduction?: PortableTextBlock[]
   title?: string
 }
 
