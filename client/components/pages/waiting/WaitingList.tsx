@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import Link from 'next/link'
 
-import { Page } from '@/components/pages/home/_components/Page'
+import { Page } from '@/components/pages/waiting/_components/Page'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadWaitingList } from '@/sanity/loader/loadQuery'
 
