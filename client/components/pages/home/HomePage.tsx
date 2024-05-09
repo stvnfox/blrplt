@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Page } from '@/components/pages/home/_components/Page'
 import { studioUrl } from '@/sanity/lib/api'
 import { loadHomePage } from '@/sanity/loader/loadQuery'
+
 const PagePreview = dynamic(
   () => import('@/components/pages/home/_components/Preview'),
 )

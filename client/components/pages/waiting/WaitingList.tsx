@@ -4,13 +4,14 @@ import Link from 'next/link'
 
 import { Page } from '@/components/pages/home/_components/Page'
 import { studioUrl } from '@/sanity/lib/api'
-import { loadHomePage } from '@/sanity/loader/loadQuery'
+import { loadWaitingList } from '@/sanity/loader/loadQuery'
+
 const PagePreview = dynamic(
   () => import('@/components/pages/waiting/_components/Preview'),
 )
 
 export default async function WaitingList() {
-  const initial = await loadHomePage()
+  const initial = await loadWaitingList()
 
   if (draftMode().isEnabled) {
     return <PagePreview initial={initial} />
@@ -19,8 +20,8 @@ export default async function WaitingList() {
   if (!initial.data) {
     return (
       <div className="text-center">
-        You don&rsquo;t have a homepage yet,{' '}
-        <Link href={`${studioUrl}/desk/home`} className="underline">
+        You don&rsquo;t have a waiting list page yet,{' '}
+        <Link href={`${studioUrl}/structure/waitingList`} className="underline">
           create one now
         </Link>
         !

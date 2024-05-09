@@ -3,7 +3,8 @@ import WaitingList from '@/components/pages/waiting/WaitingList'
 import { loadSettings } from '@/sanity/loader/loadQuery'
 
 export default async function IndexRoute() {
-  const isWaitingList = (await loadSettings()).data.waitingList
+  const { data } = await loadSettings()
+  const isWaitingList = data.waitingList
 
   if(isWaitingList) {
     return <WaitingList/>

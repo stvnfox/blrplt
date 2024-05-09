@@ -4,9 +4,9 @@ import * as queryStore from '@sanity/react-loader'
 import { draftMode } from 'next/headers'
 
 import { client } from '@/sanity/lib/client'
-import { homePageQuery, settingsQuery } from '@/sanity/lib/queries'
+import { homePageQuery, settingsQuery, waitingListQuery } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
-import { HomePagePayload, SettingsPayload } from '@/types'
+import { HomePagePayload, SettingsPayload, WaitingListPayload } from '@/types'
 
 const serverClient = client.withConfig({
   token,
@@ -55,7 +55,9 @@ export const loadQuery = ((query, params = {}, options = {}) => {
 export function loadSettings() {
   return loadQuery<SettingsPayload>(
     settingsQuery,
-    {},
+    {
+      apiVersion: process.env.SANITY_API_VERSION,
+    },
     { next: { tags: ['settings', 'home'] } },
   )
 }
@@ -63,7 +65,20 @@ export function loadSettings() {
 export function loadHomePage() {
   return loadQuery<HomePagePayload | null>(
     homePageQuery,
-    {},
+    {
+      apiVersion: process.env.SANITY_API_VERSION,
+    },
     { next: { tags: ['home'] } },
   )
 }
+
+export function loadWaitingList() {
+  return loadQuery<WaitingListPayload | null>(
+    waitingListQuery,
+    {
+      apiVersion: process.env.SANITY_API_VERSION,
+    },
+    { next: { tags: ['waitingList'] } },
+  )
+}
+

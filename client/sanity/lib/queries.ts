@@ -8,6 +8,17 @@ export const homePageQuery = groq`
   }
 `
 
+export const waitingListQuery = groq`
+  *[_type == "waitingList"][0]{
+    title,
+    introduction,
+    form,
+    successMessage,
+    errorMessage,
+    socials,
+  }
+`
+
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
     waitingList,

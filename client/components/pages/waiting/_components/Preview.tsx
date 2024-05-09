@@ -2,20 +2,20 @@
 
 import { type QueryResponseInitial } from '@sanity/react-loader'
 
-import { homePageQuery } from '@/sanity/lib/queries'
+import { waitingListQuery } from '@/sanity/lib/queries'
 import { useQuery } from '@/sanity/loader/useQuery'
-import { HomePagePayload } from '@/types'
+import { WaitingListPayload } from '@/types'
 
 import Page from './Page'
 
 type Props = {
-  initial: QueryResponseInitial<HomePagePayload | null>
+  initial: QueryResponseInitial<WaitingListPayload | null>
 }
 
 export default function PagePreview(props: Props) {
   const { initial } = props
-  const { data, encodeDataAttribute } = useQuery<HomePagePayload | null>(
-    homePageQuery,
+  const { data, encodeDataAttribute } = useQuery<WaitingListPayload | null>(
+    waitingListQuery,
     {},
     { initial },
   )
@@ -23,7 +23,7 @@ export default function PagePreview(props: Props) {
   if (!data) {
     return (
       <div className="text-center">
-        Please start editing your Home document to see the preview!
+        Please start editing your Waiting list document to see the preview!
       </div>
     )
   }
