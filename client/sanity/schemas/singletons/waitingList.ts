@@ -60,45 +60,7 @@ export default defineType({
     }),
     defineField({
       name: 'form',
-      title: 'Form',
-      description: 'This field holds every value for the form.',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'placeholder',
-          title: 'Placeholder',
-          type: 'string',
-          description: 'This field is for the placeholder in the input field.',
-          initialValue: 'Enter your email address',
-          validation: (rule) => rule.required(),
-        }),
-        defineField({
-          name: 'buttonText',
-          title: 'Button text',
-          type: 'string',
-          description: 'This field is the text of the button.',
-          initialValue: 'Join now!',
-          validation: (rule) => rule.required(),
-        }),
-      ],
-    }),
-    defineField({
-      name: 'successMessage',
-      title: 'Success message',
-      type: 'string',
-      description:
-        "This field is for the success message that's being showed when the user successfully submitted there email.",
-      initialValue: "Yeey! You're on the waiting list! 🚀",
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'errorMessage',
-      title: 'Error message',
-      type: 'string',
-      description:
-        "This field is for the error message that's being showed when the submit failed.",
-      initialValue: 'Meh.. Something went wrong! Please try again.',
-      validation: (rule) => rule.required(),
+      type: 'waitingListForm',
     }),
     defineField({
       name: 'socials',
