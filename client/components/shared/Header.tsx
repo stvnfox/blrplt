@@ -1,20 +1,14 @@
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
+import { IWaitingListForm } from '@/types/waitingList'
 
-import Form from '../pages/waiting/_components/Form/Form'
-
-export interface FormDataProps {
-  buttonText: string
-  successMessage: string
-  placeholder: string
-  errorMessage: string
-}
+import { WaitingListForm } from '../pages/waiting/_components/Form'
 
 interface HeaderProps {
   centered?: boolean
   introduction?: any[]
   title?: string
   waitingList?: boolean
-  form?: FormDataProps
+  form?: IWaitingListForm
 }
 
 export async function Header(props: HeaderProps) {
@@ -38,9 +32,9 @@ export async function Header(props: HeaderProps) {
         </div>
       )}
       {/* Waiting List */}
-      {waitingList && (
+      {waitingList && form && (
         <div className="mt-5">
-          <Form data={form}/>
+          <WaitingListForm buttonText={form.buttonText} placeholder={form.placeholder}/>
         </div>
       )}
     </div>

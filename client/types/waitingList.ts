@@ -1,9 +1,11 @@
-export interface WaitingListForm {
+export interface IWaitingListForm {
     placeholder: string
     buttonText: string
+    successMessage: string
+    errorMessage: string
 }
 
-export interface WaitingListSocial {
+export interface IWaitingListSocial {
     socialPlatform: string,
     socialUrl: string
 }

@@ -2,7 +2,7 @@ import type { PortableTextBlock } from 'next-sanity'
 import type { Image } from 'sanity'
 
 import { OpenGraph } from './openGraph'
-import { WaitingListForm, WaitingListSocial } from './waitingList'
+import { IWaitingListForm, IWaitingListSocial } from './waitingList'
 
 export interface MenuItem {
   _key: string
@@ -27,8 +27,8 @@ export interface SettingsPayload {
 export interface WaitingListPayload {
   title: string
   introduction?: PortableTextBlock[]
-  form?: WaitingListForm 
+  form?: IWaitingListForm 
   successMessage?: string
   errorMessage?: string
-  socials?: WaitingListSocial[]
+  socials?: IWaitingListSocial[]
 }

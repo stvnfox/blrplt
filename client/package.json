@@ -17,6 +17,8 @@
   "dependencies": {
     "@hookform/resolvers": "^3.4.2",
     "@next/env": "14.2.3",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
     "@sanity/demo": "2.0.0",
     "@sanity/icons": "2.11.8",
     "@sanity/image-url": "1.0.2",
@@ -25,8 +27,11 @@
     "@sanity/ui": "2.1.4",
     "@sanity/vision": "3.39.0",
     "@tailwindcss/typography": "0.5.12",
+    "class-variance-authority": "^0.7.0",
     "classnames": "2.5.1",
+    "clsx": "^2.1.1",
     "date-fns": "3.6.0",
+    "lucide-react": "^0.379.0",
     "next": "14.2.3",
     "next-sanity": "9.0.11",
     "react": "18.3.0",
@@ -36,6 +41,8 @@
     "sanity": "3.39.0",
     "server-only": "0.0.1",
     "styled-components": "6.1.8",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"
   },
   "devDependencies": {
