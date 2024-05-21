@@ -1,13 +1,25 @@
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
+import Form from '../pages/waiting/_components/Form/Form'
+
+export interface FormDataProps {
+  buttonText: string
+  successMessage: string
+  placeholder: string
+  errorMessage: string
+}
+
 interface HeaderProps {
   centered?: boolean
   introduction?: any[]
   title?: string
   waitingList?: boolean
+  form?: FormDataProps
 }
-export function Header(props: HeaderProps) {
-  const { title, introduction, centered = false, waitingList = false } = props
+
+export async function Header(props: HeaderProps) {
+  const { title, introduction, centered = false, waitingList = false, form } = props
+
   if (!introduction && !title) {
     return null
   }
@@ -28,12 +40,7 @@ export function Header(props: HeaderProps) {
       {/* Waiting List */}
       {waitingList && (
         <div className="mt-5">
-          <a
-            className="inline-block px-6 py-3 text-lg font-semibold text-white bg-blue-700 hover:bg-blue-600 transition-colors rounded-lg shadow-lg"
-            href="/waiting-list"
-          >
-            Join the Waiting List
-          </a>
+          <Form data={form}/>
         </div>
       )}
     </div>
