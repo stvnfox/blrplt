@@ -1,5 +1,5 @@
 {
-  "name": "sanity-template-template-nextjs-personal-website",
+  "name": "blrplt",
   "private": true,
   "scripts": {
     "build": "next build",
