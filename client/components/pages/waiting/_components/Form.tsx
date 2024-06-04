@@ -10,11 +10,14 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { IWaitingListForm } from "@/types/waitingList"
+
+interface WaitingListFormProps {
+  data: IWaitingListForm
+}
 
 const formSchema = z.object({
   email: z.string().email({
@@ -22,7 +25,8 @@ const formSchema = z.object({
   }),
 })
 
-export function WaitingListForm(props: IWaitingListForm) {
+export function WaitingListForm(props: WaitingListFormProps) {
+  const { buttonText, placeholder } = props.data
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,26 +37,28 @@ export function WaitingListForm(props: IWaitingListForm) {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
+    fetch('/api/waiting-list', {
+      method: 'POST',
+      body: JSON.stringify(values),
+    })
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 container w-1/2">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex justify-center gap-2 container">
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder={props.placeholder} {...field} />
+                <Input className="w-[400px]" placeholder={placeholder} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">{props.buttonText}</Button>
+        <Button type="submit" className="border mt-0 space">{buttonText}</Button>
       </form>
     </Form>
   )

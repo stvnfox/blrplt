@@ -34,7 +34,7 @@ export async function Header(props: HeaderProps) {
       {/* Waiting List */}
       {waitingList && form && (
         <div className="mt-5">
-          <WaitingListForm buttonText={form.buttonText} placeholder={form.placeholder}/>
+          <WaitingListForm data={form}/>
         </div>
       )}
     </div>
