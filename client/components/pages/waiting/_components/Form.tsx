@@ -32,7 +32,7 @@ const formSchema = z.object({
 
 export function WaitingListForm(props: WaitingListFormProps) {
   const { buttonText, placeholder } = props.data
-  
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,7 +52,6 @@ export function WaitingListForm(props: WaitingListFormProps) {
         toast({
           title: "Success",
           description: "You have been added to the waiting list. We will notify you when the product is available.",
-          variant: "success",
         })
       }
 

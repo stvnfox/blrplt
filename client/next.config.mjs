@@ -1,4 +1,3 @@
-import MillionLint from '@million/lint';
 /** @type {import('next').NextConfig} */
 const config = {
   images: {
@@ -23,6 +22,3 @@ const config = {
     taint: true
   }
 };
-export default MillionLint.next({
-  rsc: true
-})(config);
