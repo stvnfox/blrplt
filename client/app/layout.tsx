@@ -2,6 +2,9 @@ import './globals.css'
 
 import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
 
+import { Toaster } from '@/components/ui/toaster'
+import { QueryProvider } from '@/utils/providers/QueryProvider'
+
 const serif = PT_Serif({
   variable: '--font-serif',
   style: ['normal', 'italic'],
@@ -11,8 +14,7 @@ const serif = PT_Serif({
 const sans = Inter({
   variable: '--font-sans',
   subsets: ['latin'],
-  // @todo: understand why extrabold (800) isn't being respected when explicitly specified in this weight array
-  // weight: ['500', '700', '800'],
+  weight: ['500', '700', '800'],
 })
 const mono = IBM_Plex_Mono({
   variable: '--font-mono',
@@ -30,7 +32,12 @@ export default async function RootLayout({
       lang="en"
       className={`${mono.variable} ${sans.variable} ${serif.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <QueryProvider>
+          {children}
+        </QueryProvider>
+        <Toaster />
+      </body>
     </html>
   )
 }
