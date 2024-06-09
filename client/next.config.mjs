@@ -22,3 +22,5 @@ const config = {
     taint: true
   }
 };
+
+export default config;
