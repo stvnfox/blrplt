@@ -32,8 +32,16 @@ export default defineType({
             validation: (rule) => rule.required(),
         }),
         defineField({
-            name: 'errorMessage',
-            title: 'Error message',
+            name: 'errorMessageEmailAlreayExists',
+            title: 'Error message - Email already exists',
+            type: 'string',
+            description:
+                "This field is for the error message that's being showed when the submit failed because the email is already subscribed.",
+            validation: (rule) => rule.required(),
+        }),
+        defineField({
+            name: 'errorMessageOther',
+            title: 'Error message - Other',
             type: 'string',
             description:
                 "This field is for the error message that's being showed when the submit failed.",
@@ -44,6 +52,7 @@ export default defineType({
         placeholder: 'Enter your email address',
         buttonText: 'Join now!',
         successMessage: "Yeey! You're on the waiting list! 🚀",
-        errorMessage: 'Meh.. Something went wrong! Please try again.',
+        errorMessageAlreayExists: 'This email is already on the waiting list.',
+        errorMessageOther: 'Meh.. Something went wrong! Please try again.',
     },
 })

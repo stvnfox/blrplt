@@ -31,7 +31,7 @@ const formSchema = z.object({
 })
 
 export function WaitingListForm(props: WaitingListFormProps) {
-  const { buttonText, placeholder } = props.data
+  const { buttonText, placeholder, successMessage, errorMessageEmailAlreadyExists, errorMessageOther } = props.data
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,14 +51,14 @@ export function WaitingListForm(props: WaitingListFormProps) {
       if(response.status === StatusCode.SUCCESS) {
         toast({
           title: "Success",
-          description: "You have been added to the waiting list. We will notify you when the product is available.",
+          description: successMessage,
         })
       }
 
       if(response.status === StatusCode.EMAILEXISTS) {
         toast({
           title: "Error",
-          description: "This email is already in the waiting list.",
+          description: errorMessageEmailAlreadyExists,
           variant: "destructive",
         })
       }
@@ -66,7 +66,7 @@ export function WaitingListForm(props: WaitingListFormProps) {
       if(response.status === StatusCode.FAILED) {
         toast({
           title: "Error",
-          description: "An error occurred. Please try again.",
+          description: errorMessageOther,
           variant: "destructive",
         })
       }
