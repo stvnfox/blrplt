@@ -94,6 +94,10 @@ export default defineType({
         },
       ],
     }),
+    defineField({
+      name: 'email',
+      type: 'waitingListEmail',
+    }),
   ],
   preview: {
     prepare() {

@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /studio/node_modules
+/mails/node_modules
 /.pnp
 .pnp.js
 
@@ -42,6 +43,3 @@ yarn-error.log*
 # Env files created by scripts for working locally
 .env
 studio/.env.development
-
-# Million Lint
-.million

@@ -14,6 +14,7 @@ import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
 import cta from '@/sanity/schemas/objects/cta'
 import header from '@/sanity/schemas/objects/header'
 import openGraph from '@/sanity/schemas/objects/openGraph'
+import waitingListEmail from '@/sanity/schemas/objects/waitingListEmail'
 import waitingListForm from '@/sanity/schemas/objects/waitingListForm'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
@@ -40,6 +41,7 @@ export default defineConfig({
       cta,
       openGraph,
       waitingListForm,
+      waitingListEmail,
       // Types
       sectionSelector,
       headerImage,
