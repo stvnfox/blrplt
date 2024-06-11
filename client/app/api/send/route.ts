@@ -1,6 +1,6 @@
 import { Resend } from 'resend';
 
-import { WaitingListWelcomeTemplate } from "@/mails/emails/waiting-list-welcome";
+import { WaitingListWelcomeTemplate } from "@/emails/waiting-list-welcome";
 import { loadWaitingList } from '@/sanity/loader/loadQuery';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
