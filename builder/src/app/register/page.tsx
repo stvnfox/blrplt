@@ -1,6 +1,6 @@
-import { login } from "@/actions/auth"
+import { signup } from "@/actions/auth"
 
-export default function LoginPage() {
+export default function RegisterPage() {
     return (
         <form>
             <label htmlFor="email">Email:</label>
@@ -17,8 +17,8 @@ export default function LoginPage() {
                 type="password"
                 required
             />
-            <button formAction={login}>Log in</button>
-            <a href="/register">Sign up</a>
+            <button formAction={signup}>Sign up</button>
+
         </form>
     )
 }
