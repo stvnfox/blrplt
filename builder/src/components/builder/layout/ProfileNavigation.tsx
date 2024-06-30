@@ -5,7 +5,7 @@ import { redirect } from "next/navigation"
 import { logout } from "@/actions/auth"
 import { createClient } from "@/lib/supabase/server"
 
-export default async function Dashboard() {
+export const ProfileNavigation = async () => {
     const supabase = createClient()
 
     const { data, error } = await supabase.auth.getUser()
@@ -14,11 +14,11 @@ export default async function Dashboard() {
     }
 
     return (
-        <main className="flex min-h-screen items-center justify-center">
+        <div className="flex justify-end">
             blrplt builder - {data.user.email} -
             <form>
                 <button formAction={logout} className="ml-1">logout</button>
             </form>
-        </main>
+        </div>
     )
 }

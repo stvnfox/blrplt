@@ -1,10 +1,9 @@
 import { signup } from "@/actions/auth"
-import { sign } from "crypto"
 
 export default function RegisterPage() {
     return (
         <main className="flex min-h-screen items-center justify-center">
-            <form className="m-3 flex flex-col gap-4 rounded-md border p-6 lg:w-96">
+            <form className="m-3 flex flex-col gap-4 rounded-md border p-6 w-96">
                 <h1 className="text-2xl">blrplt builder</h1>
                 <div className="flex flex-col">
                     <label
