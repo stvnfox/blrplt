@@ -11,6 +11,7 @@ export const Header = ({data, slug}: {data: any; slug: string}) => {
     const [title, setTitle] = useState(data.data ? data.data.title : '')
     const [subtitle, setSubtitle] = useState(data.data ? data.data.subtitle : '')
     const [description, setDescription] = useState(data.data ? data.data.description : '')
+    const [saved, setSaved] = useState(false)
     
     const submit = async () => {
         const {data, error} = await supabase.from("site").update({
@@ -18,6 +19,7 @@ export const Header = ({data, slug}: {data: any; slug: string}) => {
                 {
                     name: "Home",
                     id: 1,
+                    url: "/builder/pages/home",
                     components: [
                         {
                             name: "Header",
@@ -31,6 +33,14 @@ export const Header = ({data, slug}: {data: any; slug: string}) => {
                 },
             ]
         }).eq("userId", "3850a80d-d62c-4101-b0ea-85ee36e4d77e").select("*")
+
+        if(data) {
+            setSaved(true)
+
+            setTimeout(() => {
+                setSaved(false)
+            }, 4000)
+        }
     }
 
     return (
@@ -88,12 +98,17 @@ export const Header = ({data, slug}: {data: any; slug: string}) => {
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
-                <button
-                    className="mt-2 rounded border-2 border-black bg-black p-2 text-sm text-white transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
-                    formAction={submit}
-                >
-                    Save
-                </button>
+                <div className="flex items-center gap-4">
+                    <button
+                        className="mt-2 rounded border-2 border-black bg-black p-2 text-sm text-white transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
+                        formAction={submit}
+                    >
+                        Save
+                    </button>
+                    {saved ? (
+                        <p className="mt-2 text-sm text-green-500">Saved!</p>
+                    ) : null}
+                </div>
             </form>
         </section>
     )

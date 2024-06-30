@@ -9,11 +9,16 @@ type DynamicBuildPageProps = {
 }
 
 export const DynamicBuildPage: FunctionComponent<DynamicBuildPageProps> = (props) => {
-    const { user, data } = props
+    const { data } = props
 
     return (
         <section className="flex-grow">
-            <h1 className="text-4xl mb-2">{data.name}</h1>
+            <div className="flex items-center justify-between">
+                <h1 className="text-4xl mb-2">{data.name}</h1>
+                <a href="/preview/blrplt-preview" target="_blank">
+                    Preview page
+                </a>
+            </div>
             <Header data={data.components[0]} slug={data.name} />
         </section>
     )
