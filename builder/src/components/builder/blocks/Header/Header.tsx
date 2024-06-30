@@ -31,9 +31,6 @@ export const Header = ({data, slug}: {data: any; slug: string}) => {
                 },
             ]
         }).eq("userId", "3850a80d-d62c-4101-b0ea-85ee36e4d77e").select("*")
-
-        console.log(data)
-        console.log(error)
     }
 
     return (
