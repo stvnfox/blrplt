@@ -1,0 +1,30 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "darwin"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model profile {
+  id   String @id @db.Uuid
+  role Role   @default(user)
+  site site[]
+}
+
+model site {
+  id      String  @id @db.Uuid
+  name    String
+  userId  String  @db.Uuid
+  pages   Json[]
+  url     String
+  profile profile @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum Role {
+  admin
+  user
+}

@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-import { DynamicBuildPage } from "@/components/builder/pages/DynamicBuildPage";
+import { DynamicBuilderPage } from "@/components/builder/pages/DynamicBuilderPage";
 import { createClient } from "@/lib/supabase/server";
 
 export default async function Page({ params }: { params: { slug: string } }) {
@@ -22,7 +22,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <DynamicBuildPage 
+        <DynamicBuilderPage 
             user={data.user?.id}
             data={pageData}
         />

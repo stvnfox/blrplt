@@ -3,22 +3,19 @@
 import clsx from "clsx"
 import { FunctionComponent } from "react"
 import { usePathname } from "next/navigation"
+import { useBuilderContext } from "@/providers/BuilderContextProvider"
 
-type DashboardNavigationProps = {
-    items: { id: number; name: string; url: string }[]
-}
-
-export const DashboardNavigation: FunctionComponent<DashboardNavigationProps> = (props) => {
+export const DashboardNavigation: FunctionComponent = () => {
     const pathname = usePathname()
-    const { items } = props
-
+    const { sites } = useBuilderContext()
+    console.log(sites)
     const menuItems = [
         {
             label: "builder preview site",
             href: "/",
             collapsible: true,
             open: true,
-            children: items,
+            children: sites[0].pages,
         },
     ]
 

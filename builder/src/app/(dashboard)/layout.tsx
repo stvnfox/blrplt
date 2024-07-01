@@ -1,11 +1,15 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { redirect } from "next/navigation"
 
 import "../globals.css"
 
-import { DashboardNavigation } from "@/components/builder/layout/DashboardNavigation"
-import { ProfileNavigation } from "@/components/builder/layout/ProfileNavigation"
 import { createClient } from "@/lib/supabase/server"
+import { prisma } from "@/lib/db"
+import BuilderContextProvider from "@/providers/BuilderContextProvider"
+
+import { ProfileNavigation } from "@/components/builder/layout/ProfileNavigation"
+import { PagesComponent } from "@/components/builder/layout/PagesComponent"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -21,20 +25,31 @@ export default async function RootLayout({
 }>) {
     const supabase = createClient()
     const { data, error } = await supabase.auth.getUser()
-    const { data: site } = await (await supabase.from("site").select("*").eq("userId", data.user?.id))
 
-    const pages = site ? site[0].pages : []
+    if(error) {
+        redirect("/login")
+    }
 
+    const sites = await prisma.site.findMany({
+        where: {
+            userId: data.user?.id
+        }
+    })
+
+    console.log(sites)
 
     return (
         <html lang="en">
             <body className={inter.className}>
                 <main className="my-8 mx-10">
                     <ProfileNavigation />
-                    <section className="flex gap-4 my-10">
-                        <DashboardNavigation items={pages}/>
+                    <BuilderContextProvider 
+                        userId={data.user.id}
+                        userSites={sites}
+                    >
                         {children}
-                    </section>
+                        <PagesComponent />
+                    </BuilderContextProvider>
                 </main>
             </body>
         </html>
