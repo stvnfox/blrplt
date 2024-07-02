@@ -20,6 +20,7 @@ type PreviewContextProps = {
 type PreviewContextInterface = {
     user: string
     sites: UserSite[]
+    siteName: string
 }
 
 export const PreviewContext = createContext<PreviewContextInterface | null>(null)
@@ -28,9 +29,10 @@ export default function PreviewContextProvider(props: PreviewContextProps) {
     const { children, userId, userSites} = props
     const [user] = useState(userId)
     const [sites] = useState(userSites)
+    const siteName = sites[0].name
 
     return (
-        <PreviewContext.Provider value={{ user, sites }}>
+        <PreviewContext.Provider value={{ user, sites, siteName }}>
             {children}
         </PreviewContext.Provider>
     )
