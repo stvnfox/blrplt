@@ -26,29 +26,27 @@ export default async function RootLayout({
     const supabase = createClient()
     const { data, error } = await supabase.auth.getUser()
 
-    if(error) {
+    if (error) {
         redirect("/login")
     }
 
     const sites = await prisma.site.findMany({
         where: {
-            userId: data.user?.id
-        }
+            userId: data.user?.id,
+        },
     })
-
-    console.log(sites)
 
     return (
         <html lang="en">
             <body className={inter.className}>
-                <main className="my-8 mx-10">
+                <main className="mx-10 my-8">
                     <ProfileNavigation />
-                    <BuilderContextProvider 
+                    <BuilderContextProvider
                         userId={data.user.id}
                         userSites={sites}
                     >
                         {children}
-                        <PagesComponent />
+                        {sites.length > 0 ? <PagesComponent /> : null}
                     </BuilderContextProvider>
                 </main>
             </body>
