@@ -1,7 +1,8 @@
+import { useState } from "react"
+
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
-    DialogClose,
     DialogContent,
     DialogHeader,
     DialogTitle,
@@ -11,8 +12,19 @@ import { CreatePageForm } from "./components/CreatePageForm"
 
 
 export function CreatePageComponent() {
+    const [open, setOpen] = useState(false)
+
+    const closeAfterSubmit = () => {
+        setOpen(false)
+
+        //TODO: Check if there is a better way to reload the page
+        setTimeout(() => {
+            window.location.reload()
+        }, 1000)
+    }
+    
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
                 <Button variant="outline" className="mt-4 shadow-none">create page</Button>
             </DialogTrigger>
@@ -20,12 +32,7 @@ export function CreatePageComponent() {
                 <DialogHeader>
                     <DialogTitle>create page</DialogTitle>
                 </DialogHeader>
-                <CreatePageForm>
-                    {/* TODO: Close Dialog when submitted */}
-                    {/* <DialogClose asChild className="mt-4"> */}
-                        <Button type="submit">create page!</Button>
-                    {/* </DialogClose> */}
-                </CreatePageForm>
+                <CreatePageForm setOpen={closeAfterSubmit}/>
             </DialogContent>
         </Dialog>
     )

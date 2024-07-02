@@ -1,14 +1,16 @@
 "use client"
 
+import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { useRouter } from "next/navigation"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
+import { createUuid } from "@/lib/utils"
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 
 const formSchema = z.object({
     name: z.string().min(2).max(50),
@@ -24,7 +26,10 @@ const formSchema = z.object({
     // }))
 })
 
-export function CreatePageForm({children}: {children: React.ReactNode}) {
+export function CreatePageForm({ setOpen }: { setOpen: () => void }) {
+    const [isLoading, setIsLoading] = useState(false)
+    const [hasError, setHasError] = useState(false)
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -34,16 +39,18 @@ export function CreatePageForm({children}: {children: React.ReactNode}) {
         },
     })
 
-    const router = useRouter()
-    const { sites } = useBuilderContext() 
+    const { sites } = useBuilderContext()
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        setIsLoading(true)
+        setHasError(false)
+
         const data = {
             siteId: sites[0].id,
             pages: sites[0].pages,
             name: values.name,
             url: `/builder/pages/${values.name}`,
-            id: 2,
+            id: createUuid(),
             components: [
                 {
                     name: "Header",
@@ -52,19 +59,26 @@ export function CreatePageForm({children}: {children: React.ReactNode}) {
                         title: "Welcome to blrplt",
                         subtitle: "The best website builder",
                         description: "Create your website with blrplt.",
-                    }
-                }
-            ]
+                    },
+                },
+            ],
         }
 
-        const response = await fetch('/api/builder/create-page', {
-            method: 'POST',
+        const response = await fetch("/api/builder/create-page", {
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json'
-            }
+                "Content-Type": "application/json",
+            },
         })
-        // TODO: Create error state
+
+        if (response.status === 200) {
+            setOpen()
+        } else {
+            setHasError(true)
+        }
+
+        setIsLoading(false)
     }
 
     return (
@@ -89,12 +103,13 @@ export function CreatePageForm({children}: {children: React.ReactNode}) {
                         </FormItem>
                     )}
                 />
-                { children && (
-                    <>
-                        {children}
-                    </>
-                )}
-                
+                <Button
+                    type="submit"
+                    disabled={isLoading}
+                >
+                    create page!
+                </Button>
+                {hasError && <p className="text-sm">error creating site. try again later</p>}
             </form>
         </Form>
     )
