@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -8,12 +9,20 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
+import { useBuilderContext } from "@/providers/BuilderContextProvider"
+import { createUuid } from "@/lib/utils"
+
 const formSchema = z.object({
     name: z.string().min(2).max(50),
     url: z.string().min(2).max(50),
 })
 
-export function CreateSiteForm() {
+export function CreateSiteForm({setOpen}: { setOpen: () => void }){
+    const { user } = useBuilderContext()
+
+    const [isLoading, setIsLoading] = useState(false)
+    const [hasError, setHasError] = useState(false)
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -23,15 +32,18 @@ export function CreateSiteForm() {
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        setIsLoading(true)
+        setHasError(false)
+
         const data = {
             name: values.name,
             url: values.url,
-            id: "2212a80d-d62c-4101-b0ea-85ee36e4d77e",
-            userId: "01e28350-3361-48ae-80f5-4225ddacefb7",
+            id: createUuid(),
+            userId: user,
             pages: [
                 {
                     name: "Home",
-                    id: 1,
+                    id: createUuid(),
                     url: "/builder/pages/home",
                     components: [
                         {
@@ -56,7 +68,13 @@ export function CreateSiteForm() {
             }
         })
 
-        // TODO: Create error state
+        if(response.status === 200) {
+            setOpen()
+        } else {
+            setHasError(true)
+        }
+
+        setIsLoading(false)
     }
 
     return (
@@ -99,7 +117,8 @@ export function CreateSiteForm() {
                         </FormItem>
                     )}
                 />
-                <Button type="submit">create website!</Button>
+                <Button type="submit" disabled={isLoading}>create website!</Button>
+                {hasError && <p className="text-sm">error creating site. try again later</p>}
             </form>
         </Form>
     )

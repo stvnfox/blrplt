@@ -2,13 +2,13 @@ import { prisma } from "@/lib/db"
 
 export async function POST(req: Request) {
     const data = await req.json()
-    
+
     const site = await prisma.site.findUnique({
         where: {
             id: data.siteId,
         },
         select: {
-            pages: true, // Assuming 'pages' is the field you want to update
+            pages: true,
         },
     });
 

@@ -1,4 +1,5 @@
 "use client"
+import { useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -11,9 +12,20 @@ import {
 } from "@/components/ui/dialog"
 import { CreateSiteForm } from "./components/CreateSiteForm"
 
-export function CreateSiteComponent() {
+export function CreateSiteComponent(){
+    const [open, setOpen] = useState(false)
+
+    const closeAfterSubmit = () => {
+        setOpen(false)
+
+        //TODO: Check if there is a better way to reload the page
+        setTimeout(() => {
+            window.location.reload()
+        }, 1000)
+    }
+    
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen} >
             <DialogTrigger asChild>
                 <Button>create website</Button>
             </DialogTrigger>
@@ -24,7 +36,7 @@ export function CreateSiteComponent() {
                         welcome to blrplt builder! let's get started by creating your website.
                     </DialogDescription>
                 </DialogHeader>
-                <CreateSiteForm />
+                <CreateSiteForm setOpen={closeAfterSubmit} />
             </DialogContent>
         </Dialog>
     )
