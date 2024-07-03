@@ -32,7 +32,7 @@ export default defineType({
             validation: (rule) => rule.required(),
         }),
         defineField({
-            name: 'errorMessageEmailAlreayExists',
+            name: 'errorMessageEmailAlreadyExists',
             title: 'Error message - Email already exists',
             type: 'string',
             description:
