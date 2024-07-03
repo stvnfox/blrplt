@@ -8,6 +8,7 @@ import { DynamicBuilderPage } from "../pages/DynamicBuilderPage"
 
 export const PagesComponent = () => {
     const { sites } = useBuilderContext()
+    // TODO: Fix the typing of sites.pages
     const defaultTab = sites[0].pages[0]?.name
 
     return (

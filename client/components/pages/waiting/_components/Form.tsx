@@ -79,7 +79,7 @@ export function WaitingListForm(props: WaitingListFormProps) {
     <Form {...form}>
       <form 
         onSubmit={form.handleSubmit(() => mutation.mutate(form.getValues().email))}
-        className="flex justify-center gap-2 container"
+        className="flex flex-col md:flex-row md:justify-center gap-2 container"
       >
         <FormField
           control={form.control}
@@ -87,7 +87,7 @@ export function WaitingListForm(props: WaitingListFormProps) {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input className="w-[400px]" placeholder={placeholder} {...field} />
+                <Input className="md:w-[400px]" placeholder={placeholder} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
