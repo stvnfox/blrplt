@@ -18,7 +18,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.6.0",
+    "@hookform/resolvers": "^3.7.0",
     "@next/env": "14.2.3",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
@@ -32,7 +32,7 @@
     "@sanity/ui": "2.1.4",
     "@sanity/vision": "3.39.0",
     "@tailwindcss/typography": "0.5.12",
-    "@tanstack/react-query": "^5.48.0",
+    "@tanstack/react-query": "^5.49.2",
     "class-variance-authority": "^0.7.0",
     "classnames": "2.5.1",
     "clsx": "^2.1.1",
@@ -44,8 +44,8 @@
     "postgres": "^3.4.4",
     "react": "18.3.0",
     "react-dom": "18.3.0",
-    "react-email": "^2.1.4",
-    "react-hook-form": "^7.52.0",
+    "react-email": "^2.1.5",
+    "react-hook-form": "^7.52.1",
     "resend": "^3.4.0",
     "rxjs": "7.8.1",
     "sanity": "3.39.0",
@@ -56,12 +56,12 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.47.0",
+    "@tanstack/eslint-plugin-query": "^5.50.0",
     "@types/node": "20.14.2",
     "@types/react": "18.3.0",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "10.4.19",
-    "drizzle-kit": "^0.22.7",
+    "drizzle-kit": "^0.22.8",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
     "eslint-plugin-simple-import-sort": "12.1.0",
