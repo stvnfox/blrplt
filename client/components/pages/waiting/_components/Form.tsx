@@ -95,7 +95,7 @@ export function WaitingListForm(props: WaitingListFormProps) {
         />
         <Button 
           type="submit"
-          className="border mt-0 space"
+          className="border mt-0 space hover:bg-black hover:text-white transition-colors"
           disabled={mutation.isPending}
         >
           {buttonText}

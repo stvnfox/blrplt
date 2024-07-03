@@ -14,8 +14,8 @@ export default function Navbar(props: NavbarProps) {
   const isWaitingList = data?.waitingList || false
 
   return (
-    <div className="sticky top-0 z-10 flex flex-wrap items-center justify-between bg-white/80 px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32">
-      <Link href="/" className="text-lg hover:text-black md:text-xl">
+    <div className="sticky top-0 z-10 flex flex-wrap items-center justify-between bg-white/80 px-4 py-4 backdrop-blur md:px-16 md:py-5 lg:px-32 container">
+      <Link href="/" className="text-lg hover:text-black md:text-xl focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-600 focus-visible:outline-none rounded">
         { title }
       </Link>
       <nav className="flex items-center gap-x-5">

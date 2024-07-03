@@ -25,7 +25,7 @@ export const SocialLinks: FunctionComponent<SocialLinksProps> = ({ items }) => {
           href={item.socialUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full w-8 h-8 flex items-center justify-center bg-gray-700 fill-white hover:bg-blue-700 transition-colors"
+          className="rounded-full w-8 h-8 flex items-center justify-center bg-gray-700 fill-white hover:bg-orange-600 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-600 focus-visible:outline-none transition-colors"
         >
           {item.socialPlatform === 'X' ? (
             <svg
