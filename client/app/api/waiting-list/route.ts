@@ -15,8 +15,6 @@ export async function POST(request: Request) {
         return Response.json({ success: false }, { status: 400, statusText: 'Email is required' })
     }
 
-    console.log(await db.select().from(WaitingList).where(eq(WaitingList.email, res.email)))
-
     const emailAlreadyExists = (await db.select().from(WaitingList).where(eq(WaitingList.email, res.email))).length > 0;
     if(emailAlreadyExists) {
         return Response.json({ success: false, message: 'Email already exists' }, { status: 404, statusText: 'Email already exists' })
