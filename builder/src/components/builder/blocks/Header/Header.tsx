@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 
 export const Header = ({ form }: { form: any }) => {
     return (
-        <section className="mt-2 w-full rounded border p-4">
+        <section className="mt-2 w-full rounded border border-neutral-100 px-6 py-4">
             <Accordion
                 type="single"
                 defaultValue="header-component"
@@ -24,7 +24,10 @@ export const Header = ({ form }: { form: any }) => {
                                 <FormItem className="my-4">
                                     <FormLabel>title</FormLabel>
                                     <FormControl>
-                                        <Input {...field} />
+                                        <Input
+                                            className="rounded shadow-none"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -37,7 +40,10 @@ export const Header = ({ form }: { form: any }) => {
                                 <FormItem className="mb-4">
                                     <FormLabel>subtitle</FormLabel>
                                     <FormControl>
-                                        <Input {...field} />
+                                        <Input
+                                            className="rounded shadow-none"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -50,7 +56,10 @@ export const Header = ({ form }: { form: any }) => {
                                 <FormItem>
                                     <FormLabel>description</FormLabel>
                                     <FormControl>
-                                        <Input {...field} />
+                                        <Input
+                                            className="rounded shadow-none"
+                                            {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
