@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { ComponentSwitcher } from "@/components/builder/blocks/Dashboard/ComponentMapper/components/ComponentSwitcher"
 
 export type BuilderComponent = {
-    name: string
+    order: number
     type: string
     data: any
 }
@@ -71,7 +71,7 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
             // TODO: Create dynamic components array based on the components that are added on the page
             components: [
                 {
-                    name: "Header",
+                    order: 0,
                     type: "header",
                     data: {
                         title: values.header.title,
