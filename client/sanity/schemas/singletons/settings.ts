@@ -89,7 +89,7 @@ export default defineType({
       description: 'The icon displayed in the browser tab.',
       options: {
         hotspot: true,
-        accept: 'image/svg+xml',
+        accept: 'image/x-icon',
       },
     }),
   ],
