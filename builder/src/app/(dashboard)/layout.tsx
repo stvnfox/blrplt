@@ -10,6 +10,7 @@ import BuilderContextProvider from "@/providers/BuilderContextProvider"
 
 import { ProfileNavigation } from "@/components/builder/layout/ProfileNavigation"
 import { PagesComponent } from "@/components/builder/layout/PagesComponent"
+import { NavigationComponent } from "@/components/builder/layout/NavigationComponent/NavigationComponent"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -37,19 +38,14 @@ export default async function RootLayout({
     })
 
     return (
-        <html lang="en">
-            <body className={inter.className}>
-                <main className="mx-10 my-8">
-                    <ProfileNavigation />
-                    <BuilderContextProvider
-                        userId={data.user.id}
-                        userSites={sites}
-                    >
-                        {children}
-                        {sites.length > 0 ? <PagesComponent /> : null}
-                    </BuilderContextProvider>
-                </main>
-            </body>
-        </html>
+        <main className="flex min-h-screen w-full flex-col">
+            <BuilderContextProvider
+                userId={data.user.id}
+                userSites={sites}
+            >
+                <NavigationComponent />
+                {children}
+            </BuilderContextProvider>
+        </main>
     )
 }

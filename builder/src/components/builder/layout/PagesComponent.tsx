@@ -15,8 +15,8 @@ export const PagesComponent = () => {
     // const defaultTab = sites[0].pages[0]?.name
 
     return (
-        <section>
-            <div className="flex items-center justify-between">
+        <section className="mt-6">
+            <div className="flex items-center justify-between mb-4">
                 {/* Not using the multi page option for MVP, uncomment when using again:  */}
                 {/* <h2>{sites[0].name} - pages</h2> */}
                 {/* <CreatePageComponent /> */}

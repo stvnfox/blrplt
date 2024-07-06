@@ -5731,7 +5731,7 @@ packages:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
 
-  slate-react@0.101.0:
+  neutral-react@0.101.0:
     resolution: {integrity: sha512-GAwAi9cT8pWLt65p6Fab33UXH2MKE1NRzHhqAnV+32u20vy4dre/dIGyyqrFyOp3lgBBitgjyo6N2g26y63gOA==}
     peerDependencies:
       react: '>=18.2.0'
@@ -8759,7 +8759,7 @@ snapshots:
       react: 18.3.0
       rxjs: 7.8.1
       slate: 0.100.0
-      slate-react: 0.101.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(slate@0.100.0)
+      neutral-react: 0.101.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(slate@0.100.0)
       styled-components: 6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
     transitivePeerDependencies:
       - react-dom
@@ -12770,7 +12770,7 @@ snapshots:
 
   slash@4.0.0: {}
 
-  slate-react@0.101.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(slate@0.100.0):
+  neutral-react@0.101.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(slate@0.100.0):
     dependencies:
       '@juggle/resize-observer': 3.4.0
       '@types/is-hotkey': 0.1.10
