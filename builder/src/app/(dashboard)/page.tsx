@@ -8,23 +8,27 @@ import { useBuilderContext } from "@/providers/BuilderContextProvider"
 
 export default function Dashboard() {
     const { sites } = useBuilderContext()
-
+    
     return (
         <section className="w-full">
             <div className="flex w-full items-center justify-between my-4">
-                <h1>{sites[0].name} - dashboard</h1>
-                <Button
-                    asChild
-                    variant="outline"
-                    className="shadow-none"
-                >
-                    <a
-                        target="_blank"
-                        href={`/preview/${sites[0].url}`}
-                    >
-                        preview
-                    </a>
-                </Button>
+                <h1>{sites[0] ? sites[0].name : 'blrplt builder'} - dashboard</h1>
+                {
+                    sites[0] && (
+                        <Button
+                            asChild
+                            variant="outline"
+                            className="shadow-none"
+                        >
+                            <a
+                                target="_blank"
+                                href={`/preview/${sites[0].url}`}
+                            >
+                                preview
+                            </a>
+                        </Button>
+                    )
+                }
             </div>
             {sites.length === 0 ? (
                 <CreateSiteComponent />

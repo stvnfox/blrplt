@@ -47,12 +47,12 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
                     url: "/builder/pages/home",
                     components: [
                         {
-                            name: "Header",
+                            order: 0,
                             type: "header",
                             data: {
-                                title: "Welcome to blrplt",
-                                subtitle: "The best website builder",
-                                description: "Create your website with blrplt.",
+                                title: "welcome to blrplt",
+                                subtitle: "the best website builder",
+                                description: "create your website with blrplt.",
                             }
                         }
                     ]
