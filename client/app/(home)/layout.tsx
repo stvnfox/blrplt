@@ -34,7 +34,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ogImage ? [ogImage] : [],
     },
     icons: {
-      icon: '/favicon.ico',
+      icon: '/icon.ico',
     }
   }
 }
