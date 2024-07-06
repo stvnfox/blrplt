@@ -1,7 +1,6 @@
 "use client"
 
 import { FunctionComponent } from "react"
-import { revalidatePath } from "next/cache"
 import { useRouter } from "next/navigation"
 import { CircleUser } from "lucide-react"
 
@@ -23,7 +22,7 @@ export const AccountMenu: FunctionComponent = () => {
     const { sites } = useBuilderContext()
     const supabase = createClient()
     const router = useRouter()
-    const siteName = sites[0].name
+    const siteName = sites[9] ? sites[0].name : "blrplt builder"
 
     const logout = async () => {
         const { error } = await supabase.auth.signOut()

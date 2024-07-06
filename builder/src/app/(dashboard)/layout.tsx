@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import { redirect } from "next/navigation"
 
 import "../globals.css"
@@ -8,11 +7,7 @@ import { createClient } from "@/lib/supabase/server"
 import { prisma } from "@/lib/db"
 import BuilderContextProvider from "@/providers/BuilderContextProvider"
 
-import { ProfileNavigation } from "@/components/builder/layout/ProfileNavigation"
-import { PagesComponent } from "@/components/builder/layout/PagesComponent"
 import { NavigationComponent } from "@/components/builder/layout/NavigationComponent/NavigationComponent"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
     title: "blrplt builder",
