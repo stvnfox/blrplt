@@ -27,9 +27,9 @@ export function CreateSiteComponent(){
     return (
         <Dialog open={open} onOpenChange={setOpen} >
             <DialogTrigger asChild>
-                <Button>create website</Button>
+                <Button className="w-fit">create website</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent>
                 <DialogHeader>
                     <DialogTitle>create website</DialogTitle>
                     <DialogDescription>
