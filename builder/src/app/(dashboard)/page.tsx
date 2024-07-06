@@ -29,9 +29,7 @@ export default function Dashboard() {
                     </Button>
                 )}
             </div>
-            {sites.length === 0 ? (
-                <CreateSiteComponent />
-            ) : (
+            {sites[0] ? (
                 <>
                     {sites.map((site, index) => (
                         <SiteComponent
@@ -40,6 +38,11 @@ export default function Dashboard() {
                         />
                     ))}
                     <PagesComponent />
+                </>
+            ) : (
+                <>
+                    <p className="text-sm italic">no site found yet, create one below</p>
+                    <CreateSiteComponent />
                 </>
             )}
         </section>
