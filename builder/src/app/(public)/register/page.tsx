@@ -5,8 +5,8 @@ import { signup } from "@/actions/auth"
 export default function RegisterPage() {
     return (
         <main className="flex min-h-screen items-center justify-center">
-            <form className="m-3 flex flex-col gap-4 rounded-md border p-6 w-96">
-                <div className="flex items-center gap-2 font-semibold text-2xl mr-6">
+            <form className="m-3 flex w-96 flex-col gap-4 rounded-md border p-6">
+                <div className="mr-6 flex items-center gap-2 text-2xl font-semibold">
                     <HandMetal className="h-6 w-6" />
                     <h1>blrplt builder</h1>
                 </div>
@@ -21,7 +21,7 @@ export default function RegisterPage() {
                         id="email"
                         name="email"
                         type="email"
-                        className="rounded border p-2 transition-colors hover:border-neutral-600 focus:outline-black"
+                        className="rounded border p-2 text-sm transition-colors hover:border-neutral-600 focus:outline-black"
                         required
                     />
                 </div>
@@ -36,18 +36,18 @@ export default function RegisterPage() {
                         id="password"
                         name="password"
                         type="password"
-                        className="rounded border p-2 transition-colors hover:border-neutral-600 focus:outline-black"
+                        className="rounded border p-2 text-sm transition-colors hover:border-neutral-600 focus:outline-black"
                         required
                     />
                 </div>
                 <button
-                    className="rounded border-2 border-black bg-black p-2 text-sm text-white transition-colors hover:bg-white hover:text-black focus:outline-black focus:outline-offset-2 focus:outline-dashed"
+                    className="rounded border-2 border-black bg-black p-2 text-sm text-white transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
                     formAction={signup}
                 >
                     Sign up
                 </button>
                 <a
-                    className="mx-auto w-fit text-sm hover:underline focus:outline-black focus:outline-offset-2 focus:outline-dashed rounded p-1"
+                    className="mx-auto w-fit rounded p-1 text-sm hover:underline focus:outline-dashed focus:outline-offset-2 focus:outline-black"
                     href="/login"
                 >
                     Already have an account? Log in here!

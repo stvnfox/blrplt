@@ -23,7 +23,13 @@ type PreviewContextInterface = {
     siteName: string
 }
 
-export const PreviewContext = createContext<PreviewContextInterface | null>(null)
+const defaultValues = {
+    user: "",
+    sites: [],
+    siteName: ""
+}
+
+export const PreviewContext = createContext<PreviewContextInterface>(defaultValues)
 
 export default function PreviewContextProvider(props: PreviewContextProps) {
     const { children, userId, userSites} = props
