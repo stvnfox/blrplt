@@ -22,7 +22,12 @@ type BuilderContextInterface = {
     sites: UserSite[]
 }
 
-export const BuilderContext = createContext<BuilderContextInterface | null>(null)
+const defaultValues = {
+    user: "",
+    sites: []
+}
+
+export const BuilderContext = createContext<BuilderContextInterface>(defaultValues)
 
 export default function BuilderContextProvider(props: BuilderContextProps) {
     const { children, userId, userSites} = props
