@@ -22,6 +22,9 @@ export function Page({ data, encodeDataAttribute }: HomePageProps) {
       {/* Socials */}
       {socials.length > 0 && <SocialLinks items={socials}/>}
       <hr className='w-11/12 md:w-[600px] mx-auto'/>
+      <div className='flex justify-center'>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/kxPJ1fKEl5g?si=ghkiX5pq5R3H2RA7" title="yt - blrplt builder" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
     </div>
   )
 }
