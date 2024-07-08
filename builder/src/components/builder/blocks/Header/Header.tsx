@@ -3,6 +3,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { RichTextEditor } from "../RichTextEditor/RichTextEditor"
 
 export const Header = ({ form }: { form: any }) => {
     return (
@@ -56,10 +57,11 @@ export const Header = ({ form }: { form: any }) => {
                                 <FormItem>
                                     <FormLabel>description</FormLabel>
                                     <FormControl>
-                                        <Input
+                                        {/* <Input
                                             className="rounded shadow-none"
                                             {...field}
-                                        />
+                                        /> */}
+                                        <RichTextEditor {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

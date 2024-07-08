@@ -25,7 +25,12 @@ const formSchema = z.object({
     header: z.object({
         title: z.string().min(2),
         subtitle: z.string(),
-        description: z.string(),
+        description: z.array(z.object({
+            type: z.string(),
+            children: z.array(z.object({
+                text: z.string(),
+            })),
+        })),
     }),
     // url: z.string().min(2).max(50),
     // components: z.array(z.object({
@@ -63,6 +68,7 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsLoading(true)
         setHasError(false)
+        console.log(values)
 
         const data = {
             siteId: sites[0].id,
