@@ -3,6 +3,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 
 export const Header = ({ form }: { form: any }) => {
     return (
@@ -56,7 +57,7 @@ export const Header = ({ form }: { form: any }) => {
                                 <FormItem>
                                     <FormLabel>description</FormLabel>
                                     <FormControl>
-                                        <Input
+                                        <Textarea
                                             className="rounded shadow-none"
                                             {...field}
                                         />
