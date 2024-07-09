@@ -112,7 +112,7 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
                                     {...field}
                                 />
                             </FormControl>
-                            <FormDescription>{`Your public display url will be https://blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
+                            <FormDescription>{`your public display url will be https://blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
