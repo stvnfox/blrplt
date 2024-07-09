@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo, useState } from "react"
+import { forwardRef, FunctionComponent, useMemo } from "react"
 import { createEditor } from "slate"
 import { Editable, Slate, withReact } from "slate-react"
 
@@ -12,7 +12,7 @@ type RichTextEditorProps = {
     onChange: (value: any) => void
 }
 
-export const RichTextEditor: FunctionComponent<RichTextEditorProps> = (props) => {
+export const RichTextEditor = forwardRef<HTMLDivElement, RichTextEditorProps>((props, ref) => {
     const editor = useMemo(() => withReact(createEditor()), [])
     const initialValue = [
         {
@@ -26,16 +26,8 @@ export const RichTextEditor: FunctionComponent<RichTextEditorProps> = (props) =>
             editor={editor}
             initialValue={initialValue}
             {...props}
-            onChange={value => {
-                const isAstChange = editor.operations.some(
-                    op => 'set_selection' !== op.type
-                )
-                if (!isAstChange) {
-                    console.log(value)
-                }
-            }}
         >
             <Editable style={{ border: "1px solid black" }} />
         </Slate>
     )
-}
+})
