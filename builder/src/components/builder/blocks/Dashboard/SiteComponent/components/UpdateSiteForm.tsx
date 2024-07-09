@@ -104,7 +104,7 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
                                 />
                             </FormControl>
                             {editValues && (
-                                <FormDescription>{`Your public display url is https://blrplt.dev/preview/${site.url}.`}</FormDescription>
+                                <FormDescription>{`your public display url is https://blrplt.dev/preview/${site.url}.`}</FormDescription>
                             )}
                             <FormMessage />
                         </FormItem>

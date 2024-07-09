@@ -14,16 +14,6 @@ import { Button } from "@/components/ui/button"
 
 const formSchema = z.object({
     name: z.string().min(2).max(50),
-    // url: z.string().min(2).max(50),
-    // components: z.array(z.object({
-    //     name: z.string(),
-    //     type: z.string(),
-    //     data: z.object({
-    //         title: z.string(),
-    //         subtitle: z.string(),
-    //         description: z.string(),
-    //     })
-    // }))
 })
 
 export function CreatePageForm({ setOpen }: { setOpen: () => void }) {
@@ -34,8 +24,6 @@ export function CreatePageForm({ setOpen }: { setOpen: () => void }) {
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
-            // url: "",
-            // components: []
         },
     })
 
@@ -53,12 +41,12 @@ export function CreatePageForm({ setOpen }: { setOpen: () => void }) {
             id: createUuid(),
             components: [
                 {
-                    name: "Header",
+                    order: 0,
                     type: "header",
                     data: {
-                        title: "Welcome to blrplt",
-                        subtitle: "The best website builder",
-                        description: "Create your website with blrplt.",
+                        title: "welcome to blrplt builder",
+                        subtitle: "the best landing page builder",
+                        description: "create your page with blrplt builder.",
                     },
                 },
             ],
