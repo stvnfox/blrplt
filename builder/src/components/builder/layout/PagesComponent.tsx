@@ -10,7 +10,6 @@ import { AddComponentButton } from "../blocks/Dashboard/AddComponentButton/AddCo
 export const PagesComponent = () => {
     const { sites } = useBuilderContext()
     const page = sites[0].pages[0]
-    console.log(page)
 
     // Not using the multi page option for MVP, uncomment when using again
     // TODO: Fix the typing of sites.pages

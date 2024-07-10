@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
-import { createUuid } from "@/lib/utils"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
