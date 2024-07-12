@@ -7,6 +7,7 @@ import { z } from "zod"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { ComponentOption, componentOptions } from "@/lib/components/options"
+import { addDefaultComponentValues } from "@/lib/components/defaultValues"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
@@ -46,7 +47,7 @@ export const ComponentSelector = ({ setOpen }: { setOpen: () => void }) => {
         pageComponents.push({
             order: pageComponents.length,
             type: values.component,
-            data: null,
+            data: addDefaultComponentValues(values.component),
         })
 
         const data = {

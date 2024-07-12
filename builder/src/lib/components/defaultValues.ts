@@ -7,10 +7,17 @@ export const componentDefaultValues = {
                 description: "blrplt builder - unique selling points",
                 cta: {
                     label: "blrplt builder - unique selling points",
-                    link: "blrplt builder - unique selling points",
+                    link: "/",
                     ariaLabel: "blrplt builder - unique selling points",
                 }
             }
         ]
+    }
+}
+
+export const addDefaultComponentValues = (component: string) => {
+    console.log(component)
+    if(component === "usps") {
+        return componentDefaultValues.usps
     }
 }
