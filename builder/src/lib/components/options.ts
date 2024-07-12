@@ -25,9 +25,3 @@ export const componentOptions = [
         disabled: true,
     },
 ]
-
-export type ComponentOption = {
-    value: string
-    label: string
-    disabled: boolean
-}

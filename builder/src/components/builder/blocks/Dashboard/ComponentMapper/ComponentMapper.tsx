@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
+import { createDefaultFormValues } from "@/lib/components/defaultValues"
+import { ComponentKey } from "@/lib/components/types"
 
 import { Form } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
@@ -11,7 +13,7 @@ import { ComponentSwitcher } from "@/components/builder/blocks/Dashboard/Compone
 
 export type BuilderComponent = {
     order: number
-    type: string
+    type: ComponentKey
     data: any
 }
 
@@ -45,19 +47,10 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
     const [isLoading, setIsLoading] = useState(false)
     const [isSucceeded, setIsSucceeded] = useState(false)
     const [hasError, setHasError] = useState(false)
-    
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        // TODO: Create dynamic default values based on the components that are added on the page
-        defaultValues: {
-            header: {
-                title: components.find((component) => component.type === "header")?.data.title || "",
-                subtitle: components.find((component) => component.type === "header")?.data.subtitle || "",
-                description: components.find((component) => component.type === "header")?.data.description || "",
-            },
-            // url: "",
-            // components: []
-        },
+        defaultValues: createDefaultFormValues(components.map((component) => component.type))
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {

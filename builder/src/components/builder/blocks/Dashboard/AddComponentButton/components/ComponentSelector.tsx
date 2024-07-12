@@ -6,7 +6,8 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
-import { ComponentOption, componentOptions } from "@/lib/components/options"
+import { componentOptions } from "@/lib/components/options"
+import { ComponentOption, selectorComponentKeys } from "@/lib/components/types"
 import { addDefaultComponentValues } from "@/lib/components/defaultValues"
 
 import { Button } from "@/components/ui/button"
@@ -15,7 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 // import { Checkbox } from "@/components/ui/checkbox"
 
 const formSchema = z.object({
-    component: z.string().min(1, { message: "Please select a component" }),
+    component: z.enum(selectorComponentKeys, { message: "Please select a component" }),
     // defaultComponentValues: z.boolean().default(true),
 })
 
@@ -34,7 +35,7 @@ export const ComponentSelector = ({ setOpen }: { setOpen: () => void }) => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            component: "",
+            component: undefined,
             // defaultComponentValues: true,
         },
     })
