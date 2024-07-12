@@ -46,6 +46,7 @@ export async function signup(formData: FormData) {
 
     const { error } = await supabase.auth.signUp(data)
 
+    // TODO: Handle various error states
     if (error) {
         redirect("/error")
     }

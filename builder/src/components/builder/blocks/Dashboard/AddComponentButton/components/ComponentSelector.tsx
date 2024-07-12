@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
+import { ComponentOption, componentOptions } from "@/lib/components/options"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
@@ -19,6 +20,12 @@ const formSchema = z.object({
 
 export const ComponentSelector = ({ setOpen }: { setOpen: () => void }) => {
     const { sites } = useBuilderContext()
+
+    const isOptionDisabled = (option: ComponentOption) => {
+        if(option.disabled) return true
+
+        return sites[0]?.pages[0]?.components.findIndex((component: any) => component.type === option.value) !== -1 ? true : false
+    }
 
     const [isLoading, setIsLoading] = useState(false)
     const [hasError, setHasError] = useState(false)
@@ -86,26 +93,15 @@ export const ComponentSelector = ({ setOpen }: { setOpen: () => void }) => {
                                     </SelectTrigger>
                                 </FormControl>
                                 <SelectContent>
-                                    {/* // TODO: Create a helper function to set all available components as option + disable the already used ones. */}
-                                    <SelectItem value="usps">unique selling points</SelectItem>
-                                    <SelectItem
-                                        disabled
-                                        value="pricing"
-                                    >
-                                        pricing
-                                    </SelectItem>
-                                    <SelectItem
-                                        disabled
-                                        value="faq"
-                                    >
-                                        faq
-                                    </SelectItem>
-                                    <SelectItem
-                                        disabled
-                                        value="more"
-                                    >
-                                        and more to come...
-                                    </SelectItem>
+                                    {componentOptions.map((option, index) => (
+                                        <SelectItem
+                                            key={`option-${index}`}
+                                            value={option.value}
+                                            disabled={isOptionDisabled(option)}
+                                        >
+                                            {option.label}
+                                        </SelectItem>
+                                    ))}
                                 </SelectContent>
                             </Select>
                             <FormMessage />
