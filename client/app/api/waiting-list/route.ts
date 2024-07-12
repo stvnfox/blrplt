@@ -3,6 +3,7 @@ import { drizzle } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
 
 import { WaitingList } from '@/db/schemas/WaitingList';
+import { createUuid } from '@/lib/utils';
 
 const connectionString = process.env.NEXT_PUBLIC_DATABASE_URL || ''
 const client = postgres(connectionString, { prepare: false })
@@ -21,7 +22,7 @@ export async function POST(request: Request) {
     }
 
     try {
-        await db.insert(WaitingList).values({ email: res.email });
+        await db.insert(WaitingList).values({ email: res.email, id: createUuid() });
         
         return Response.json({ success: true }, { status: 200, statusText: 'OK' })
     } catch(err) {

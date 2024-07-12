@@ -28,3 +28,8 @@ enum Role {
   admin
   user
 }
+
+model waitingList {
+  id        String  @id @db.Uuid
+  email     String
+}
