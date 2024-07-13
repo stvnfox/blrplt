@@ -6,6 +6,7 @@ import { z } from "zod"
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { createDefaultFormValues } from "@/lib/components/defaultValues"
 import { ComponentKey } from "@/lib/components/types"
+import { createCombinedSchema } from "@/lib/form/schema"
 
 import { Form } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
@@ -22,31 +23,14 @@ type ComponentMapperProps = {
     slug: string
 }
 
-// TODO: Create dynamic formSchema object based on the components that are added on the page
-const formSchema = z.object({
-    header: z.object({
-        title: z.string().min(2),
-        subtitle: z.string(),
-        description: z.string(),
-    }),
-    // url: z.string().min(2).max(50),
-    // components: z.array(z.object({
-    //     name: z.string(),
-    //     type: z.string(),
-    //     data: z.object({
-    //         title: z.string(),
-    //         subtitle: z.string(),
-    //         description: z.string(),
-    //     })
-    // }))
-})
-
 export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ components, slug }) => {
     const { sites } = useBuilderContext()
 
     const [isLoading, setIsLoading] = useState(false)
     const [isSucceeded, setIsSucceeded] = useState(false)
     const [hasError, setHasError] = useState(false)
+
+    const formSchema = createCombinedSchema(components.map((component) => component.type))
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
