@@ -6,17 +6,17 @@ export const componentOptions = [
     },
     {
         value: "pricing",
-        label: "pricing",
+        label: "pricing (coming soon)",
         disabled: true,
     },
     {
         value: "faq",
-        label: "frequently asked questions",
+        label: "frequently asked questions (coming soon)",
         disabled: true,
     },
     {
         value: "content",
-        label: "content block",
+        label: "content block (coming soon)",
         disabled: true,
     },
     {
