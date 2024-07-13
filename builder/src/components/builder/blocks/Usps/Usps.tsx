@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import { RemoveComponentButton } from "../Dashboard/RemoveComponentButton/RemoveComponentButton"
 
 export const Usps = ({ form }: { form: any }) => {
     const [uspsAmount, setUspsAmount] = useState<number>(form.watch("usps.items.length") ?? 1)
@@ -113,6 +114,9 @@ export const Usps = ({ form }: { form: any }) => {
                                 </div>
                             </div>
                         ))}
+                        <div className="text-right">
+                            <RemoveComponentButton component="usps" />
+                        </div>
                     </AccordionContent>
                 </AccordionItem>
             </Accordion>
