@@ -7,7 +7,7 @@ import { MobileNavigation } from "./components/MobileNavigation"
 
 export const NavigationComponent: FunctionComponent = () => {
     return (
-        <header className="bg-background sticky top-0 flex h-16 items-center justify-between gap-4 border-b px-4 md:px-6">
+        <header className="bg-white sticky top-0 flex h-16 items-center justify-between gap-4 border-b px-4 md:px-6 z-50">
             <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
                 <div className="flex items-center gap-2 text-lg font-semibold md:text-base mr-6">
                     <HandMetal className="h-6 w-6" />
