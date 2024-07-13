@@ -37,6 +37,18 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
         defaultValues: createDefaultFormValues(components.map((component) => component.type))
     })
 
+    const createComponentData = (values: z.infer<typeof formSchema>, components: BuilderComponent[]) => {
+        return components.map((component) => {
+            const componentData = values[component.type];
+
+            return {
+                order: component.order,
+                type: component.type,
+                data: componentData,
+            };
+        });
+    }
+
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsLoading(true)
         setHasError(false)
@@ -45,18 +57,7 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
             siteId: sites[0].id,
             pages: sites[0].pages,
             page: slug.toLowerCase(),
-            // TODO: Create dynamic components array based on the components that are added on the page
-            components: [
-                {
-                    order: 0,
-                    type: "header",
-                    data: {
-                        title: values.header.title,
-                        subtitle: values.header.subtitle,
-                        description: values.header.description,
-                    }
-                }
-            ]
+            components: createComponentData(values, components),
         }
 
         const response = await fetch('/api/builder/update-page', {
