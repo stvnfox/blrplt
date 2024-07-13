@@ -13,11 +13,6 @@ export const componentSchemas = {
             z.object({
                 title: z.string(),
                 description: z.string(),
-                cta: z.object({
-                    label: z.string(),
-                    link: z.string(),
-                    ariaLabel: z.string(),
-                }),
             })
         ),
     }),

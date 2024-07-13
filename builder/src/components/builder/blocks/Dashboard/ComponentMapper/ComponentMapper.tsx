@@ -5,7 +5,7 @@ import { z } from "zod"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { createDefaultFormValues } from "@/lib/components/defaultValues"
-import { ComponentKey } from "@/lib/components/types"
+import { ComponentDefaultValues, ComponentKey } from "@/lib/components/types"
 import { createCombinedSchema } from "@/lib/form/schema"
 
 import { Form } from "@/components/ui/form"
@@ -34,19 +34,25 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        defaultValues: createDefaultFormValues(components.map((component) => component.type))
+        defaultValues: createDefaultFormValues(
+            components.map((component) => component.type),
+            components.reduce((acc, component) => {
+                acc[component.type] = component.data
+                return acc
+            }, {} as Partial<ComponentDefaultValues>)
+        ),
     })
 
     const createComponentData = (values: z.infer<typeof formSchema>, components: BuilderComponent[]) => {
         return components.map((component) => {
-            const componentData = values[component.type];
+            const componentData = values[component.type]
 
             return {
                 order: component.order,
                 type: component.type,
                 data: componentData,
-            };
-        });
+            }
+        })
     }
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -60,15 +66,15 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
             components: createComponentData(values, components),
         }
 
-        const response = await fetch('/api/builder/update-page', {
-            method: 'POST',
+        const response = await fetch("/api/builder/update-page", {
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json'
-            }
+                "Content-Type": "application/json",
+            },
         })
 
-        if(response.status === 200) {
+        if (response.status === 200) {
             setIsSucceeded(true)
 
             setTimeout(() => {

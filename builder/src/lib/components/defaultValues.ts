@@ -1,4 +1,4 @@
-import { ComponentDefaultValues, ComponentKey } from "./types";
+import { ComponentDefaultValues, ComponentKey } from "./types"
 
 export const componentDefaultValues: ComponentDefaultValues = {
     header: {
@@ -12,26 +12,27 @@ export const componentDefaultValues: ComponentDefaultValues = {
             {
                 title: "blrplt builder - unique selling points",
                 description: "blrplt builder - unique selling points",
-                cta: {
-                    label: "blrplt builder - unique selling points",
-                    link: "/",
-                    ariaLabel: "blrplt builder - unique selling points",
-                }
-            }
-        ]
-    }
+            },
+        ],
+    },
 }
 
 export const addDefaultComponentValues = (component: ComponentKey) => {
-    return componentDefaultValues[component];
+    return componentDefaultValues[component]
 }
 
-export const createDefaultFormValues = (components: ComponentKey[]): Partial<ComponentDefaultValues> => {
-    const formValues: Partial<ComponentDefaultValues> = {};
+export const createDefaultFormValues = (
+    components: ComponentKey[],
+    existingData?: Partial<ComponentDefaultValues>
+): Partial<ComponentDefaultValues> => {
+    const formValues: Partial<ComponentDefaultValues> = {}
 
-    components.forEach(component => {
-        formValues[component] = componentDefaultValues[component];
-    });
+    components.forEach((component) => {
+        formValues[component] = {
+            ...componentDefaultValues[component],
+            ...(existingData?.[component] ?? {}),
+        }
+    })
 
-    return formValues;
-};
+    return formValues
+}

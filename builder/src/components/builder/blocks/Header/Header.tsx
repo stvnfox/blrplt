@@ -15,7 +15,7 @@ export const Header = ({ form }: { form: any }) => {
             >
                 <AccordionItem value="header-component">
                     <AccordionTrigger>
-                        <h2 className="text-2xl">Header</h2>
+                        <h2 className="text-2xl">header</h2>
                     </AccordionTrigger>
                     <AccordionContent>
                         <FormField
