@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { FunctionComponent, useState } from "react"
 
-import { UspItem } from "@/lib/components/types"
+import { UspItem, ComponentProps } from "@/lib/components/types"
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { RemoveComponentButton } from "../Dashboard/RemoveComponentButton/RemoveComponentButton"
 
-export const Usps = ({ form }: { form: any }) => {
+export const Usps: FunctionComponent<ComponentProps> = ({ form }) => {
     const [uspsAmount, setUspsAmount] = useState<number>(form.watch("usps.items.length") ?? 1)
     const [usps, setUsps] = useState<UspItem[]>(form.getValues("usps.items"))
 

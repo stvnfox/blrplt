@@ -4,6 +4,21 @@ export type ComponentOption = {
     disabled: boolean
 }
 
+export interface PricingItem {
+    title: string;
+    description: string;
+    price: number | undefined;
+    currency: string;
+    mostPopular: boolean;
+    includes: string[];
+}
+
+export interface Pricing {
+    title: string;
+    description: string;
+    items: PricingItem[];
+}
+
 export interface UspItem {
     title: string;
     description: string;
@@ -20,14 +35,20 @@ export interface Header {
     description: string;
 }
 
+// TODO: Add types for form fields
+export type ComponentProps = {
+    form: any
+}
+
 export interface ComponentDefaultValues {
     header: Header;
     usps: Usps;
+    pricing: Pricing;
 }
 
 export type ComponentKey = keyof ComponentDefaultValues;
 
-export type SelectorComponentKey = 'header' | 'usps';
-export const selectorComponentKeys = ['header', 'usps'] as const;
+export type SelectorComponentKey = keyof ComponentDefaultValues;
+export const selectorComponentKeys = ['header', 'usps', 'pricing'] as const;
 
 export type SelectorComponentKeyType = typeof selectorComponentKeys[number];

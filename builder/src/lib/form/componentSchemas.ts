@@ -16,6 +16,21 @@ export const componentSchemas = {
             })
         ),
     }),
+    pricing: z.object({
+        title: z.string().min(2),
+        description: z.string(),
+        items: z.array(
+            z.object({
+                title: z.string().min(2),
+                description: z.string(),
+                price: z.coerce.number().min(1),
+                currency: z.string().default("EUR"),
+                includes: z.array(
+                    z.string()
+                ),
+            })
+        ),
+    }),
     // ... add more component schemas here
 }
 

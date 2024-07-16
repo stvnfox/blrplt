@@ -6,8 +6,8 @@ export const componentOptions = [
     },
     {
         value: "pricing",
-        label: "pricing (coming soon)",
-        disabled: true,
+        label: "pricing",
+        disabled: false,
     },
     {
         value: "faq",
@@ -23,5 +23,20 @@ export const componentOptions = [
         value: "more",
         label: "many more to come...",
         disabled: true,
+    },
+]
+
+export const currencyOptions = [
+    {
+        value: "EUR",
+        label: "EUR",
+    },
+    {
+        value: "USD",
+        label: "USD",
+    },
+    {
+        value: "GBP",
+        label: "GBP",
     },
 ]

@@ -15,6 +15,22 @@ export const componentDefaultValues: ComponentDefaultValues = {
             },
         ],
     },
+    pricing: {
+        title: "blrplt builder - pricing",
+        description: "blrplt builder - pricing",
+        items: [
+            {
+                title: "blrplt builder - pricing",
+                description: "blrplt builder - pricing",
+                price: 49.99,
+                currency: "EUR",
+                mostPopular: false,
+                includes: [
+                    "blrplt builder - pricing",
+                ]
+            }
+        ]
+    }
 }
 
 export const addDefaultComponentValues = (component: ComponentKey) => {
