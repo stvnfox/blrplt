@@ -31,6 +31,17 @@ export const componentSchemas = {
             })
         ),
     }),
+    faq: z.object({
+        title: z.string().min(2),
+        description: z.string(),
+        items: z.array(
+            z.object({
+                question: z.string().min(2),
+                answer: z.string().min(2),
+                id: z.string().min(2),
+            })
+        ),
+    }),
     // ... add more component schemas here
 }
 
