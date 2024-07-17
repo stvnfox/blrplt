@@ -1,4 +1,5 @@
 import { ComponentDefaultValues, ComponentKey } from "./types"
+import { createUuid } from "../utils"
 
 export const componentDefaultValues: ComponentDefaultValues = {
     header: {
@@ -30,7 +31,18 @@ export const componentDefaultValues: ComponentDefaultValues = {
                 ]
             }
         ]
-    }
+    },
+    faq: {
+        title: "blrplt builder - frequently asked questions",
+        description: "blrplt builder - frequently asked questions",
+        items: [
+            {
+                question: "blrplt builder - frequently asked questions",
+                answer: "blrplt builder - frequently asked questions",
+                id: createUuid(),
+            }
+        ]
+    },
 }
 
 export const addDefaultComponentValues = (component: ComponentKey) => {
