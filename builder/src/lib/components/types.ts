@@ -4,6 +4,18 @@ export type ComponentOption = {
     disabled: boolean
 }
 
+export interface FaqItem {
+    question: string;
+    answer: string;
+    id: string;
+}
+
+export interface Faq {
+    title: string;
+    description: string;
+    items: FaqItem[];
+}
+
 export interface PricingItem {
     title: string;
     description: string;
@@ -44,11 +56,12 @@ export interface ComponentDefaultValues {
     header: Header;
     usps: Usps;
     pricing: Pricing;
+    faq: Faq;
 }
 
 export type ComponentKey = keyof ComponentDefaultValues;
 
 export type SelectorComponentKey = keyof ComponentDefaultValues;
-export const selectorComponentKeys = ['header', 'usps', 'pricing'] as const;
+export const selectorComponentKeys = ['header', 'usps', 'pricing', 'faq'] as const;
 
 export type SelectorComponentKeyType = typeof selectorComponentKeys[number];
