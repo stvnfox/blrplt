@@ -11,8 +11,8 @@ export const componentOptions = [
     },
     {
         value: "faq",
-        label: "frequently asked questions (coming soon)",
-        disabled: true,
+        label: "frequently asked questions",
+        disabled: false,
     },
     {
         value: "content",
