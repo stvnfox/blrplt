@@ -103,7 +103,7 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
                         />
                     )
                 })}
-                <div className="sticky bottom-0 flex justify-end px-8 py-4 border-t border-neutral-200 bg-white/80">
+                <div className="sticky bottom-0 flex justify-end px-8 py-4 border-t border-neutral-100 bg-white/80">
                     <Button
                         className="ml-auto"
                         type="submit"
