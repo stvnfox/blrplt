@@ -103,15 +103,17 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
                         />
                     )
                 })}
-                <Button
-                    className="ml-auto"
-                    type="submit"
-                    disabled={isLoading}
-                >
-                    save changes
-                </Button>
-                {hasError && <p className="text-sm">error updating site</p>}
-                {isSucceeded && <p className="text-sm">site updated!</p>}
+                <div className="sticky bottom-0 flex justify-end px-8 py-4 border-t border-neutral-200 bg-white/80">
+                    <Button
+                        className="ml-auto"
+                        type="submit"
+                        disabled={isLoading}
+                    >
+                        save changes
+                    </Button>
+                    {hasError && <p className="text-sm">error updating site</p>}
+                    {isSucceeded && <p className="text-sm">site updated!</p>}
+                </div>
             </form>
         </Form>
     )

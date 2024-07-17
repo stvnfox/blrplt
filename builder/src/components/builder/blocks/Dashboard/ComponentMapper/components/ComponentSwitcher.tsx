@@ -13,19 +13,12 @@ type ComponentSwitcherProps = {
 }
 
 export const ComponentSwitcher: FunctionComponent<ComponentSwitcherProps> = ({ component, form }) => {
-    if (component.type === "header") {
-        return <Header form={form} />
-    }
-
-    if (component.type === "usps") {
-        return <Usps form={form} />
-    }
-
-    if (component.type === "pricing") {
-        return <Pricing form={form} />
-    }
-
-    if (component.type === "faq") {
-        return <Faq form={form} />
-    }
+    return (
+        <div className="px-4 md:px-8">
+            {component.type === "header" && <Header form={form} />}
+            {component.type === "usps" && <Usps form={form} />}
+            {component.type === "pricing" && <Pricing form={form} />}
+            {component.type === "faq" && <Faq form={form} />}
+        </div>
+    )
 }

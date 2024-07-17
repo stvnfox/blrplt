@@ -17,7 +17,7 @@ export const PagesComponent = () => {
 
     return (
         <section className="mt-6">
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-4 px-4 md:px-8">
                 {/* Not using the multi page option for MVP, uncomment when using again:  */}
                 {/* <h2>{sites[0].name} - pages</h2> */}
                 {/* <CreatePageComponent /> */}

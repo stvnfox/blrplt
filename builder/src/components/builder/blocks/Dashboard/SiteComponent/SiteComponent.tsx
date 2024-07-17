@@ -8,8 +8,10 @@ type SiteComponentProps = {
 
 export const SiteComponent: FunctionComponent<SiteComponentProps> = ({ site }) => {
     return (
-        <div className="border rounded-md border-neutral-100 px-6 py-4">
-            <UpdateSiteForm site={site} />
-        </div>
+        <section className="px-4 md:px-8">
+            <div className="border rounded-md border-neutral-100 px-6 py-4">
+                <UpdateSiteForm site={site} />
+            </div>
+        </section>
     )
 }

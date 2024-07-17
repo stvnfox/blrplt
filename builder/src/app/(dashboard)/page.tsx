@@ -11,8 +11,8 @@ export default function Dashboard() {
     const { sites } = useBuilderContext()
 
     return (
-        <section className="flex flex-1 flex-col gap-4 p-4 md:p-8">
-            <div className="flex w-full items-center justify-between">
+        <section className="flex flex-1 flex-col gap-4">
+            <div className="flex w-full items-center justify-between pt-4 px-4 md:pt-8 md:px-8">
                 <h1>{sites[0] ? sites[0].name : "blrplt builder"} - site settings</h1>
                 {sites[0] && (
                     <Button
@@ -40,10 +40,10 @@ export default function Dashboard() {
                     <PagesComponent />
                 </>
             ) : (
-                <>
-                    <p className="text-sm italic">no site found yet, create one below</p>
+                <div className="px-4 md:px-8">
+                    <p className="text-sm italic mb-4">no site found yet, create one below</p>
                     <CreateSiteComponent />
-                </>
+                </div>
             )}
         </section>
     )
