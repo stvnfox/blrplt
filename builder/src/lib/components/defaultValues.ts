@@ -43,6 +43,20 @@ export const componentDefaultValues: ComponentDefaultValues = {
             }
         ]
     },
+    content: {
+        title: "blrplt builder - content block",
+        description: "blrplt builder - content block",
+        direction: "left",
+        cta: {
+            label: "get started",
+            href: "#",
+            ariaLabel: "click here to get started",
+        },
+        image: {
+            src: "https://source.unsplash.com/random/800x600",
+            alt: "random image",
+        }
+    }
 }
 
 export const addDefaultComponentValues = (component: ComponentKey) => {
