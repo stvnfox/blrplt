@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react"
 
 import { BuilderComponent } from "@/components/builder/blocks/Dashboard/ComponentMapper/ComponentMapper"
+import { Content } from "@/components/builder/blocks/Content/Content"
 import { Header } from "@/components/builder/blocks/Header/Header"
 import { Faq } from "@/components/builder/blocks/Faq/Faq"
 import { Pricing } from "@/components/builder/blocks/Pricing/Pricing"
@@ -19,6 +20,7 @@ export const ComponentSwitcher: FunctionComponent<ComponentSwitcherProps> = ({ c
             {component.type === "usps" && <Usps form={form} />}
             {component.type === "pricing" && <Pricing form={form} />}
             {component.type === "faq" && <Faq form={form} />}
+            {component.type === "content" && <Content form={form}/>}
         </div>
     )
 }

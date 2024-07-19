@@ -16,8 +16,8 @@ export const componentOptions = [
     },
     {
         value: "content",
-        label: "content block (coming soon)",
-        disabled: true,
+        label: "content block",
+        disabled: false,
     },
     {
         value: "more",
@@ -38,5 +38,16 @@ export const currencyOptions = [
     {
         value: "GBP",
         label: "GBP",
+    },
+]
+
+export const positionOptions = [
+    {
+        value: "left",
+        label: "left",
+    },
+    {
+        value: "right",
+        label: "right",
     },
 ]

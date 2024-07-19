@@ -7,7 +7,6 @@ export type ComponentOption = {
 export interface Content {
     title: string;
     description?: string;
-    direction?: 'left' | 'right';
     cta?: {
         label: string;
         href: string;
@@ -16,6 +15,7 @@ export interface Content {
     image: {
         src: string;
         alt: string;
+        position?: 'left' | 'right';
     };
 }
 
@@ -78,6 +78,6 @@ export interface ComponentDefaultValues {
 export type ComponentKey = keyof ComponentDefaultValues;
 
 export type SelectorComponentKey = keyof ComponentDefaultValues;
-export const selectorComponentKeys = ['header', 'usps', 'pricing', 'faq'] as const;
+export const selectorComponentKeys = ['header', 'usps', 'pricing', 'faq', 'content'] as const;
 
 export type SelectorComponentKeyType = typeof selectorComponentKeys[number];
