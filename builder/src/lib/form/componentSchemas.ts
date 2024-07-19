@@ -42,6 +42,20 @@ export const componentSchemas = {
             })
         ),
     }),
+    content: z.object({
+        title: z.string().min(2),
+        description: z.string(),
+        direction: z.string().default('left'),
+        cta: z.object({
+            label: z.string().min(2),
+            href: z.string().min(2),
+            ariaLabel: z.string().min(2),
+        }),
+        image: z.object({
+            src: z.string().min(2),
+            alt: z.string().min(2),
+        }).required(),
+    }),
     // ... add more component schemas here
 }
 
