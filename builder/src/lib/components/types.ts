@@ -4,6 +4,21 @@ export type ComponentOption = {
     disabled: boolean
 }
 
+export interface Content {
+    title: string;
+    description?: string;
+    direction?: 'left' | 'right';
+    cta?: {
+        label: string;
+        href: string;
+        ariaLabel: string;
+    };
+    image: {
+        src: string;
+        alt: string;
+    };
+}
+
 export interface FaqItem {
     question: string;
     answer: string;
@@ -57,6 +72,7 @@ export interface ComponentDefaultValues {
     usps: Usps;
     pricing: Pricing;
     faq: Faq;
+    content: Content;
 }
 
 export type ComponentKey = keyof ComponentDefaultValues;
