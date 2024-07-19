@@ -33,10 +33,10 @@ export const Faq: FunctionComponent<ComponentProps> = ({ form }) => {
         <section className="mt-2 w-full rounded border border-neutral-100 px-6 py-4">
             <Accordion
                 type="single"
-                defaultValue="usps-component"
+                defaultValue="faq-component"
                 collapsible
             >
-                <AccordionItem value="usps-component">
+                <AccordionItem value="faq-component">
                     <AccordionTrigger>
                         <h2 className="text-2xl">frequently asked questions</h2>
                     </AccordionTrigger>
