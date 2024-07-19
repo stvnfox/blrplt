@@ -103,7 +103,9 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
                         />
                     )
                 })}
-                <div className="sticky bottom-0 flex justify-end px-8 py-4 border-t border-neutral-100 bg-white/80">
+                <div className="sticky bottom-0 flex justify-end items-center px-8 py-4 space-x-4 border-t border-neutral-100 bg-white/80">
+                    {hasError && <p className="text-sm text-red-500">error updating site</p>}
+                    {isSucceeded && <p className="text-sm text-green-600">site updated!</p>}
                     <Button
                         className="ml-auto"
                         type="submit"
@@ -111,8 +113,6 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
                     >
                         save changes
                     </Button>
-                    {hasError && <p className="text-sm">error updating site</p>}
-                    {isSucceeded && <p className="text-sm">site updated!</p>}
                 </div>
             </form>
         </Form>
