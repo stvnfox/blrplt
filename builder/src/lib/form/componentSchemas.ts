@@ -25,6 +25,7 @@ export const componentSchemas = {
                 description: z.string(),
                 price: z.coerce.number().min(1),
                 currency: z.string().default("EUR"),
+                mostPopular: z.boolean().default(false),
                 includes: z.array(
                     z.string()
                 ),

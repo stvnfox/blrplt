@@ -48,7 +48,7 @@ export const componentDefaultValues: ComponentDefaultValues = {
         description: "blrplt builder - content block",
         cta: {
             label: "get started",
-            href: "#",
+            href: "/random",
             ariaLabel: "click here to get started",
         },
         image: {
