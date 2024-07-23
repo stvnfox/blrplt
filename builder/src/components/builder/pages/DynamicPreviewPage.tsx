@@ -2,6 +2,7 @@
 
 import { FunctionComponent } from "react"
 import { usePreviewContext } from "@/providers/PreviewContextProvider"
+import { ComponentMapper } from "../preview/ComponentMapper/ComponentMapper"
 
 type DynamicPreviewPageProps = {
     slug: string
@@ -19,12 +20,7 @@ export const DynamicPreviewPage: FunctionComponent<DynamicPreviewPageProps> = (p
             <div className="flex items-center justify-between">
                 <h2 className="text-2xl mb-2">{siteName}</h2>
             </div>
-            {/* TODO: Create a ComponentMapper + show 404 page when page isn't available*/}
-            <header className="mt-16 text-center">
-                <h1 className="text-7xl mb-2">{page.components[0].data.title}</h1>
-                <h2 className="text-3xl mb-5">{page.components[0].data.subtitle}</h2>
-                <p className="text-sm">{page.components[0].data.description}</p>
-            </header>
+            <ComponentMapper components={page?.components} slug={page?.name}/>
         </main>
     )
 }
