@@ -20,11 +20,13 @@ type BuilderContextProps = {
 type BuilderContextInterface = {
     user: string
     sites: UserSite[]
+    siteName: string
 }
 
 const defaultValues = {
     user: "",
-    sites: []
+    sites: [],
+    siteName: ""
 }
 
 export const BuilderContext = createContext<BuilderContextInterface>(defaultValues)
@@ -33,9 +35,10 @@ export default function BuilderContextProvider(props: BuilderContextProps) {
     const { children, userId, userSites} = props
     const [user] = useState(userId)
     const [sites] = useState(userSites)
+    const siteName = sites[0].name
 
     return (
-        <BuilderContext.Provider value={{ user, sites }}>
+        <BuilderContext.Provider value={{ user, sites, siteName }}>
             {children}
         </BuilderContext.Provider>
     )

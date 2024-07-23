@@ -6,7 +6,7 @@ import "../../globals.css"
 
 import { createClient } from "@/lib/supabase/server"
 import { prisma } from "@/lib/db"
-import PreviewContextProvider from "@/providers/PreviewContextProvider"
+import BuilderContextProvider from "@/providers/BuilderContextProvider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -35,12 +35,12 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <PreviewContextProvider 
+                <BuilderContextProvider 
                     userId={data.user.id}
                     userSites={sites}
                 >
                     {children}
-                </PreviewContextProvider>
+                </BuilderContextProvider>
             </body>
         </html>
     )
