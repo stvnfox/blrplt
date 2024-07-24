@@ -4,6 +4,7 @@ import { BuilderComponent } from "@/components/builder/blocks/Dashboard/Componen
 import { UspsComponent } from "@/components/builder/preview/Usps/Component"
 import { HeaderComponent } from "@/components/builder/preview/Header/Component"
 import { PricingComponent } from "@/components/builder/preview/Pricing/Component"
+import { FaqComponent } from "@/components/builder/preview/Faq/Component"
 
 
 type ComponentSwitcherProps = {
@@ -17,9 +18,8 @@ export const ComponentSwitcher: FunctionComponent<ComponentSwitcherProps> = ({ c
             {component.type === "header" && <HeaderComponent data={component.data} />}
             {component.type === "usps" && <UspsComponent data={component.data} />}
             {component.type === "pricing" && <PricingComponent data={component.data} />}
-             {/* 
-            {component.type === "faq" && <Faq />}
-            {component.type === "content" && <Content />} */}
+            {component.type === "faq" && <FaqComponent data={component.data} />}
+            {/* {component.type === "content" && <Content />} */}
         </div>
     )
 }
