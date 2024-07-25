@@ -3603,8 +3603,8 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  electron-to-chromium@1.5.0:
-    resolution: {integrity: sha512-Vb3xHHYnLseK8vlMJQKJYXJ++t4u1/qJ3vykuVrVjvdiOEhYyT1AuP4x03G8EnPmYvYOhe9T+dADTmthjRQMkA==}
+  electron-to-chromium@1.5.1:
+    resolution: {integrity: sha512-FKbOCOQ5QRB3VlIbl1LZQefWIYwszlBloaXcY2rbfpu9ioJnNh3TK03YtIDKDo3WKBi8u+YV4+Fn2CkEozgf4w==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -4146,8 +4146,8 @@ packages:
     resolution: {integrity: sha512-b3VUixTuNYF51zGPQRUU5qzQVNy98igjJsVq7jm7cHtLX7n8JviZ3OoAnP1NgXqbbu7JJOj4WxZuPxsQkvGQiA==}
     engines: {node: '>=18'}
 
-  groq@3.52.1:
-    resolution: {integrity: sha512-llVurV5FXvvVw3KUHczFv9XQudEcbJPt38O/1FZem5bvpib/g+v5FgbfXyvi7FAdbY5reveAClclRunXJCUsSA==}
+  groq@3.52.2:
+    resolution: {integrity: sha512-1xVzIXca6Oc1JyozSyYpuKTeIVGPVhH5OMbNAT3y+RBoY6SY66AmbywjzPLjStouSrSP14dUctJApHNsjH/43w==}
     engines: {node: '>=18'}
 
   gunzip-maybe@1.4.2:
@@ -6005,8 +6005,8 @@ packages:
   tar-stream@3.1.7:
     resolution: {integrity: sha512-qJj60CXt7IU1Ffyc3NJMjh6EkuCFej46zUqJ4J7pqYlThyd9bO0XBTmcOIhSzZJVWfsLks0+nle/j538YAW9RQ==}
 
-  tar@7.4.1:
-    resolution: {integrity: sha512-dDJzpQf7Nud96mCs3wtw+XUiWGpi9WHxytSusrg0lYlj/Kr11DnB5hfw5bNDQNzx52JJ2Vy+7l8AFivp6H7ETA==}
+  tar@7.4.2:
+    resolution: {integrity: sha512-pP4ToLATHpXOrbxOZudW6rnfyPWJZoyERNrpTpQEtW6LkvpXw+WDnpj2GBQX9tyQ6teUyPESyyiOCFgp6HnGdw==}
     engines: {node: '>=18'}
 
   terser-webpack-plugin@5.3.10:
@@ -6459,8 +6459,8 @@ packages:
     resolution: {integrity: sha512-YgvUTfwqyc7UXVMrB+SImsVYSmTS8X/tSrtdNZMImM+n7+QTriRXyXim0mBrTXNeqzVF0KWGgHPeiyViFFrNDw==}
     engines: {node: '>=18'}
 
-  yaml@2.4.5:
-    resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}
+  yaml@2.5.0:
+    resolution: {integrity: sha512-2wWLbGbYDiSqqIKoPjar3MPgB94ErzCtrNE1FdqGuaO0pi2JGjmE8aW8TDZwzU7vuxcGRdL/4gPQwQ7hD5AMSw==}
     engines: {node: '>= 14'}
     hasBin: true
 
@@ -8692,8 +8692,8 @@ snapshots:
       p-queue: 2.4.2
       rimraf: 3.0.2
       split2: 4.2.0
-      tar: 7.4.1
-      yaml: 2.4.5
+      tar: 7.4.2
+      yaml: 2.5.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9692,7 +9692,7 @@ snapshots:
   browserslist@4.23.2:
     dependencies:
       caniuse-lite: 1.0.30001643
-      electron-to-chromium: 1.5.0
+      electron-to-chromium: 1.5.1
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
 
@@ -10225,7 +10225,7 @@ snapshots:
       minimatch: 9.0.1
       semver: 7.6.3
 
-  electron-to-chromium@1.5.0: {}
+  electron-to-chromium@1.5.1: {}
 
   emoji-regex@8.0.0: {}
 
@@ -11090,7 +11090,7 @@ snapshots:
 
   groq@3.39.0: {}
 
-  groq@3.52.1: {}
+  groq@3.52.2: {}
 
   gunzip-maybe@1.4.2:
     dependencies:
@@ -11753,7 +11753,7 @@ snapshots:
       '@sanity/types': 3.40.0
       '@sanity/ui': 2.1.4(react-dom@18.3.0(react@18.3.0))(react-is@18.3.1)(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))
       '@sanity/visual-editing': 1.8.15(@sanity/client@6.21.1)(next@14.2.3(@babel/core@7.24.9)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))
-      groq: 3.52.1
+      groq: 3.52.2
       history: 5.3.0
       next: 14.2.3(@babel/core@7.24.9)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
       react: 18.3.0
@@ -12081,7 +12081,7 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.38):
     dependencies:
       lilconfig: 3.1.2
-      yaml: 2.4.5
+      yaml: 2.5.0
     optionalDependencies:
       postcss: 8.4.38
 
@@ -13177,7 +13177,7 @@ snapshots:
       fast-fifo: 1.3.2
       streamx: 2.18.0
 
-  tar@7.4.1:
+  tar@7.4.2:
     dependencies:
       '@isaacs/fs-minipass': 4.0.1
       chownr: 3.0.0
@@ -13627,7 +13627,7 @@ snapshots:
 
   yallist@5.0.0: {}
 
-  yaml@2.4.5: {}
+  yaml@2.5.0: {}
 
   yargs-parser@20.2.9: {}
 
