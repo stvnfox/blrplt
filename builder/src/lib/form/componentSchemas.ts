@@ -48,7 +48,7 @@ export const componentSchemas = {
         description: z.string(),
         cta: z.object({
             label: z.string().min(2),
-            href: z.string().min(2),
+            href: z.string().min(1),
             ariaLabel: z.string().min(2),
         }),
         image: z.object({

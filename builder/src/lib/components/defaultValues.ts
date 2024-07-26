@@ -21,13 +21,33 @@ export const componentDefaultValues: ComponentDefaultValues = {
         description: "blrplt builder - pricing",
         items: [
             {
-                title: "blrplt builder - pricing",
-                description: "blrplt builder - pricing",
+                title: "blrplt builder - free",
+                description: "blrplt builder - free",
+                price: 0.00,
+                currency: "EUR",
+                mostPopular: false,
+                includes: [
+                    "blrplt builder - free",
+                ]
+            },
+            {
+                title: "blrplt builder - basic",
+                description: "blrplt builder - basic",
+                price: 49.99,
+                currency: "EUR",
+                mostPopular: true,
+                includes: [
+                    "blrplt builder - basic",
+                ]
+            },
+            {
+                title: "blrplt builder - pro",
+                description: "blrplt builder - pro",
                 price: 49.99,
                 currency: "EUR",
                 mostPopular: false,
                 includes: [
-                    "blrplt builder - pricing",
+                    "blrplt builder - pro",
                 ]
             }
         ]
@@ -40,6 +60,16 @@ export const componentDefaultValues: ComponentDefaultValues = {
                 question: "blrplt builder - frequently asked questions",
                 answer: "blrplt builder - frequently asked questions",
                 id: createUuid(),
+            },
+            {
+                question: "blrplt builder - frequently asked questions",
+                answer: "blrplt builder - frequently asked questions",
+                id: createUuid(),
+            },
+            {
+                question: "blrplt builder - frequently asked questions",
+                answer: "blrplt builder - frequently asked questions",
+                id: createUuid(),
             }
         ]
     },
@@ -48,11 +78,11 @@ export const componentDefaultValues: ComponentDefaultValues = {
         description: "blrplt builder - content block",
         cta: {
             label: "get started",
-            href: "/random",
+            href: "/",
             ariaLabel: "click here to get started",
         },
         image: {
-            src: "https://source.unsplash.com/random/800x600",
+            src: "https://images.unsplash.com/photo-1462688681110-15bc88b1497c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             alt: "random image",
             position: "left",
         }
