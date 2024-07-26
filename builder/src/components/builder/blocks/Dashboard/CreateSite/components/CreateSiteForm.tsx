@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { createUuid } from "@/lib/utils"
+import { componentDefaultValues } from "@/lib/components/defaultValues"
 
 const formSchema = z.object({
     name: z.string().min(2).max(50),
@@ -50,9 +51,9 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
                             order: 0,
                             type: "header",
                             data: {
-                                title: "welcome to blrplt",
-                                subtitle: "the best website builder",
-                                description: "create your website with blrplt.",
+                                title: componentDefaultValues.header.title,
+                                subtitle: componentDefaultValues.header.subtitle,
+                                description: componentDefaultValues.header.description,
                             }
                         }
                     ]
