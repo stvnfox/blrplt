@@ -35,7 +35,7 @@ export default function BuilderContextProvider(props: BuilderContextProps) {
     const { children, userId, userSites} = props
     const [user] = useState(userId)
     const [sites] = useState(userSites)
-    const siteName = sites[0].name
+    const siteName = sites[0] ? sites[0].name : "blrplt builder"
 
     return (
         <BuilderContext.Provider value={{ user, sites, siteName }}>
