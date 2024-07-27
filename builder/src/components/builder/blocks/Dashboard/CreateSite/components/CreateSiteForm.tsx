@@ -130,7 +130,7 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
                                     onChange={() => checkUrl(form.getValues('url'))}
                                 />
                             </FormControl>
-                            <FormDescription>{`your public display url will be https://blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
+                            <FormDescription>{`your public display url will be https://builder.blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
