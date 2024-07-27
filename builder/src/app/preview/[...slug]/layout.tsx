@@ -4,9 +4,8 @@ import { redirect } from "next/navigation"
 
 import "../../globals.css"
 
-import { createClient } from "@/lib/supabase/server"
 import { prisma } from "@/lib/db"
-import BuilderContextProvider from "@/providers/BuilderContextProvider"
+import PreviewContextProvider from "@/providers/PreviewContextProvider"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -14,33 +13,34 @@ let title
 
 export default async function RootLayout({
     children,
+    params
 }: Readonly<{
-    children: React.ReactNode
+    children: React.ReactNode,
+    params: { slug: string | string[]}
 }>) {
-    const supabase = createClient()
-    const { data, error } = await supabase.auth.getUser()
-    
-    if(error) {
-        redirect("/login")
-    }
+    const slug = params.slug[0]
 
     const sites = await prisma.site.findMany({
         where: {
-            userId: data.user?.id
+            url: slug,
         }
     })
+
+    if(sites.length === 0) {
+        // TODO: Redirect to builder landingpage when it's there
+        redirect("https://blrplt.dev")
+    }
 
     title = sites[0].name
 
     return (
         <html lang="en">
             <body className={inter.className}>
-                <BuilderContextProvider 
-                    userId={data.user.id}
+                <PreviewContextProvider 
                     userSites={sites}
                 >
                     {children}
-                </BuilderContextProvider>
+                </PreviewContextProvider>
             </body>
         </html>
     )

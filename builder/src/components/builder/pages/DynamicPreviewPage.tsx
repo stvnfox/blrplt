@@ -2,7 +2,7 @@
 
 import { FunctionComponent } from "react"
 
-import { useBuilderContext } from "@/providers/BuilderContextProvider"
+import { usePreviewContext } from "@/providers/PreviewContextProvider"
 
 import { ComponentMapper } from "../preview/ComponentMapper/ComponentMapper"
 
@@ -11,7 +11,7 @@ type DynamicPreviewPageProps = {
 }
 
 export const DynamicPreviewPage: FunctionComponent<DynamicPreviewPageProps> = ({ slug }) => {
-    const { sites, siteName } = useBuilderContext()
+    const { sites, siteName } = usePreviewContext()
 
     const currentPage = slug.length > 1 ? slug[1] : "home"
     const page = sites[0].pages.filter((page: any) => page.name.toLowerCase() === currentPage.toLowerCase())[0]
