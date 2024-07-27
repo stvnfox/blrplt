@@ -38,6 +38,7 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
 
     const checkUrl = async (url: string) => {
         form.clearErrors("url")
+        setIsLoading(false)
 
         if(url === site.url) {
             return true
@@ -50,6 +51,7 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
                 type: "manual",
                 message: "url is already in use, please choose another one",
             })
+            setIsLoading(true)
         }
     }
 
@@ -130,7 +132,7 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
                     )}
                 />
                 {editValues ? (
-                    <Button type="submit">save</Button>
+                    <Button type="submit" disabled={isLoading}>save</Button>
                 ) : (
                     <Button
                         asChild
