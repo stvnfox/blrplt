@@ -14,6 +14,14 @@ export const componentDefaultValues: ComponentDefaultValues = {
                 title: "blrplt builder - unique selling points",
                 description: "blrplt builder - unique selling points",
             },
+            {
+                title: "blrplt builder - unique selling points",
+                description: "blrplt builder - unique selling points",
+            },
+            {
+                title: "blrplt builder - unique selling points",
+                description: "blrplt builder - unique selling points",
+            }
         ],
     },
     pricing: {
