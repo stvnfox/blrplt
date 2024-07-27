@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input"
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { createUuid } from "@/lib/utils"
 import { componentDefaultValues } from "@/lib/components/defaultValues"
+import { checkIfUrlIsAvailable } from "@/lib/urlCheck"
 
 const formSchema = z.object({
     name: z.string().min(2).max(50),
@@ -31,6 +32,19 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
             url: "",
         },
     })
+
+    const checkUrl = async (url: string) => {
+        form.clearErrors("url")
+
+        const isAvailable = await checkIfUrlIsAvailable(url)
+
+        if(!isAvailable) {
+            form.setError("url", {
+                type: "manual",
+                message: "url is already in use, please choose another one",
+            })
+        }
+    }
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsLoading(true)
@@ -111,6 +125,7 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
                                 <Input
                                     placeholder="/blrplt"
                                     {...field}
+                                    onChange={() => checkUrl(form.getValues('url'))}
                                 />
                             </FormControl>
                             <FormDescription>{`your public display url will be https://blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>

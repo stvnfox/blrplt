@@ -1,16 +1,17 @@
 "use client"
 
+import { FunctionComponent, useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import clsx from "clsx"
 
 import { UserSite } from "@/providers/BuilderContextProvider"
+import { checkIfUrlIsAvailable } from "@/lib/urlCheck"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { FunctionComponent, useState } from "react"
-import clsx from "clsx"
 
 interface UpdateSiteFormProps {
     site: UserSite
@@ -34,6 +35,23 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
     const [isLoading, setIsLoading] = useState(false)
     const [isSucceeded, setIsSucceeded] = useState(false)
     const [hasError, setHasError] = useState(false)
+
+    const checkUrl = async (url: string) => {
+        form.clearErrors("url")
+
+        if(url === site.url) {
+            return true
+        }
+
+        const isAvailable = await checkIfUrlIsAvailable(url)
+
+        if(!isAvailable) {
+            form.setError("url", {
+                type: "manual",
+                message: "url is already in use, please choose another one",
+            })
+        }
+    }
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setEditValues(false)
@@ -101,10 +119,11 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
                                 <Input
                                     className="rounded shadow-none"
                                     {...field}
+                                    onBlur={() => checkUrl(form.getValues("url"))}
                                 />
                             </FormControl>
                             {editValues && (
-                                <FormDescription>{`your public display url is https://blrplt.dev/preview/${site.url}.`}</FormDescription>
+                                <FormDescription>{`your public display url is https://blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
                             )}
                             <FormMessage />
                         </FormItem>
