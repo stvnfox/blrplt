@@ -32,7 +32,7 @@
     "@sanity/ui": "2.1.4",
     "@sanity/vision": "3.39.0",
     "@tailwindcss/typography": "0.5.12",
-    "@tanstack/react-query": "^5.51.11",
+    "@tanstack/react-query": "^5.51.15",
     "class-variance-authority": "^0.7.0",
     "classnames": "2.5.1",
     "clsx": "^2.1.1",
@@ -57,7 +57,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.51.13",
+    "@tanstack/eslint-plugin-query": "^5.51.15",
     "@types/node": "20.14.2",
     "@types/react": "18.3.0",
     "@types/react-dom": "^18.3.0",
