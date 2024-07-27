@@ -127,7 +127,7 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
                                 <Input
                                     placeholder="/blrplt"
                                     {...field}
-                                    onChange={() => checkUrl(form.getValues('url'))}
+                                    onBlur={() => checkUrl(form.getValues('url'))}
                                 />
                             </FormControl>
                             <FormDescription>{`your public display url will be https://builder.blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
