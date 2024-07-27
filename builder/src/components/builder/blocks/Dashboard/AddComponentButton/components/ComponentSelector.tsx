@@ -25,8 +25,8 @@ export const ComponentSelector = ({ setOpen }: { setOpen: () => void }) => {
 
     const isOptionDisabled = (option: ComponentOption) => {
         if(option.disabled) return true
-
-        return sites[0]?.pages[0]?.components.findIndex((component: any) => component.type === option.value) !== -1 ? true : false
+        // @ts-expect-error because sites isn't typed because jsobb scheme is not available
+        return sites[0].pages[0].components.findIndex((component: any) => component.type === option.value) !== -1 ? true : false
     }
 
     const [isLoading, setIsLoading] = useState(false)
@@ -44,6 +44,7 @@ export const ComponentSelector = ({ setOpen }: { setOpen: () => void }) => {
         setIsLoading(true)
         setHasError(false)
 
+        // @ts-expect-error because sites isn't typed because jsobb scheme is not available
         const pageComponents = sites[0]?.pages[0]?.components
         pageComponents.push({
             order: pageComponents.length,
@@ -53,6 +54,7 @@ export const ComponentSelector = ({ setOpen }: { setOpen: () => void }) => {
 
         const data = {
             siteId: sites[0].id,
+            // @ts-expect-error because sites isn't typed because jsobb scheme is not available
             pageId: sites[0].pages[0]?.id,
             components: pageComponents,
         }

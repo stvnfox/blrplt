@@ -11,7 +11,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     const supabase = createClient()
 
-    const { data, error } = await supabase.auth.getUser()
+    const { error } = await supabase.auth.getUser()
 
     const { data: pages } = await supabase.from("site").select("pages")
     const pageData = pages ? pages[0].pages.find((page: any) => page.name.toLowerCase() === slug) : []
@@ -23,7 +23,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     return (
         <DynamicBuilderPage 
-            user={data.user?.id}
             data={pageData}
         />
     )

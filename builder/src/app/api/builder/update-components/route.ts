@@ -15,8 +15,9 @@ export async function POST(req: Request) {
     if (!site) {
         throw new Error('Site not found');
     }
-
-    const updatedPages = site.pages.map((page) => {
+    
+    // Using any on page because types are not working with jsonb schema
+    const updatedPages = site.pages.map((page: any) => {
         if (page?.id === data.pageId) {
             return { ...page, components: data.components };
         }

@@ -5,6 +5,5 @@ export async function POST(req: Request) {
 
     const response = await prisma.site.create({data})
 
-    console.log(response)
     return Response.json(response)
 }

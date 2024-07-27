@@ -21,7 +21,9 @@ export const RemoveComponent: FunctionComponent<RemoveComponentProps> = ({ setOp
 
         const data = {
             siteId: sites[0].id,
+            // @ts-expect-error because sites isn't typed because jsobb scheme is not available
             pageId: sites[0].pages[0]?.id,
+            // @ts-expect-error because sites isn't typed because jsobb scheme is not available
             components: sites[0].pages[0]?.components.filter((component: any) => component.type !== type),
         }
 

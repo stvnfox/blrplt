@@ -19,9 +19,14 @@ export const DynamicPreviewPage: FunctionComponent<DynamicPreviewPageProps> = ({
     return (
         <main className="m-8">
             <div className="flex items-center justify-between">
-                <h2 className="text-2xl mb-2">{siteName}</h2>
+                <h2 className="mb-2 text-2xl">{siteName}</h2>
             </div>
-            <ComponentMapper components={page?.components} slug={page?.name}/>
+            <ComponentMapper
+                // @ts-expect-error because page isn't typed because jsobb scheme is not available
+                components={page?.components}
+                // @ts-expect-error because page isn't typed because jsobb scheme is not available
+                slug={page?.name}
+            />
         </main>
     )
 }

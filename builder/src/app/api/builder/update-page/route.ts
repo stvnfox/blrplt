@@ -16,7 +16,8 @@ export async function POST(req: Request) {
         throw new Error('Site not found');
     }
 
-    const updatedPages = site.pages.map((page) => {
+        // Using any on page because types are not working with jsonb schema
+    const updatedPages = site.pages.map((page: any) => {
         if (page?.name.toLowerCase() === data.page.toLowerCase()) {
             return { ...page, components: data.components };
         }
@@ -31,8 +32,6 @@ export async function POST(req: Request) {
             pages: updatedPages,
         },
     });
-
-    console.log(response);
 
     return Response.json(response)
 }
