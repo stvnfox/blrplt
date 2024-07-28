@@ -52,6 +52,16 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
         setIsLoading(true)
         setHasError(false)
 
+        const isAvailable = await checkIfUrlIsAvailable(values.url)
+
+        if(!isAvailable) {
+            form.setError("url", {
+                type: "manual",
+                message: "url is already in use, please choose another one",
+            })
+            return
+        }
+
         const data = {
             name: values.name,
             url: values.url,
