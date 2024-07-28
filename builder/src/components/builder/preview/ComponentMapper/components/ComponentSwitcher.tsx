@@ -7,7 +7,6 @@ import { PricingComponent } from "@/components/builder/preview/Pricing/Component
 import { FaqComponent } from "@/components/builder/preview/Faq/Component"
 import { ContentComponent } from "@/components/builder/preview/Content/Component"
 
-
 type ComponentSwitcherProps = {
     component: BuilderComponent
     slug: string

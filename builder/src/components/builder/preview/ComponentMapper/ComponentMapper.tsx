@@ -1,6 +1,5 @@
 import { FunctionComponent } from "react"
 
-import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { ComponentKey } from "@/lib/components/types"
 
 import { ComponentSwitcher } from "./components/ComponentSwitcher"
@@ -17,8 +16,6 @@ type ComponentMapperProps = {
 }
 
 export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ components, slug }) => {
-    const { sites } = useBuilderContext()
-
     return (
         <section className="space-y-4">
             {components.map((component, index) => {

@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react"
 import Link from "next/link"
-import { HandMetal } from "lucide-react"
+import { HandMetal, Megaphone } from "lucide-react"
 
 import { AccountMenu } from "./components/AccountMenu"
 import { MobileNavigation } from "./components/MobileNavigation"
@@ -15,9 +15,15 @@ export const NavigationComponent: FunctionComponent = () => {
                 </div>
                 <Link
                     href="/"
-                    className="text-foreground hover:text-foreground transition-colors"
                 >
                     dashboard
+                </Link>
+                <Link
+                    href="/feedback"
+                    className="flex items-center gap-1"
+                >
+                    feedback
+                    <Megaphone className="h-5 w-5" />
                 </Link>
                 <Link
                     href="/"

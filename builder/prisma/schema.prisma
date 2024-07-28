@@ -30,6 +30,20 @@ enum Role {
 }
 
 model waitingList {
-  id        String  @id @db.Uuid
-  email     String
+  id    String @id @db.Uuid
+  email String
+}
+
+model feedback {
+  id                String     @id @db.Uuid
+  email             String
+  howDidYouHear     String?
+  purposeOfUse      String?
+  recommend         Boolean
+  difficultFeatures String?
+  bugs              String?
+  futureWants       String?
+  otherSuggestions  String?
+  likeMost          String?
+  likeLeast         String?
 }

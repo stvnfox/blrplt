@@ -36,6 +36,7 @@ export default async function RootLayout({
         <main className="flex min-h-screen w-full flex-col">
             <BuilderContextProvider
                 userId={data.user.id}
+                userEmail={data.user.email}
                 userSites={sites}
             >
                 <NavigationComponent />

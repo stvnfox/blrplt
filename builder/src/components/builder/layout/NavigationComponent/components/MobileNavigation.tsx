@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react"
 import Link from "next/link"
-import { HandMetal, Menu } from "lucide-react"
+import { HandMetal, Megaphone, Menu } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -25,10 +25,17 @@ export const MobileNavigation: FunctionComponent = () => {
                         <span>blrplt builder</span>
                     </div>
                     <Link
-                        href="#"
+                        href="/"
                         className="hover:text-foreground"
                     >
                         dashboard
+                    </Link>
+                    <Link
+                        href="/feedback"
+                        className="flex items-center gap-1"
+                    >
+                        feedback
+                        <Megaphone className="h-5 w-5" />
                     </Link>
                     <Link
                         href="/"
