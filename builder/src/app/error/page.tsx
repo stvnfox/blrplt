@@ -1,4 +1,5 @@
 import { NavigationComponent } from "@/components/builder/layout/NavigationComponent/NavigationComponent";
+import Link from "next/link";
 import { HandMetal, ThumbsDown } from "lucide-react";
 
 export default function ErrorPage() {
@@ -6,10 +7,10 @@ export default function ErrorPage() {
         <>
         <header className="bg-white sticky top-0 flex h-16 items-center justify-between gap-4 border-b px-4 md:px-6 z-50">
             <nav className="flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-                <div className="flex items-center gap-2 text-lg font-semibold md:text-base mr-6">
+                <Link href="/" className="flex items-center gap-2 text-lg font-semibold md:text-base mr-6">
                     <HandMetal className="h-6 w-6" />
                     <span>blrplt builder</span>
-                </div>
+                </Link>
             </nav>
         </header>
             <section className="flex flex-col gap-6 w-full items-center justify-center p-4 min-h-[calc(100vh-4rem)]">
