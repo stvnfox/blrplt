@@ -14,7 +14,7 @@ export async function login(formData: FormData) {
     }
 
     const { error } = await supabase.auth.signInWithPassword(data)
-    
+
     if (error) {
         redirect("/error")
     }
@@ -53,4 +53,38 @@ export async function signup(formData: FormData) {
 
     revalidatePath("/", "layout")
     redirect("/")
+}
+
+export async function resetPassword(email: string) {
+    const supabase = createClient()
+
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: "http://localhost:3001/update-password",
+    })
+
+    if (error) {
+        redirect("/error")
+    }
+
+    return { message: "succeeded" }
+}
+
+export async function updatePassword(password: string) {
+    const supabase = createClient()
+
+    const { error } = await supabase.auth.updateUser({
+        password: password,
+    })
+
+    if (error) {
+        switch (error.code) {
+            case "same_password":
+                return { status: "failed", message: "new password should be different from the old password" }
+            default:
+                return { status: "failed", message: "something went wrong" }
+        }
+        // TODO: Add more error handling
+    }
+
+    return { status: "success", message: "your password is succesfully changed!" }
 }

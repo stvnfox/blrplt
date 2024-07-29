@@ -13,9 +13,9 @@ export default function RegisterPage() {
                 <div className="flex flex-col">
                     <label
                         htmlFor="email"
-                        className="text-sm"
+                        className="text-sm mb-1"
                     >
-                        Email
+                        email
                     </label>
                     <input
                         id="email"
@@ -28,9 +28,9 @@ export default function RegisterPage() {
                 <div className="flex flex-col">
                     <label
                         htmlFor="password"
-                        className="text-sm"
+                        className="text-sm mb-1"
                     >
-                        Password
+                        password
                     </label>
                     <input
                         id="password"
@@ -44,13 +44,13 @@ export default function RegisterPage() {
                     className="rounded border-2 border-black bg-black p-2 text-sm text-white transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
                     formAction={signup}
                 >
-                    Sign up
+                    sign up
                 </button>
                 <a
                     className="mx-auto w-fit rounded p-1 text-sm hover:underline focus:outline-dashed focus:outline-offset-2 focus:outline-black"
                     href="/login"
                 >
-                    Already have an account? Log in here!
+                    already have an account? log in here!
                 </a>
             </form>
         </main>

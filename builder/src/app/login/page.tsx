@@ -13,9 +13,9 @@ export default function LoginPage() {
                 <div className="flex flex-col">
                     <label
                         htmlFor="email"
-                        className="text-sm"
+                        className="text-sm mb-1"
                     >
-                        Email
+                        email
                     </label>
                     <input
                         id="email"
@@ -26,12 +26,20 @@ export default function LoginPage() {
                     />
                 </div>
                 <div className="flex flex-col">
-                    <label
-                        htmlFor="password"
-                        className="text-sm"
-                    >
-                        Password
-                    </label>
+                    <div className="flex justify-between mb-1">
+                        <label
+                            htmlFor="password"
+                            className="text-sm"
+                        >
+                            password
+                        </label>
+                        <a
+                            className="text-sm hover:underline focus:outline-dashed focus:outline-offset-2 focus:outline-black"
+                            href="/forgot-password"
+                        >
+                            forgot password?
+                        </a>
+                    </div>
                     <input
                         id="password"
                         name="password"
@@ -44,13 +52,13 @@ export default function LoginPage() {
                     className="rounded border-2 border-black bg-black p-2 text-sm text-white transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
                     formAction={login}
                 >
-                    Log in
+                    log in
                 </button>
                 <a
                     className="mx-auto w-fit rounded p-1 text-sm hover:underline focus:outline-dashed focus:outline-offset-2 focus:outline-black"
                     href="/register"
                 >
-                    Sign up
+                    sign up
                 </a>
             </form>
         </main>
