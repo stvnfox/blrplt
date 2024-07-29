@@ -1,11 +1,9 @@
 import type { Metadata } from "next"
-import { redirect } from "next/navigation"
 
 import "../globals.css"
 
-import { createClient } from "@/lib/supabase/server"
-import { prisma } from "@/lib/db"
 import BuilderContextProvider from "@/providers/BuilderContextProvider"
+import { fetchSiteData } from "@/actions/data"
 
 import { NavigationComponent } from "@/components/builder/layout/NavigationComponent/NavigationComponent"
 
@@ -19,24 +17,13 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    const supabase = createClient()
-    const { data, error } = await supabase.auth.getUser()
-
-    if (error) {
-        redirect("/login")
-    }
-
-    const sites = await prisma.site.findMany({
-        where: {
-            userId: data.user?.id,
-        },
-    })
+    const { user, sites} = await fetchSiteData()
 
     return (
         <main className="flex min-h-screen w-full flex-col">
             <BuilderContextProvider
-                userId={data.user.id}
-                userEmail={data.user.email}
+                userId={user.id}
+                userEmail={user.email}
                 userSites={sites}
             >
                 <NavigationComponent />

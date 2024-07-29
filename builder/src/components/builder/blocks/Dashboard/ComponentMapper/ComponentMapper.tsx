@@ -9,6 +9,8 @@ import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { createDefaultFormValues } from "@/lib/components/defaultValues"
 import { ComponentDefaultValues, ComponentKey } from "@/lib/components/types"
 import { createCombinedSchema } from "@/lib/form/schema"
+import { revalidateLayout } from "@/actions/revalidate"
+import { fetchSiteData } from "@/actions/data"
 
 import { Form } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
@@ -26,7 +28,7 @@ type ComponentMapperProps = {
 }
 
 export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ components, slug }) => {
-    const { sites } = useBuilderContext()
+    const { sites, updateSites } = useBuilderContext()
 
     const [isLoading, setIsLoading] = useState(false)
     const [isSucceeded, setIsSucceeded] = useState(false)
@@ -75,10 +77,15 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
                 "Content-Type": "application/json",
             },
         })
-
+        
         if (response.status === 200) {
             setIsSucceeded(true)
+            
+            await revalidateLayout()
 
+            const { sites: newSites } = await fetchSiteData();
+            updateSites(newSites);
+            
             setTimeout(() => {
                 setIsSucceeded(false)
             }, 3000)

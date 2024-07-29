@@ -106,7 +106,7 @@ export const createDefaultFormValues = (
     existingData?: Partial<ComponentDefaultValues>
 ): Partial<ComponentDefaultValues> => {
     const formValues: Partial<ComponentDefaultValues> = {}
-
+    
     components.forEach((component) => {
         // @ts-expect-error because of different otions in components
         formValues[component] = {

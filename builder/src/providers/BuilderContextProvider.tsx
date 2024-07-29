@@ -22,6 +22,7 @@ type BuilderContextInterface = {
     user: string
     email: string | undefined
     sites: UserSite[]
+    updateSites: React.Dispatch<React.SetStateAction<UserSite[]>>
     siteName: string
 }
 
@@ -29,6 +30,7 @@ const defaultValues = {
     user: "",
     email: "",
     sites: [],
+    updateSites: () => {},
     siteName: ""
 }
 
@@ -38,11 +40,11 @@ export default function BuilderContextProvider(props: BuilderContextProps) {
     const { children, userId, userEmail, userSites} = props
     const [user] = useState(userId)
     const [email] = useState(userEmail)
-    const [sites] = useState(userSites)
+    const [sites, updateSites] = useState(userSites)
     const siteName = sites[0] ? sites[0].name : "blrplt builder"
 
     return (
-        <BuilderContext.Provider value={{ user, email, sites, siteName }}>
+        <BuilderContext.Provider value={{ user, email, sites, updateSites, siteName }}>
             {children}
         </BuilderContext.Provider>
     )
