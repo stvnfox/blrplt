@@ -1,66 +1,108 @@
+"use client"
+
+import { useState } from "react"
 import { HandMetal } from "lucide-react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
 import { login } from "@/actions/auth"
 
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+
+const formSchema = z.object({
+    email: z.string().email(),
+    password: z.string().min(6),
+})
+
 export default function LoginPage() {
+    const [hasError, setHasError] = useState(false)
+    const [message, setMessage] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            email: "",
+            password: "",
+        },
+    })
+
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        setIsLoading(true)
+
+        const response = await login(values.email, values.password)
+
+        if (response) {
+            setHasError(true)
+            setMessage(response.message)
+        }
+
+        setIsLoading(false)
+    }
+
     return (
         <main className="flex min-h-screen items-center justify-center">
-            <form className="m-3 flex w-96 flex-col gap-4 rounded-md border p-6">
-                <div className="mr-6 flex items-center gap-2 text-2xl font-semibold">
-                    <HandMetal className="h-6 w-6" />
-                    <h1>blrplt builder</h1>
-                </div>
-                <div className="flex flex-col">
-                    <label
-                        htmlFor="email"
-                        className="text-sm mb-1"
-                    >
-                        email
-                    </label>
-                    <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        className="rounded border p-2 text-sm transition-colors hover:border-neutral-600 focus:outline-black"
-                        required
-                    />
-                </div>
-                <div className="flex flex-col">
-                    <div className="flex justify-between mb-1">
-                        <label
-                            htmlFor="password"
-                            className="text-sm"
-                        >
-                            password
-                        </label>
-                        <a
-                            className="text-sm hover:underline focus:outline-dashed focus:outline-offset-2 focus:outline-black"
-                            href="/forgot-password"
-                        >
-                            forgot password?
-                        </a>
+            <Form {...form}>
+                <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="m-3 flex w-96 flex-col gap-4 rounded-md border p-6"
+                >
+                    <div className="mr-6 flex items-center gap-2 text-2xl font-semibold">
+                        <HandMetal className="h-6 w-6" />
+                        <h1>blrplt builder</h1>
                     </div>
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        className="rounded border p-2 text-sm transition-colors hover:border-neutral-600 focus:outline-black"
-                        required
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem className="-mt-1">
+                                <FormLabel className="text-sm font-normal">email</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        className="!mt-1 focus-visible:ring-2"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
                     />
-                </div>
-                <button
-                    className="rounded border-2 border-black bg-black p-2 text-sm text-white transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
-                    formAction={login}
-                >
-                    log in
-                </button>
-                <a
-                    className="mx-auto w-fit rounded p-1 text-sm hover:underline focus:outline-dashed focus:outline-offset-2 focus:outline-black"
-                    href="/register"
-                >
-                    sign up
-                </a>
-            </form>
+                    <FormField
+                        control={form.control}
+                        name="password"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel className="text-sm font-normal">password</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        type="password"
+                                        className="!mt-1 focus-visible:ring-2"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    {hasError && <p className="text-sm text-red-500">{message}</p>}
+                    <Button
+                        type="submit"
+                        className="h-10 rounded border-2 border-black bg-black p-2 text-sm font-normal text-white shadow-none transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
+                        disabled={isLoading}
+                    >
+                        login
+                    </Button>
+                    <a
+                        className="mx-auto w-fit rounded p-1 text-sm hover:underline focus:outline-dashed focus:outline-offset-2 focus:outline-black"
+                        href="/register"
+                    >
+                        sign up
+                    </a>
+                </form>
+            </Form>
         </main>
     )
 }
