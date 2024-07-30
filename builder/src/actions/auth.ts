@@ -48,7 +48,7 @@ export async function signup(email: string, password: string) {
 
     // TODO: Handle various error states
     if (error) {
-        redirect("/error")
+        return { status: "failed", message: "something went wrong" }
     }
 
     return {
