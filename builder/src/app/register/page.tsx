@@ -81,7 +81,9 @@ export default function RegisterPage() {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-sm font-normal">password</FormLabel>
+                                <div className="flex items-center justify-between">
+                                    <FormLabel className="text-sm font-normal">password</FormLabel>
+                                </div>
                                 <FormControl>
                                     <Input
                                         type="password"
