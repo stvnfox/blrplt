@@ -7,11 +7,11 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { updatePassword } from "@/actions/auth"
+import { createClient } from "@/lib/supabase/client"
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { createClient } from "@/lib/supabase/client"
 
 const formSchema = z
     .object({

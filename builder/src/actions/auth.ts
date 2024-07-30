@@ -36,12 +36,12 @@ export async function logout() {
     redirect("/")
 }
 
-export async function signup(formData: FormData) {
+export async function signup(email: string, password: string) {
     const supabase = createClient()
 
     const data = {
-        email: formData.get("email") as string,
-        password: formData.get("password") as string,
+        email: email,
+        password: password,
     }
 
     const { error } = await supabase.auth.signUp(data)
@@ -51,8 +51,10 @@ export async function signup(formData: FormData) {
         redirect("/error")
     }
 
-    revalidatePath("/", "layout")
-    redirect("/")
+    return {
+        status: "success",
+        message: "your account has been created, please check your email to verify your account",
+    }
 }
 
 export async function resetPassword(email: string) {
