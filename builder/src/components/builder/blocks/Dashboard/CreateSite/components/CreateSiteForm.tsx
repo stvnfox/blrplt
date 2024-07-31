@@ -36,16 +36,17 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
     const checkUrl = async (url: string) => {
         form.clearErrors("url")
         setIsLoading(false)
-
-        const formattedUrl = url.replace('/', '')
-        const isAvailable = await checkIfUrlIsAvailable(formattedUrl)
-
+        
+        const isAvailable = await checkIfUrlIsAvailable(url)
+        
         if(!isAvailable) {
-            setIsLoading(true) 
+            form.setValue('url', '')
             form.setError("url", {
                 type: "manual",
                 message: "url is already in use, please choose another one",
             })
+
+            setIsLoading(false)
         }
     }
 
@@ -53,20 +54,22 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
         setIsLoading(true)
         setHasError(false)
 
-        const formattedUrl = values.url.replace('/', '')
-        const isAvailable = await checkIfUrlIsAvailable(formattedUrl)
+        const isAvailable = await checkIfUrlIsAvailable(values.url)
 
         if(!isAvailable) {
+            form.setValue('url', '')
             form.setError("url", {
                 type: "manual",
                 message: "url is already in use, please choose another one",
             })
+            
+            setIsLoading(false)
             return
         }
 
         const data = {
             name: values.name,
-            url: formattedUrl,
+            url: values.url,
             id: createUuid(),
             userId: user,
             pages: [
@@ -142,7 +145,7 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
                                     onBlur={() => checkUrl(form.getValues('url'))}
                                 />
                             </FormControl>
-                            <FormDescription>{`your public display url will be https://builder.blrplt.dev/preview/${form.getValues('url').replace('/', '')}.`}</FormDescription>
+                            <FormDescription>{`your public display url will be https://builder.blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}

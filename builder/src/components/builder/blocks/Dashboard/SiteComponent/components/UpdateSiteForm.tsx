@@ -19,7 +19,7 @@ interface UpdateSiteFormProps {
 
 const formSchema = z.object({
     name: z.string().min(2).max(50),
-    url: z.string().min(2).max(50),
+    url: z.string().min(2).max(50).refine((url) => !url.includes("/"), { message: "url should not contain slashes" }),
 })
 
 export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site }) => {
@@ -40,12 +40,11 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
         form.clearErrors("url")
         setIsLoading(false)
 
-        const formattedUrl = url.replace('/', '')
-        if(formattedUrl === site.url) {
+        if(url === site.url) {
             return true
         }
 
-        const isAvailable = await checkIfUrlIsAvailable(formattedUrl)
+        const isAvailable = await checkIfUrlIsAvailable(url)
 
         if(!isAvailable) {
             form.setError("url", {
@@ -57,24 +56,27 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
     }
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        setEditValues(false)
         setIsLoading(true)
         setHasError(false)
-
+        
         const isAvailable = await checkUrl(values.url)
-
+        
         if(!isAvailable) {
+            form.setValue("url", site.url)
             form.setError("url", {
                 type: "manual",
                 message: "url is already in use, please choose another one",
             })
+            setIsLoading(false)
             return
         }
-
+        
+        setEditValues(false)
+        
         const data = {
             ...site,
             name: values.name,
-            url: values.url.replace('/', ''),
+            url: values.url,
         }
 
         const response = await fetch("/api/builder/update-site-info", {
@@ -136,7 +138,7 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
                                 />
                             </FormControl>
                             {editValues && (
-                                <FormDescription>{`your public display url is https://builder.blrplt.dev/preview/${form.getValues('url').replace('/', '')}.`}</FormDescription>
+                                <FormDescription>{`your public display url is https://builder.blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
                             )}
                             <FormMessage />
                         </FormItem>
