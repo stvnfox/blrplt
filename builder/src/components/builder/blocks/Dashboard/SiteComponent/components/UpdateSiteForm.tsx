@@ -40,11 +40,12 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
         form.clearErrors("url")
         setIsLoading(false)
 
-        if(url === site.url) {
+        const formattedUrl = url.replace('/', '')
+        if(formattedUrl === site.url) {
             return true
         }
 
-        const isAvailable = await checkIfUrlIsAvailable(url)
+        const isAvailable = await checkIfUrlIsAvailable(formattedUrl)
 
         if(!isAvailable) {
             form.setError("url", {
@@ -60,10 +61,20 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
         setIsLoading(true)
         setHasError(false)
 
+        const isAvailable = await checkUrl(values.url)
+
+        if(!isAvailable) {
+            form.setError("url", {
+                type: "manual",
+                message: "url is already in use, please choose another one",
+            })
+            return
+        }
+
         const data = {
             ...site,
             name: values.name,
-            url: values.url,
+            url: values.url.replace('/', ''),
         }
 
         const response = await fetch("/api/builder/update-site-info", {
@@ -125,7 +136,7 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
                                 />
                             </FormControl>
                             {editValues && (
-                                <FormDescription>{`your public display url is https://builder.blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
+                                <FormDescription>{`your public display url is https://builder.blrplt.dev/preview/${form.getValues('url').replace('/', '')}.`}</FormDescription>
                             )}
                             <FormMessage />
                         </FormItem>

@@ -37,7 +37,8 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
         form.clearErrors("url")
         setIsLoading(false)
 
-        const isAvailable = await checkIfUrlIsAvailable(url)
+        const formattedUrl = url.replace('/', '')
+        const isAvailable = await checkIfUrlIsAvailable(formattedUrl)
 
         if(!isAvailable) {
             setIsLoading(true) 
@@ -52,7 +53,8 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
         setIsLoading(true)
         setHasError(false)
 
-        const isAvailable = await checkIfUrlIsAvailable(values.url)
+        const formattedUrl = values.url.replace('/', '')
+        const isAvailable = await checkIfUrlIsAvailable(formattedUrl)
 
         if(!isAvailable) {
             form.setError("url", {
@@ -64,7 +66,7 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
 
         const data = {
             name: values.name,
-            url: values.url,
+            url: formattedUrl,
             id: createUuid(),
             userId: user,
             pages: [
@@ -140,7 +142,7 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
                                     onBlur={() => checkUrl(form.getValues('url'))}
                                 />
                             </FormControl>
-                            <FormDescription>{`your public display url will be https://builder.blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
+                            <FormDescription>{`your public display url will be https://builder.blrplt.dev/preview/${form.getValues('url').replace('/', '')}.`}</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
