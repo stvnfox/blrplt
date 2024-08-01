@@ -9,7 +9,7 @@ export const DynamicBuilderPage: FunctionComponent<DynamicBuilderPageProps> = (p
     const { data } = props
 
     return (
-        <section className="flex-grow">
+        <section className="flex flex-col flex-grow">
             <ComponentMapper components={data.components} slug={data.name}/>
         </section>
     )

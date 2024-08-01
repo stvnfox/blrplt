@@ -100,7 +100,7 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4"
+                className="flex flex-col justify-between flex-grow space-y-4"
             >
                 {components.map((component, index) => {
                     return (
