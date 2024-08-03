@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input"
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { createUuid } from "@/lib/utils"
 import { componentDefaultValues } from "@/lib/components/defaultValues"
+import { addDefaultSettingsValues } from "@/lib/settings/defaultValues"
 import { checkIfUrlIsAvailable } from "@/lib/urlCheck"
 
 const formSchema = z.object({
@@ -72,6 +73,7 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
             url: values.url,
             id: createUuid(),
             userId: user,
+            settings: addDefaultSettingsValues(),
             pages: [
                 {
                     name: "Home",
