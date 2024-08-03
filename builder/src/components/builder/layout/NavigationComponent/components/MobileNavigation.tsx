@@ -1,13 +1,23 @@
-import { FunctionComponent } from "react"
+import { FunctionComponent, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { HandMetal, Megaphone, Menu } from "lucide-react"
 
+import { cn } from "@/lib/utils"
+
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetDescription, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 
 export const MobileNavigation: FunctionComponent = () => {
+    const pathname = usePathname()
+
+    const [open, setOpen] = useState(false)
+
     return (
-        <Sheet>
+        <Sheet
+            open={open}
+            onOpenChange={setOpen}
+        >
             <SheetTrigger asChild>
                 <Button
                     variant="outline"
@@ -19,6 +29,8 @@ export const MobileNavigation: FunctionComponent = () => {
                 </Button>
             </SheetTrigger>
             <SheetContent side="left">
+                <SheetTitle className="sr-only">Navigation</SheetTitle>
+                <SheetDescription className="sr-only">This is the navigation menu for blrplt builder</SheetDescription>
                 <nav className="grid gap-6 text-lg font-medium">
                     <div className="flex items-center gap-2 text-lg font-semibold md:text-base">
                         <HandMetal className="h-6 w-6" />
@@ -26,18 +38,25 @@ export const MobileNavigation: FunctionComponent = () => {
                     </div>
                     <Link
                         href="/"
-                        className="hover:text-foreground"
+                        className={cn(pathname === "/" && "underline underline-offset-2")}
+                        onClick={() => setOpen(false)}
                     >
                         dashboard
                     </Link>
                     <Link
                         href="/settings"
+                        className={cn(pathname === "/settings" && "underline underline-offset-2")}
+                        onClick={() => setOpen(false)}
                     >
                         settings
                     </Link>
                     <Link
                         href="/feedback"
-                        className="flex items-center gap-1"
+                        className={cn(
+                            "flex items-center gap-1",
+                            pathname === "/feedback" && "underline underline-offset-2"
+                        )}
+                        onClick={() => setOpen(false)}
                     >
                         feedback
                         <Megaphone className="h-5 w-5" />
