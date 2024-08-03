@@ -31,19 +31,16 @@ export const MobileNavigation: FunctionComponent = () => {
                         dashboard
                     </Link>
                     <Link
+                        href="/settings"
+                    >
+                        settings
+                    </Link>
+                    <Link
                         href="/feedback"
                         className="flex items-center gap-1"
                     >
                         feedback
                         <Megaphone className="h-5 w-5" />
-                    </Link>
-                    <Link
-                        href="/"
-                        tabIndex={-1}
-                        aria-disabled={true}
-                        className="pointer-events-none text-neutral-400 transition-colors"
-                    >
-                        settings (soon)
                     </Link>
                 </nav>
             </SheetContent>
