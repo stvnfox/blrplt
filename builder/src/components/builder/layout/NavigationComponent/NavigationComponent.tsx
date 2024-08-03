@@ -1,11 +1,18 @@
+"use client"
+
 import { FunctionComponent } from "react"
 import Link from "next/link"
 import { HandMetal, Megaphone } from "lucide-react"
 
+import { useBuilderContext } from "@/providers/BuilderContextProvider"
+
 import { AccountMenu } from "./components/AccountMenu"
 import { MobileNavigation } from "./components/MobileNavigation"
+import { Button } from "@/components/ui/button"
 
 export const NavigationComponent: FunctionComponent = () => {
+    const { sites } = useBuilderContext()
+    
     return (
         <header className="bg-white sticky top-0 flex h-16 items-center justify-between gap-4 border-b px-4 md:px-6 z-50">
             <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -19,23 +26,34 @@ export const NavigationComponent: FunctionComponent = () => {
                     dashboard
                 </Link>
                 <Link
+                    href="/settings"
+                >
+                    settings
+                </Link>
+                <Link
                     href="/feedback"
                     className="flex items-center gap-1"
                 >
                     feedback
                     <Megaphone className="h-5 w-5" />
                 </Link>
-                <Link
-                    href="/"
-                    tabIndex={-1}
-                    aria-disabled={true}
-                    className="text-neutral-400 pointer-events-none transition-colors"
-                >
-                    settings (soon)
-                </Link>
             </nav>
             <MobileNavigation />
             <div className="flex items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+                {sites[0] && (
+                        <Button
+                            asChild
+                            variant="outline"
+                            className="shadow-none"
+                        >
+                            <a
+                                target="_blank"
+                                href={`/preview/${sites[0].url}`}
+                            >
+                                preview
+                            </a>
+                        </Button>
+                    )}
                 <AccountMenu />
             </div>
         </header>

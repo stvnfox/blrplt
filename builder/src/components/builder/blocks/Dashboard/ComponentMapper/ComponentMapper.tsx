@@ -8,7 +8,7 @@ import { z } from "zod"
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { createDefaultFormValues } from "@/lib/components/defaultValues"
 import { ComponentDefaultValues, ComponentKey } from "@/lib/components/types"
-import { createCombinedSchema } from "@/lib/form/schema"
+import { createCombinedSchema } from "@/lib/components/schema"
 import { revalidateLayout } from "@/actions/revalidate"
 import { fetchSiteData } from "@/actions/data"
 

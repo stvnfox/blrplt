@@ -19,6 +19,7 @@ model site {
   id      String  @id @db.Uuid
   name    String
   userId  String  @db.Uuid
+  settings Json?
   pages   Json[]
   url     String
   profile profile @relation(fields: [userId], references: [id], onDelete: Cascade)
