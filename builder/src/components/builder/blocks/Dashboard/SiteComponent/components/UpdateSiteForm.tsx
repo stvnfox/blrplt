@@ -19,7 +19,11 @@ interface UpdateSiteFormProps {
 
 const formSchema = z.object({
     name: z.string().min(2).max(50),
-    url: z.string().min(2).max(50).refine((url) => !url.includes("/"), { message: "url should not contain slashes" }),
+    url: z
+        .string()
+        .min(2)
+        .max(50)
+        .refine((url) => !url.includes("/"), { message: "url should not contain slashes" }),
 })
 
 export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site }) => {
@@ -40,13 +44,13 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
         form.clearErrors("url")
         setIsLoading(false)
 
-        if(url === site.url) {
+        if (url === site.url) {
             return true
         }
 
         const isAvailable = await checkIfUrlIsAvailable(url)
 
-        if(!isAvailable) {
+        if (!isAvailable) {
             form.setError("url", {
                 type: "manual",
                 message: "url is already in use, please choose another one",
@@ -58,10 +62,10 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsLoading(true)
         setHasError(false)
-        
+
         const isAvailable = await checkUrl(values.url)
-        
-        if(!isAvailable) {
+
+        if (!isAvailable) {
             form.setValue("url", site.url)
             form.setError("url", {
                 type: "manual",
@@ -70,9 +74,9 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
             setIsLoading(false)
             return
         }
-        
+
         setEditValues(false)
-        
+
         const data = {
             ...site,
             name: values.name,
@@ -87,7 +91,7 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
             },
         })
 
-        if(response.status === 200) {
+        if (response.status === 200) {
             setIsSucceeded(true)
 
             setTimeout(() => {
@@ -104,7 +108,7 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4"
+                className="space-y-4 mb-3"
             >
                 <FormField
                     control={form.control}
@@ -138,20 +142,31 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
                                 />
                             </FormControl>
                             {editValues && (
-                                <FormDescription>{`your public display url is https://builder.blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
+                                <FormDescription>{`your public display url is https://builder.blrplt.dev/preview/${form.getValues("url")}.`}</FormDescription>
                             )}
                             <FormMessage />
                         </FormItem>
                     )}
                 />
                 {editValues ? (
-                    <Button type="submit" disabled={isLoading}>save</Button>
+                    <Button
+                        type="submit"
+                        variant="outline"
+                        disabled={isLoading}
+                    >
+                        save
+                    </Button>
                 ) : (
                     <Button
                         asChild
                         onClick={() => setEditValues(true)}
                     >
-                        <button type="button" disabled={isLoading}>edit</button>
+                        <button
+                            type="button"
+                            disabled={isLoading}
+                        >
+                            edit
+                        </button>
                     </Button>
                 )}
                 {hasError && <p className="text-sm">error updating site</p>}
