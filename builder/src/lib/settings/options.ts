@@ -1,26 +1,26 @@
 export const fontStyleOptions = [
     {
-        value: "Sans Serif",
+        value: "sans-serif",
         label: "Sans Serif",
         disabled: false,
     },
     {
-        value: "Serif",
+        value: "serif",
         label: "Serif",
         disabled: false,
     },
     {
-        value: "Monospace",
+        value: "monospace",
         label: "Monospace",
         disabled: false,
     },
     {
-        value: "Cursive",
+        value: "cursive",
         label: "Cursive (coming soon)",
         disabled: true,
     },
     {
-        value: "Fantasy",
+        value: "fantasy",
         label: "Fantasy (coming soon)",
         disabled: true,
     },

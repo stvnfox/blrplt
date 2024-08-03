@@ -9,11 +9,10 @@ export const settingsDefaultValues: SettingsDefaultValues = {
     text: "#000000",
     headings: "#000000",
     font: {
-        style: "Sans Serif",
+        style: "sans-serif",
     },
 }
 
-// TODO: addDefaultSettingsValues when creating a website
 export const addDefaultSettingsValues = () => {
     return settingsDefaultValues;
 }
