@@ -1,4 +1,4 @@
-export interface Background {
+export interface Colors {
     primary: string;
     secondary: string;
     tertiary: string;
@@ -11,8 +11,8 @@ export interface Font {
 }
 
 export interface SettingsDefaultValues {
-    background: Background;
-    text: string;
+    background: Colors;
+    text: Colors;
     headings: string;
     font: Font;
 };

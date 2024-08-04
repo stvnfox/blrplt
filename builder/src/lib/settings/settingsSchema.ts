@@ -7,7 +7,11 @@ export const settingsSchema = {
         secondary: z.string(),
         tertiary: z.string(),
     }),
-    text: z.string().optional(),
+    text: z.object({
+        primary: z.string(),
+        secondary: z.string(),
+        tertiary: z.string(),
+    }),
     headings: z.string().optional(),
     font: z.object({
         style: z.string().default("sans-serif"),

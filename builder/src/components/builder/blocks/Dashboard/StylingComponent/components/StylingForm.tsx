@@ -40,7 +40,11 @@ export const StylingForm: FunctionComponent = () => {
                 secondary: values.background.secondary,
                 tertiary: values.background.tertiary,
             },
-            text: values.text,
+            text: {
+                primary: values.text.primary,
+                secondary: values.text.secondary,
+                tertiary: values.text.tertiary,
+            },
             headings: values.headings,
             font: {
                 style: values.font.style,
@@ -149,11 +153,47 @@ export const StylingForm: FunctionComponent = () => {
                         />
                         <FormField
                             control={form.control}
-                            name="text"
+                            name="text.primary"
                             disabled={!editValues}
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>text color</FormLabel>
+                                    <FormLabel>text - primary color</FormLabel>
+                                    <FormControl>
+                                        <ColorPicker
+                                            isDisabled={!editValues}
+                                            background={field.value}
+                                            setBackground={(background) => field.onChange(background)}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="text.secondary"
+                            disabled={!editValues}
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>text - secondary color</FormLabel>
+                                    <FormControl>
+                                        <ColorPicker
+                                            isDisabled={!editValues}
+                                            background={field.value}
+                                            setBackground={(background) => field.onChange(background)}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="text.tertiary"
+                            disabled={!editValues}
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>text - tertiary color</FormLabel>
                                     <FormControl>
                                         <ColorPicker
                                             isDisabled={!editValues}
