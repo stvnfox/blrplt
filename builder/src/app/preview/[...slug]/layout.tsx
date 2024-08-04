@@ -27,8 +27,7 @@ export default async function RootLayout({
     })
 
     if(sites.length === 0) {
-        // TODO: Redirect to builder landingpage when it's there
-        redirect("https://blrplt.dev")
+        redirect("https://builder.blrplt.dev")
     }
 
     title = sites[0].name
