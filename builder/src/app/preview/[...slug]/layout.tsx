@@ -9,24 +9,24 @@ import PreviewContextProvider from "@/providers/PreviewContextProvider"
 
 const inter = Inter({ subsets: ["latin"] })
 
-let title
+let title: string
 
 export default async function RootLayout({
     children,
-    params
+    params,
 }: Readonly<{
-    children: React.ReactNode,
-    params: { slug: string | string[]}
+    children: React.ReactNode
+    params: { slug: string | string[] }
 }>) {
     const slug = params.slug[0]
 
     const sites = await prisma.site.findMany({
         where: {
             url: slug,
-        }
+        },
     })
 
-    if(sites.length === 0) {
+    if (sites.length === 0) {
         redirect("https://builder.blrplt.dev")
     }
 
@@ -35,18 +35,18 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <PreviewContextProvider 
-                    userSites={sites}
-                >
-                    {children}
-                </PreviewContextProvider>
+                <PreviewContextProvider userSites={sites}>{children}</PreviewContextProvider>
             </body>
         </html>
     )
 }
 
-// TODO: Fix title
-export const metadata: Metadata = {
-    title: title,
-    description: "build by blrplt builder - the place where you can build a website quickly without any hassle",
+export async function generateMetadata({
+    params: { slug },
+}: {
+    params: { slug: string | string[] }
+}): Promise<Metadata> {
+    return {
+        title: title,
+    }
 }
