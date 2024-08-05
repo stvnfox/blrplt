@@ -5,6 +5,7 @@ import { redirect } from "next/navigation"
 import "../../globals.css"
 
 import { prisma } from "@/lib/db"
+import { createStyleObject } from "@/lib/settings/defaultValues"
 import PreviewContextProvider from "@/providers/PreviewContextProvider"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -31,11 +32,15 @@ export default async function RootLayout({
     }
 
     title = sites[0].name
+    const siteStyles = createStyleObject(sites[0].settings)
 
     return (
         <html lang="en">
             <body className={inter.className}>
                 <PreviewContextProvider userSites={sites}>{children}</PreviewContextProvider>
+                <style>
+                    {siteStyles}
+                </style>
             </body>
         </html>
     )

@@ -8,6 +8,7 @@ export interface UserSite {
     name: string;
     url: string;
     userId: string;
+    settings: Prisma.JsonValue;
     pages: Prisma.JsonValue[];
 }[]
 
@@ -19,11 +20,13 @@ type PreviewContextProps = {
 type PreviewContextInterface = {
     sites: UserSite[]
     siteName: string
+    settings: Prisma.JsonValue
 }
 
 const defaultValues = {
     sites: [],
-    siteName: ""
+    siteName: "",
+    settings: {}
 }
 
 export const PreviewContext = createContext<PreviewContextInterface>(defaultValues)
@@ -32,9 +35,10 @@ export default function PreviewContextProvider(props: PreviewContextProps) {
     const { children, userSites} = props
     const [sites] = useState(userSites)
     const siteName = sites[0].name
+    const settings = sites[0].settings
 
     return (
-        <PreviewContext.Provider value={{ sites, siteName }}>
+        <PreviewContext.Provider value={{ sites, siteName, settings }}>
             {children}
         </PreviewContext.Provider>
     )

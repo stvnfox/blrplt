@@ -18,6 +18,20 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        background: {
+          primary: "var(--background-primary)",
+          secondary: "var(--background-secondary)",
+          tertiary: "var(--background-tertiary)",
+        },
+        text: {
+          primary: "var(--text-primary)",
+          secondary: "var(--text-secondary)",
+          tertiary: "var(--text-tertiary)",
+        },
+        headings: "var(--headings-color)",
+      },
+      // Add custom font styles
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

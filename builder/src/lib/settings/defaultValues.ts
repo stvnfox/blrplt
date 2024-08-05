@@ -40,3 +40,18 @@ export const createDefaultSettingsValues = (defaultValues: SettingsDefaultValues
     
     return values
 }
+
+export const createStyleObject = (settings: any) => {
+    return `
+        :root {
+            --background-primary: ${settings.background.primary};
+            --background-secondary: ${settings.background.secondary};
+            --background-tertiary: ${settings.background.tertiary};
+            --text-primary: ${settings.text.primary};
+            --text-secondary: ${settings.text.secondary};
+            --text-tertiary: ${settings.text.tertiary};
+            --headings-color: ${settings.headings};
+            --font-style: ${settings.font.style};
+        }
+    `
+}
