@@ -46,7 +46,7 @@ export function ColorPicker({
                     variant={"outline"}
                     disabled={isDisabled}
                     className={cn(
-                        "block w-[220px] justify-start text-left font-normal shadow-none",
+                        "block w-[220px] justify-start text-left font-normal shadow-none focus:ring-inset",
                         !background && "text-muted-foreground",
                         className
                     )}
