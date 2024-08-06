@@ -20,7 +20,7 @@ const formSchema = z.object({
     url: z.string().min(2).max(50),
 })
 
-export function CreateSiteForm({setOpen}: { setOpen: () => void }){
+export function CreateSiteForm({ setOpen }: { setOpen: () => void }) {
     const { user } = useBuilderContext()
 
     const [isLoading, setIsLoading] = useState(false)
@@ -37,11 +37,12 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
     const checkUrl = async (url: string) => {
         form.clearErrors("url")
         setIsLoading(false)
-        
-        const isAvailable = await checkIfUrlIsAvailable(url)
-        
-        if(!isAvailable) {
-            form.setValue('url', '')
+
+        const formattedUrl = url.toLowerCase()
+        const isAvailable = await checkIfUrlIsAvailable(formattedUrl)
+
+        if (!isAvailable) {
+            form.setValue("url", "")
             form.setError("url", {
                 type: "manual",
                 message: "url is already in use, please choose another one",
@@ -55,22 +56,23 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
         setIsLoading(true)
         setHasError(false)
 
-        const isAvailable = await checkIfUrlIsAvailable(values.url)
+        const formattedUrl = values.url.toLowerCase()
+        const isAvailable = await checkIfUrlIsAvailable(formattedUrl)
 
-        if(!isAvailable) {
-            form.setValue('url', '')
+        if (!isAvailable) {
+            form.setValue("url", "")
             form.setError("url", {
                 type: "manual",
                 message: "url is already in use, please choose another one",
             })
-            
+
             setIsLoading(false)
             return
         }
 
         const data = {
             name: values.name,
-            url: values.url,
+            url: formattedUrl,
             id: createUuid(),
             userId: user,
             settings: addDefaultSettingsValues(),
@@ -87,22 +89,22 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
                                 title: componentDefaultValues.header.title,
                                 subtitle: componentDefaultValues.header.subtitle,
                                 description: componentDefaultValues.header.description,
-                            }
-                        }
-                    ]
-                }
-            ]
+                            },
+                        },
+                    ],
+                },
+            ],
         }
 
-        const response = await fetch('/api/builder/create-site', {
-            method: 'POST',
+        const response = await fetch("/api/builder/create-site", {
+            method: "POST",
             body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json'
-            }
+                "Content-Type": "application/json",
+            },
         })
 
-        if(response.status === 200) {
+        if (response.status === 200) {
             setOpen()
         } else {
             setHasError(true)
@@ -143,16 +145,22 @@ export function CreateSiteForm({setOpen}: { setOpen: () => void }){
                             <FormControl>
                                 <Input
                                     placeholder="/blrplt"
+                                    className="lowercase"
                                     {...field}
-                                    onBlur={() => checkUrl(form.getValues('url'))}
+                                    onBlur={() => checkUrl(form.getValues("url"))}
                                 />
                             </FormControl>
-                            <FormDescription>{`your public display url will be https://builder.blrplt.dev/preview/${form.getValues('url')}.`}</FormDescription>
+                            <FormDescription className="lowercase">{`your public display url will be https://builder.blrplt.dev/preview/${form.getValues("url")}.`}</FormDescription>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                <Button type="submit" disabled={isLoading}>create website!</Button>
+                <Button
+                    type="submit"
+                    disabled={isLoading}
+                >
+                    create website!
+                </Button>
                 {hasError && <p className="text-sm">error creating site. try again later</p>}
             </form>
         </Form>

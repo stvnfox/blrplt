@@ -44,11 +44,12 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
         form.clearErrors("url")
         setIsLoading(false)
 
-        if (url === site.url) {
+        const formattedUrl = url.toLowerCase()
+        if (formattedUrl === site.url.toLowerCase()) {
             return true
         }
 
-        const isAvailable = await checkIfUrlIsAvailable(url)
+        const isAvailable = await checkIfUrlIsAvailable(formattedUrl)
 
         if (!isAvailable) {
             form.setError("url", {
@@ -63,7 +64,8 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
         setIsLoading(true)
         setHasError(false)
 
-        const isAvailable = await checkUrl(values.url)
+        const formattedUrl = values.url.toLowerCase()
+        const isAvailable = await checkUrl(formattedUrl)
 
         if (!isAvailable) {
             form.setValue("url", site.url)
@@ -80,7 +82,7 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
         const data = {
             ...site,
             name: values.name,
-            url: values.url,
+            url: formattedUrl,
         }
 
         const response = await fetch("/api/builder/update-site-info", {
@@ -108,7 +110,7 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-4 mb-3"
+                className="mb-3 space-y-4"
             >
                 <FormField
                     control={form.control}
@@ -136,13 +138,13 @@ export const UpdateSiteForm: FunctionComponent<UpdateSiteFormProps> = ({ site })
                             <FormLabel>url</FormLabel>
                             <FormControl>
                                 <Input
-                                    className="rounded shadow-none"
+                                    className="rounded lowercase shadow-none"
                                     {...field}
                                     onBlur={() => checkUrl(form.getValues("url"))}
                                 />
                             </FormControl>
                             {editValues && (
-                                <FormDescription>{`your public display url is https://builder.blrplt.dev/preview/${form.getValues("url")}.`}</FormDescription>
+                                <FormDescription className="lowercase">{`your public display url is https://builder.blrplt.dev/preview/${form.getValues("url")}.`}</FormDescription>
                             )}
                             <FormMessage />
                         </FormItem>
