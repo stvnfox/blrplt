@@ -11,10 +11,24 @@ export const settingsDefaultValues: SettingsDefaultValues = {
         secondary: "#6b7280",
         tertiary: "#9ca3af",
     },
-    headings: "#000000",
+    headings: {
+        primary: "#000000",
+        secondary: "#6b7280",
+    },
     font: {
         style: "sans-serif",
     },
+    buttons: {
+        primary: {
+            background: "#2563eb",
+            text: "#ffffff",
+        },
+        secondary: {
+            background: "#f9fafb",
+            text: "#6b7280",
+        },
+        style: "default",
+    }
 }
 
 export const addDefaultSettingsValues = () => {
@@ -27,15 +41,22 @@ export const createDefaultSettingsValues = (defaultValues: SettingsDefaultValues
     Object.keys(defaultValues).forEach((key) => {
         const settingKey = key as keyof SettingsDefaultValues;
         
-        if(settingKey === 'font' || settingKey === 'background' || settingKey === 'text') {
-            // @ts-expect-error because of different otions in in styling
-            values[settingKey] = {
-                ...defaultValues[settingKey] as Record<string, any>,
-                ...(existingData?.[settingKey] as Record<string, any> ?? {}),
-            };
-        } else {
-            values[settingKey] = existingData?.[settingKey] ?? defaultValues[settingKey];
-        }
+        // @ts-expect-error because of different otions in in styling
+        values[settingKey] = {
+            ...defaultValues[settingKey] as Record<string, any>,
+            ...(existingData?.[settingKey] as Record<string, any> ?? {}),
+        };
+
+        // Leave this for now, as it is not clear how to handle the different options in styling
+        // if(settingKey === 'font' || settingKey === 'background' || settingKey === 'text') {
+        //     // @ts-expect-error because of different otions in in styling
+        //     values[settingKey] = {
+        //         ...defaultValues[settingKey] as Record<string, any>,
+        //         ...(existingData?.[settingKey] as Record<string, any> ?? {}),
+        //     };
+        // } else {
+        //     values[settingKey] = existingData?.[settingKey] ?? defaultValues[settingKey];
+        // }
     });
     
     return values
@@ -50,7 +71,8 @@ export const createStyleObject = (settings: any) => {
             --text-primary: ${settings.text.primary};
             --text-secondary: ${settings.text.secondary};
             --text-tertiary: ${settings.text.tertiary};
-            --headings-color: ${settings.headings};
+            --headings-primary: ${settings.headings.primary};
+            --headings-secondary: ${settings.headings.secondary};
             --font-style: ${settings.font.style};
         }
     `

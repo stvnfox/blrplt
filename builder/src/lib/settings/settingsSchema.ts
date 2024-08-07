@@ -12,9 +12,23 @@ export const settingsSchema = {
         secondary: z.string(),
         tertiary: z.string(),
     }),
-    headings: z.string().optional(),
+    headings: z.object({
+        primary: z.string(),
+        secondary: z.string(),
+    }),
     font: z.object({
         style: z.string().default("sans-serif"),
+    }),
+    buttons: z.object({
+        primary: z.object({
+            background: z.string(),
+            text: z.string(),
+        }),
+        secondary: z.object({
+            background: z.string(),
+            text: z.string(),
+        }),
+        style: z.string().default("default"),
     }),
     // ... add more settings schemas here
 }

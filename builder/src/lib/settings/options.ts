@@ -1,28 +1,47 @@
 export const fontStyleOptions = [
     {
         value: "sans-serif",
-        label: "Sans Serif",
+        label: "sans serif",
         disabled: false,
     },
     {
         value: "serif",
-        label: "Serif",
+        label: "serif",
         disabled: false,
     },
     {
         value: "monospace",
-        label: "Monospace",
+        label: "monospace",
         disabled: false,
     },
     {
         value: "cursive",
-        label: "Cursive (coming soon)",
+        label: "cursive (coming soon)",
         disabled: true,
     },
     {
         value: "fantasy",
-        label: "Fantasy (coming soon)",
+        label: "fantasy (coming soon)",
         disabled: true,
+    },
+]
+
+export const buttonStyleOptions = [
+    {
+        value: "default",
+        label: "default",
+    },
+    {
+        value: "outline",
+        label: "outline",
+    },
+    {
+        value: "ghost",
+        label: "ghost",
+    },
+    {
+        value: "link",
+        label: "link",
     },
 ]
 
