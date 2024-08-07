@@ -74,6 +74,11 @@ export const createStyleObject = (settings: any) => {
             --headings-primary: ${settings.headings.primary};
             --headings-secondary: ${settings.headings.secondary};
             --font-style: ${settings.font.style};
+            --buttons-primary-background: ${settings.buttons.primary.background};
+            --buttons-primary-text: ${settings.buttons.primary.text};
+            --buttons-secondary-background: ${settings.buttons.secondary.background};
+            --buttons-secondary-text: ${settings.buttons.secondary.text};
+            --buttons-style: ${settings.buttons.style};
         }
     `
 }
