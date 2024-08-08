@@ -1,5 +1,6 @@
 "use client"
 
+import { SettingsDefaultValues } from "@/lib/settings/types";
 import { Prisma } from "@prisma/client";
 import { createContext, useContext, useState } from "react"
 
@@ -8,6 +9,7 @@ export interface UserSite {
     name: string;
     url: string;
     userId: string;
+    settings: SettingsDefaultValues;
     pages: Prisma.JsonValue[];
 }[]
 

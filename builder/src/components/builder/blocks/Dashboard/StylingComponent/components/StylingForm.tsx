@@ -25,7 +25,7 @@ export const StylingForm: FunctionComponent = () => {
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        defaultValues: createDefaultSettingsValues(settingsDefaultValues),
+        defaultValues: createDefaultSettingsValues(settingsDefaultValues, site.settings),
     })
 
     const [editValues, setEditValues] = useState(false)
