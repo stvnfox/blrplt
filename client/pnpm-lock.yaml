@@ -76,7 +76,7 @@ importers:
         version: 14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
       next-sanity:
         specifier: 9.0.11
-        version: 9.0.11(@sanity/client@6.21.1)(@sanity/icons@2.11.8(react@18.3.0))(@sanity/types@3.40.0)(@sanity/ui@2.1.4(react-dom@18.3.0(react@18.3.0))(react-is@18.3.1)(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)))(next@14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(react@18.3.0)(sanity@3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.3))(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))
+        version: 9.0.11(@sanity/client@6.21.1)(@sanity/icons@2.11.8(react@18.3.0))(@sanity/types@3.40.0)(@sanity/ui@2.1.4(react-dom@18.3.0(react@18.3.0))(react-is@18.3.1)(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)))(next@14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(react@18.3.0)(sanity@3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.4))(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))
       postgres:
         specifier: ^3.4.4
         version: 3.4.4
@@ -100,7 +100,7 @@ importers:
         version: 7.8.1
       sanity:
         specifier: 3.39.0
-        version: 3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.3)
+        version: 3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.4)
       server-only:
         specifier: 0.0.1
         version: 0.0.1
@@ -1481,11 +1481,11 @@ packages:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@floating-ui/core@1.6.6':
-    resolution: {integrity: sha512-Vkvsw6EcpMHjvZZdMkSY+djMGFbt7CRssW99Ne8tar2WLnZ/l3dbxeTShbLQj+/s35h+Qb4cmnob+EzwtjrXGQ==}
+  '@floating-ui/core@1.6.7':
+    resolution: {integrity: sha512-yDzVT/Lm101nQ5TCVeK65LtdN7Tj4Qpr9RTXJ2vPFLqtLxwOrpoxAHAJI8J3yYWUc40J0BDBheaitK5SJmno2g==}
 
-  '@floating-ui/dom@1.6.9':
-    resolution: {integrity: sha512-zB1PcI350t4tkm3rvUhSRKa9sT7vH5CrAbQxW+VaPYJXKAO0gsg4CTueL+6Ajp7XzAQC8CW4Jj1Wgqc0sB6oUQ==}
+  '@floating-ui/dom@1.6.10':
+    resolution: {integrity: sha512-fskgCFv8J8OamCmyun8MfjB1Olfn+uZKjOKZ0vhYF3gRmEUXcGOjxWL8bBr7i4kIuPZ2KD2S3EUIOxnjC8kl2A==}
 
   '@floating-ui/react-dom@2.1.1':
     resolution: {integrity: sha512-4h84MJt3CHrtG18mGsXuLCHMrug49d7DFkU0RMIyshRveBeyV2hmV/pDaF2Uxtu8kgq5r46llp5E5FQiR0K2Yg==}
@@ -1493,8 +1493,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  '@floating-ui/utils@0.2.6':
-    resolution: {integrity: sha512-0KI3zGxIUs1KDR/pjQPdJH4Z8nGBm0yJ5WRoRfdw1Kzeh45jkIfA0rmD0kBF6fKHH+xaH7g8y4jIXyAV5MGK3g==}
+  '@floating-ui/utils@0.2.7':
+    resolution: {integrity: sha512-X8R8Oj771YRl/w+c1HqAC1szL8zWQRwFvgDwT129k9ACdBoud/+/rX9V0qiMl6LWUdP9voC2nDVZYPMQQsb6eA==}
 
   '@hookform/resolvers@3.9.0':
     resolution: {integrity: sha512-bU0Gr4EepJ/EQsH/IwEzYLsT/PEj5C0ynLQ4m+GSHS+xKH4TfSelhluTgOaoc4kA5s7eCsQbM4wvZLzELmWzUg==}
@@ -3067,8 +3067,8 @@ packages:
   camelize@1.0.1:
     resolution: {integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==}
 
-  caniuse-lite@1.0.30001650:
-    resolution: {integrity: sha512-fgEc7hP/LB7iicdXHUI9VsBsMZmUmlVJeQP2qqQW+3lkqVhbmjEU8zp+h5stWeilX+G7uXuIUIIlWlDw9jdt8g==}
+  caniuse-lite@1.0.30001651:
+    resolution: {integrity: sha512-9Cf+Xv1jJNe1xPZLGuUXLNkE1BoDkqRqYyFJ9TDYSqhduqA4hu4oR9HluGoWYQC/aj8WHjsGVV+bwkh0+tegRg==}
 
   chalk@2.4.2:
     resolution: {integrity: sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==}
@@ -3956,8 +3956,8 @@ packages:
   for-each@0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
 
-  foreground-child@3.2.1:
-    resolution: {integrity: sha512-PXUUyLqrR2XCWICfv6ukppP96sdFwWbNEnfEMt7jNsISjMsvaLNinAHNDYyvkyU+SZG2BTSbT5NjG+vZslfGTA==}
+  foreground-child@3.3.0:
+    resolution: {integrity: sha512-Ld2g8rrAyMYFXBhEqMz8ZAHBi4J4uS1i/CxGMDnjyFWddMXLVcDp051DZfu+t7+ab7Wv6SMqpWmyFIj5UbfFvg==}
     engines: {node: '>=14'}
 
   form-data@4.0.0:
@@ -6020,8 +6020,8 @@ packages:
       uglify-js:
         optional: true
 
-  terser@5.31.3:
-    resolution: {integrity: sha512-pAfYn3NIZLyZpa83ZKigvj6Rn9c/vd5KfYGX7cN1mnzqgDcxWvrU5ZtAfIKhEXz9nRecw4z3LXkjaq96/qZqAA==}
+  terser@5.31.4:
+    resolution: {integrity: sha512-3OU03GgblDgu0g+sdnsVzhBPxnjV+WJuMmocN1qBBZDQ3ia7jZQSAkePeKbPlYAejGXUTYe1CmSaUeV51mvaIw==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -7807,22 +7807,22 @@ snapshots:
 
   '@eslint/js@8.57.0': {}
 
-  '@floating-ui/core@1.6.6':
+  '@floating-ui/core@1.6.7':
     dependencies:
-      '@floating-ui/utils': 0.2.6
+      '@floating-ui/utils': 0.2.7
 
-  '@floating-ui/dom@1.6.9':
+  '@floating-ui/dom@1.6.10':
     dependencies:
-      '@floating-ui/core': 1.6.6
-      '@floating-ui/utils': 0.2.6
+      '@floating-ui/core': 1.6.7
+      '@floating-ui/utils': 0.2.7
 
   '@floating-ui/react-dom@2.1.1(react-dom@18.3.0(react@18.3.0))(react@18.3.0)':
     dependencies:
-      '@floating-ui/dom': 1.6.9
+      '@floating-ui/dom': 1.6.10
       react: 18.3.0
       react-dom: 18.3.0(react@18.3.0)
 
-  '@floating-ui/utils@0.2.6': {}
+  '@floating-ui/utils@0.2.7': {}
 
   '@hookform/resolvers@3.9.0(react-hook-form@7.52.2(react@18.3.0))':
     dependencies:
@@ -9313,14 +9313,14 @@ snapshots:
 
   '@vercel/stega@0.1.0': {}
 
-  '@vitejs/plugin-react@4.3.1(vite@4.5.3(@types/node@20.14.2)(terser@5.31.3))':
+  '@vitejs/plugin-react@4.3.1(vite@4.5.3(@types/node@20.14.2)(terser@5.31.4))':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/plugin-transform-react-jsx-self': 7.24.7(@babel/core@7.25.2)
       '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.25.2)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 4.5.3(@types/node@20.14.2)(terser@5.31.3)
+      vite: 4.5.3(@types/node@20.14.2)(terser@5.31.4)
     transitivePeerDependencies:
       - supports-color
 
@@ -9581,7 +9581,7 @@ snapshots:
   autoprefixer@10.4.14(postcss@8.4.38):
     dependencies:
       browserslist: 4.23.3
-      caniuse-lite: 1.0.30001650
+      caniuse-lite: 1.0.30001651
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.1
@@ -9591,7 +9591,7 @@ snapshots:
   autoprefixer@10.4.19(postcss@8.4.38):
     dependencies:
       browserslist: 4.23.3
-      caniuse-lite: 1.0.30001650
+      caniuse-lite: 1.0.30001651
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.1
@@ -9679,7 +9679,7 @@ snapshots:
 
   browserslist@4.23.3:
     dependencies:
-      caniuse-lite: 1.0.30001650
+      caniuse-lite: 1.0.30001651
       electron-to-chromium: 1.5.5
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
@@ -9737,7 +9737,7 @@ snapshots:
 
   camelize@1.0.1: {}
 
-  caniuse-lite@1.0.30001650: {}
+  caniuse-lite@1.0.30001651: {}
 
   chalk@2.4.2:
     dependencies:
@@ -10831,7 +10831,7 @@ snapshots:
     dependencies:
       is-callable: 1.2.7
 
-  foreground-child@3.2.1:
+  foreground-child@3.3.0:
     dependencies:
       cross-spawn: 7.0.3
       signal-exit: 4.1.0
@@ -10986,7 +10986,7 @@ snapshots:
 
   glob@10.3.10:
     dependencies:
-      foreground-child: 3.2.1
+      foreground-child: 3.3.0
       jackspeak: 2.3.6
       minimatch: 9.0.5
       minipass: 7.1.2
@@ -10994,7 +10994,7 @@ snapshots:
 
   glob@10.3.4:
     dependencies:
-      foreground-child: 3.2.1
+      foreground-child: 3.3.0
       jackspeak: 2.3.6
       minimatch: 9.0.5
       minipass: 7.1.2
@@ -11002,7 +11002,7 @@ snapshots:
 
   glob@10.4.5:
     dependencies:
-      foreground-child: 3.2.1
+      foreground-child: 3.3.0
       jackspeak: 3.4.3
       minimatch: 9.0.5
       minipass: 7.1.2
@@ -11732,7 +11732,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-sanity@9.0.11(@sanity/client@6.21.1)(@sanity/icons@2.11.8(react@18.3.0))(@sanity/types@3.40.0)(@sanity/ui@2.1.4(react-dom@18.3.0(react@18.3.0))(react-is@18.3.1)(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)))(next@14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(react@18.3.0)(sanity@3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.3))(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)):
+  next-sanity@9.0.11(@sanity/client@6.21.1)(@sanity/icons@2.11.8(react@18.3.0))(@sanity/types@3.40.0)(@sanity/ui@2.1.4(react-dom@18.3.0(react@18.3.0))(react-is@18.3.1)(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)))(next@14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(react@18.3.0)(sanity@3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.4))(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)):
     dependencies:
       '@portabletext/react': 3.1.0(react@18.3.0)
       '@sanity/client': 6.21.1
@@ -11745,7 +11745,7 @@ snapshots:
       history: 5.3.0
       next: 14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
       react: 18.3.0
-      sanity: 3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.3)
+      sanity: 3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.4)
       styled-components: 6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
     transitivePeerDependencies:
       - '@remix-run/react'
@@ -11757,7 +11757,7 @@ snapshots:
       '@next/env': 14.1.4
       '@swc/helpers': 0.5.2
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001650
+      caniuse-lite: 1.0.30001651
       graceful-fs: 4.2.11
       postcss: 8.4.31
       react: 18.3.0
@@ -11782,7 +11782,7 @@ snapshots:
       '@next/env': 14.2.3
       '@swc/helpers': 0.5.5
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001650
+      caniuse-lite: 1.0.30001651
       graceful-fs: 4.2.11
       postcss: 8.4.31
       react: 18.3.0
@@ -12549,7 +12549,7 @@ snapshots:
     dependencies:
       '@sanity/diff-match-patch': 3.1.1
 
-  sanity@3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.3):
+  sanity@3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.4):
     dependencies:
       '@dnd-kit/core': 6.1.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
       '@dnd-kit/modifiers': 6.0.1(@dnd-kit/core@6.1.0(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(react@18.3.0)
@@ -12589,7 +12589,7 @@ snapshots:
       '@types/speakingurl': 13.0.6
       '@types/tar-stream': 3.1.3
       '@types/use-sync-external-store': 0.0.6
-      '@vitejs/plugin-react': 4.3.1(vite@4.5.3(@types/node@20.14.2)(terser@5.31.3))
+      '@vitejs/plugin-react': 4.3.1(vite@4.5.3(@types/node@20.14.2)(terser@5.31.4))
       '@vvo/tzdb': 6.142.0
       archiver: 7.0.1
       arrify: 1.0.1
@@ -12665,7 +12665,7 @@ snapshots:
       use-device-pixel-ratio: 1.1.2(react@18.3.0)
       use-hot-module-reload: 2.0.0(react@18.3.0)
       use-sync-external-store: 1.2.2(react@18.3.0)
-      vite: 4.5.3(@types/node@20.14.2)(terser@5.31.3)
+      vite: 4.5.3(@types/node@20.14.2)(terser@5.31.4)
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@types/node'
@@ -13180,13 +13180,13 @@ snapshots:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
-      terser: 5.31.3
+      terser: 5.31.4
       webpack: 5.93.0(@swc/core@1.3.101(@swc/helpers@0.5.5))(esbuild@0.19.11)
     optionalDependencies:
       '@swc/core': 1.3.101(@swc/helpers@0.5.5)
       esbuild: 0.19.11
 
-  terser@5.31.3:
+  terser@5.31.4:
     dependencies:
       '@jridgewell/source-map': 0.3.6
       acorn: 8.12.1
@@ -13453,7 +13453,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite@4.5.3(@types/node@20.14.2)(terser@5.31.3):
+  vite@4.5.3(@types/node@20.14.2)(terser@5.31.4):
     dependencies:
       esbuild: 0.18.20
       postcss: 8.4.38
@@ -13461,7 +13461,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.14.2
       fsevents: 2.3.3
-      terser: 5.31.3
+      terser: 5.31.4
 
   void-elements@3.1.0: {}
 
