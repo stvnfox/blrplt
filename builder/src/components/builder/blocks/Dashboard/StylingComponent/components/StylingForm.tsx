@@ -9,6 +9,7 @@ import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { createDefaultSettingsValues, settingsDefaultValues } from "@/lib/settings/defaultValues"
 import { buttonStyleOptions, fontStyleOptions } from "@/lib/settings/options"
 import { settingsSchema } from "@/lib/settings/settingsSchema"
+import { SettingsDefaultValues } from "@/lib/settings/types"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -25,7 +26,8 @@ export const StylingForm: FunctionComponent = () => {
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        defaultValues: createDefaultSettingsValues(settingsDefaultValues, site.settings),
+        //@ts-expect-error bc site.settings is not typed bc jsonb type
+        defaultValues: createDefaultSettingsValues(settingsDefaultValues, site.settings as SettingsDefaultValues),
     })
 
     const [editValues, setEditValues] = useState(false)
