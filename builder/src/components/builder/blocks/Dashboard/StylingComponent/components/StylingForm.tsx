@@ -55,15 +55,9 @@ export const StylingForm: FunctionComponent = () => {
                 style: values.font.style,
             },
             buttons: {
-                primary: {
-                    background: "#000000",
-                    text: "#ffffff",
-                },
-                secondary: {
-                    background: "#ffffff",
-                    text: "#000000",
-                },
-                style: "default",
+                primary: values.buttons.primary,
+                secondary: values.buttons.secondary,
+                style: values.buttons.style,
             }
         }
     }
