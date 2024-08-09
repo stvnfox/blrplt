@@ -6,10 +6,13 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
-import { createDefaultSettingsValues, settingsDefaultValues } from "@/lib/settings/defaultValues"
+import {
+    createDefaultStyleSettingsValues,
+    styleSettingsDefaultValues,
+} from "@/lib/settings/defaultValues"
 import { buttonStyleOptions, fontStyleOptions } from "@/lib/settings/options"
-import { settingsSchema } from "@/lib/settings/settingsSchema"
-import { SettingsDefaultValues } from "@/lib/settings/types"
+import { styleSettingsSchema } from "@/lib/settings/settingsSchema"
+import { StyleSettingsDefaultValues } from "@/lib/settings/types"
 
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
@@ -18,7 +21,7 @@ import { Accordion } from "@/components/ui/accordion"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { StylingItem } from "./StylingItem"
 
-const formSchema = z.object(settingsSchema)
+const formSchema = z.object(styleSettingsSchema)
 
 export const StylingForm: FunctionComponent = () => {
     const { sites } = useBuilderContext()
@@ -26,8 +29,11 @@ export const StylingForm: FunctionComponent = () => {
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        //@ts-expect-error bc site.settings is not typed bc jsonb type
-        defaultValues: createDefaultSettingsValues(settingsDefaultValues, site.settings as SettingsDefaultValues),
+        defaultValues: createDefaultStyleSettingsValues(
+            styleSettingsDefaultValues,
+            //@ts-expect-error bc site.settings is not typed bc jsonb type
+            site.settings[0] ? (site.settings[0].style as StyleSettingsDefaultValues) : null
+        ),
     })
 
     const [editValues, setEditValues] = useState(false)
@@ -35,7 +41,7 @@ export const StylingForm: FunctionComponent = () => {
     const [isSucceeded, setIsSucceeded] = useState(false)
     const [hasError, setHasError] = useState(false)
 
-    const createSettingsData = (values: z.infer<typeof formSchema>) => {
+    const createStyleSettingsData = (values: z.infer<typeof formSchema>) => {
         return {
             background: {
                 primary: values.background.primary,
@@ -58,7 +64,7 @@ export const StylingForm: FunctionComponent = () => {
                 primary: values.buttons.primary,
                 secondary: values.buttons.secondary,
                 style: values.buttons.style,
-            }
+            },
         }
     }
 
@@ -69,7 +75,8 @@ export const StylingForm: FunctionComponent = () => {
 
         const data = {
             id: site.id,
-            settings: createSettingsData(values),
+            // @ts-expect-error bc site.settings is not typed bc jsonb type
+            settings: { style: createStyleSettingsData(values), openGraph: site.settings.openGraph },
         }
 
         const response = await fetch("/api/builder/update-site-settings", {

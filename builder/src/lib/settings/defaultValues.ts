@@ -1,6 +1,7 @@
-import { SettingsDefaultValues } from "./types";
+import { OpenGraphDefaultValues, StyleSettingsDefaultValues } from "./types";
 
-export const settingsDefaultValues: SettingsDefaultValues = {
+// STYLE
+export const styleSettingsDefaultValues: StyleSettingsDefaultValues = {
     background: {
         primary: "#ffffff",
         secondary: "#f9fafb",
@@ -28,35 +29,24 @@ export const settingsDefaultValues: SettingsDefaultValues = {
             text: "#6b7280",
         },
         style: "default",
-    }
+    },
 }
 
-export const addDefaultSettingsValues = () => {
-    return settingsDefaultValues;
+export const addDefaultStyleSettingsValues = () => {
+    return styleSettingsDefaultValues;
 }
 
-export const createDefaultSettingsValues = (defaultValues: SettingsDefaultValues, existingData?: SettingsDefaultValues) => {
-    const values: SettingsDefaultValues = defaultValues;
+export const createDefaultStyleSettingsValues = (defaultValues: StyleSettingsDefaultValues, existingData?: StyleSettingsDefaultValues) => {
+    const values: StyleSettingsDefaultValues = defaultValues;
     
     Object.keys(defaultValues).forEach((key) => {
-        const settingKey = key as keyof SettingsDefaultValues;
+        const settingKey = key as keyof StyleSettingsDefaultValues;
         
         // @ts-expect-error because of different otions in in styling
         values[settingKey] = {
             ...defaultValues[settingKey] as Record<string, any>,
             ...(existingData?.[settingKey] as Record<string, any> ?? {}),
         };
-
-        // Leave this for now, as it is not clear how to handle the different options in styling
-        // if(settingKey === 'font' || settingKey === 'background' || settingKey === 'text') {
-        //     // @ts-expect-error because of different otions in in styling
-        //     values[settingKey] = {
-        //         ...defaultValues[settingKey] as Record<string, any>,
-        //         ...(existingData?.[settingKey] as Record<string, any> ?? {}),
-        //     };
-        // } else {
-        //     values[settingKey] = existingData?.[settingKey] ?? defaultValues[settingKey];
-        // }
     });
     
     return values
@@ -81,4 +71,29 @@ export const createStyleObject = (settings: any) => {
             --buttons-style: ${settings.buttons.style};
         }
     `
+}
+
+// OPEN GRAPH
+export const openGraphDefaultValues = {
+    title: "",
+    description: "made with blrplt builder",
+    type: "website",
+    url: "",
+    image: "",
+}
+
+export const addDefaultOpenGraphValues = () => {
+    return openGraphDefaultValues;
+}
+
+export const createDefaultOpenGraphValues = (defaultValues: OpenGraphDefaultValues, existingData?: OpenGraphDefaultValues) => {
+    const values = defaultValues;
+    
+    Object.keys(defaultValues).forEach((key) => {
+        const settingKey = key as keyof typeof defaultValues;
+        
+        values[settingKey] = existingData?.[settingKey] ?? defaultValues[settingKey];
+    });
+    
+    return values
 }

@@ -1,3 +1,4 @@
+// STYLE
 export interface Colors {
     primary: string;
     secondary: string;
@@ -21,10 +22,24 @@ export interface Buttons {
     style: "default" | "outline" | "ghost" | "link";
 }
 
-export interface SettingsDefaultValues {
+export interface StyleSettingsDefaultValues {
     background: Colors;
     text: Colors;
     headings: Colors;
     font: Font;
     buttons: Buttons;
 };
+
+// OPEN GRAPH
+export interface OpenGraphDefaultValues {
+    title: string;
+    description: string;
+    type: string;
+    url: string;
+    image: string;
+}
+
+export interface SettingsValues {
+    style: StyleSettingsDefaultValues;
+    openGraph: OpenGraphDefaultValues;
+}
