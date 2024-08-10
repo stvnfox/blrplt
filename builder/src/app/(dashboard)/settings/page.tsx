@@ -2,22 +2,29 @@
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 
+import { HeadingComponent } from "@/components/builder/layout/HeadingComponent"
+import { OpenGraph } from "@/components/builder/blocks/Dashboard/OpenGraph/OpenGraph"
 import { SiteComponent } from "@/components/builder/blocks/Dashboard/SiteComponent/SiteComponent"
 import { StylingComponent } from "@/components/builder/blocks/Dashboard/StylingComponent/StylingComponent"
 
 export default function Settings() {
-    const { sites, siteName } = useBuilderContext()
+    const { sites } = useBuilderContext()
 
     return (
         <section className="flex flex-1 flex-col gap-4">
-            <div className="flex w-full items-center justify-between px-4 pt-4 md:px-8 md:pt-8">
-                <h1>{siteName ? siteName : "blrplt builder"} - site settings</h1>
-            </div>
+            <HeadingComponent
+                title="site settings"
+                firstHeading
+            />
             <SiteComponent site={sites[0]} />
-            <div className="flex w-full items-center justify-between px-4 pt-4 md:px-8 md:pt-8 md:-mt-0.5">
-                <h2>{siteName ? siteName : "blrplt builder"} - styling settings</h2>
-            </div>
+            <HeadingComponent
+                title="styling settings"
+            />
             <StylingComponent />
+            <HeadingComponent
+                title="open graph settings"
+            />
+            <OpenGraph />
         </section>
     )
 }
