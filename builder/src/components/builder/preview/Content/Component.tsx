@@ -21,8 +21,8 @@ export const ContentComponent: FunctionComponent<ContentComponentProps> = ({ dat
                 >
                     <img
                         className="rounded object-cover object-center"
-                        alt={data.image.src}
-                        src={data.image.src}
+                        alt={data.image.alt}
+                        src={data.image.src.url}
                     />
                 </div>
                 <div

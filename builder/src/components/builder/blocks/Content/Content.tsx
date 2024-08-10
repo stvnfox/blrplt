@@ -3,15 +3,20 @@
 import { FunctionComponent } from "react"
 
 import { ComponentProps } from "@/lib/components/types"
+import { positionOptions } from "@/lib/components/options"
 
-import { RemoveComponentButton } from "../Dashboard/RemoveComponentButton/RemoveComponentButton"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { positionOptions } from "@/lib/components/options"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { FileInput } from "@/components/ui/file-input"
+import { RemoveComponentButton } from "../Dashboard/RemoveComponentButton/RemoveComponentButton"
+
+const MAX_FILE_SIZE = "5MB"
+const MAX_FILE_SIZE_IN_BITS = 5 * 1024 * 1024 // MAX FILE SIZE OF 5MB
+const ACCEPTED_FILES = "image/png, image/jpeg, image/jpg, image/svg+xml"
 
 export const Content: FunctionComponent<ComponentProps> = ({ form }) => {
     return (
@@ -74,14 +79,14 @@ export const Content: FunctionComponent<ComponentProps> = ({ form }) => {
                                     name="content.image.src"
                                     render={({ field }) => (
                                         <FormItem className="my-4">
-                                            <FormLabel>image url</FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    className="rounded shadow-none"
-                                                    {...field}
-                                                />
-                                            </FormControl>
-                                            <FormMessage />
+                                            <FormLabel>image</FormLabel>
+                                            <FileInput
+                                                fieldName="content.image.src"
+                                                acceptedFiles={ACCEPTED_FILES}
+                                                maxFileSizeInBits={MAX_FILE_SIZE_IN_BITS}
+                                                maxFileSize={MAX_FILE_SIZE}
+                                                value={field.value}
+                                            />
                                         </FormItem>
                                     )}
                                 />

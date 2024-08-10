@@ -13,7 +13,11 @@ export interface Content {
         ariaLabel: string;
     };
     image: {
-        src: string;
+        src: {
+            url: string;
+            extension: string;
+            path: string;
+        };
         alt: string;
         position?: 'left' | 'right';
     };

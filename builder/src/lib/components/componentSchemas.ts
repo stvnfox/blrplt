@@ -52,7 +52,11 @@ export const componentSchemas = {
             ariaLabel: z.string().min(2),
         }),
         image: z.object({
-            src: z.string().min(2),
+            src: z.object({
+                url: z.string().min(1),
+                extension: z.string().min(2),
+                path: z.string().min(2),
+            }).refine((data) => data.url !== "", { message: "Please upload an image." }),
             alt: z.string().min(2),
             position: z.string().default('left'),
         }).required(),

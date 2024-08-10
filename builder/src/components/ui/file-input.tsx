@@ -20,7 +20,7 @@ type FileInputProps = {
     acceptedFiles: string
     maxFileSize: string
     maxFileSizeInBits: number
-    submitFunction: any
+    submitFunction?: any
     disabled?: boolean
 }
 
@@ -88,7 +88,7 @@ export const FileInput: FunctionComponent<FileInputProps> = ({
                 path: data.path,
             })
 
-            submitFunction()
+            if(submitFunction) submitFunction()
         }
 
         setImageIsUploading(false)
@@ -113,7 +113,7 @@ export const FileInput: FunctionComponent<FileInputProps> = ({
             path: "",
         })
 
-        submitFunction()
+        if(submitFunction) submitFunction()
     }
 
     useEffect(() => {
