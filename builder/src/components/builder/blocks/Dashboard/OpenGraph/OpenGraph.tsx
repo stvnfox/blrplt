@@ -1,18 +1,21 @@
 "use client"
 
-import { FunctionComponent, useEffect, useRef, useState } from "react"
-import { Trash2 } from "lucide-react"
+import { FunctionComponent, useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
-import { createDefaultOpenGraphValues, createDefaultStyleSettingsValues, createStyleObject, openGraphDefaultValues, styleSettingsDefaultValues } from "@/lib/settings/defaultValues"
+import {
+    createDefaultOpenGraphValues,
+    createDefaultStyleSettingsValues,
+    openGraphDefaultValues,
+    styleSettingsDefaultValues,
+} from "@/lib/settings/defaultValues"
 import { OpenGraphDefaultValues } from "@/lib/settings/types"
-import { createClient } from "@/lib/supabase/client"
-import { createUuid } from "@/lib/utils"
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { FileInput } from "@/components/ui/file-input"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
@@ -34,9 +37,8 @@ const formSchema = z.object({
 })
 
 export const OpenGraph: FunctionComponent = () => {
-    const { sites, user } = useBuilderContext()
+    const { sites } = useBuilderContext()
     const site = sites[0]
-    const supabase = createClient()
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -53,9 +55,6 @@ export const OpenGraph: FunctionComponent = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [isSucceeded, setIsSucceeded] = useState(false)
     const [hasError, setHasError] = useState(false)
-    const [previewUrl, setPreviewUrl] = useState<string | null>(null)
-    const [imageIsUploading, setImageIsUploading] = useState(true)
-    const imageRef = useRef<HTMLInputElement>(null)
 
     const createOpenGraphSettingsData = (values: z.infer<typeof formSchema>) => {
         return {
@@ -67,85 +66,14 @@ export const OpenGraph: FunctionComponent = () => {
         }
     }
 
-    const uploadImage = async (e: any) => {
-        form.clearErrors("image")
-
-        const file = e.target.files[0]
-        if (file.size > MAX_FILE_SIZE_IN_BITS) {
-            form.setError("image", {
-                type: "image",
-                message: `File size is too large. Please upload a file smaller than ${MAX_FILE_SIZE}.`,
-            })
-
-            imageRef.current ? (imageRef.current.value = "") : null
-
-            return
-        }
-
-        setImageIsUploading(true)
-        const { data, error } = await supabase.storage.from("images").upload(user + "/" + createUuid(), file)
-
-        if (error) {
-            form.setError("image", {
-                type: "image",
-                message: "something went wrong, please try again",
-            })
-
-            return
-        }
-
-        if (data) {
-            const { data: urlData } = await supabase.storage.from("images").getPublicUrl(data?.path)
-
-            if (!urlData.publicUrl) {
-                form.setError("image", {
-                    type: "manual",
-                    message: "something went wrong, please try again",
-                })
-
-                return
-            }
-
-            setPreviewUrl(urlData.publicUrl)
-            form.setValue("image", {
-                url: urlData.publicUrl,
-                extension: file.type,
-                path: data.path,
-            })
-
-            updateSettings(form.getValues())
-        }
-
-        setImageIsUploading(false)
-    }
-
-    const removeImage = async () => {
-        const { error } = await supabase.storage.from("images").remove([form.getValues("image.path")])
-
-        if (error) {
-            form.setError("image", {
-                type: "manual",
-                message: "something went wrong, please try again",
-            })
-
-            return
-        }
-
-        setPreviewUrl(null)
-        form.setValue("image", {
-            url: "",
-            extension: "",
-            path: "",
-        })
-
-        updateSettings(form.getValues())
-    }
-
     const updateSettings = async (values: z.infer<typeof formSchema>) => {
         const data = {
             id: site.id,
-            // @ts-expect-error bc site.settings is not typed bc jsonb type
-            settings: { style: site.settings.style ?? createDefaultStyleSettingsValues(styleSettingsDefaultValues), openGraph: createOpenGraphSettingsData(values) },
+            settings: {
+                // @ts-expect-error bc site.settings is not typed bc jsonb type
+                style: site.settings.style ?? createDefaultStyleSettingsValues(styleSettingsDefaultValues),
+                openGraph: createOpenGraphSettingsData(values),
+            },
         }
 
         const response = await fetch("/api/builder/update-site-settings", {
@@ -182,16 +110,6 @@ export const OpenGraph: FunctionComponent = () => {
 
         setIsLoading(false)
     }
-
-    useEffect(() => {
-        if (form.getValues("image.url") !== "") {
-            setPreviewUrl(form.getValues("image.url"))
-        }
-
-        setTimeout(() => {
-            setImageIsUploading(false)
-        }, 750)
-    }, [])
 
     return (
         <section className="px-4 md:px-8">
@@ -239,50 +157,15 @@ export const OpenGraph: FunctionComponent = () => {
                             render={({ field }) => (
                                 <FormItem className="!pb-3">
                                     <FormLabel>image</FormLabel>
-                                    {imageIsUploading ? (
-                                        <div
-                                            className="text-surface block h-8 w-8 animate-spin rounded-full border-2 border-dashed border-current border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
-                                            role="status"
-                                        >
-                                            <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-                                                Loading...
-                                            </span>
-                                        </div>
-                                    ) : (
-                                        <>
-                                            {previewUrl ? (
-                                                <div className="relative w-fit">
-                                                    <img
-                                                        src={previewUrl}
-                                                        className="h-40 w-40 rounded object-contain"
-                                                    />
-                                                    <Button
-                                                        variant={null}
-                                                        type="button"
-                                                        disabled={!editValues}
-                                                        className="absolute -right-10 top-0 transition-colors hover:text-red-600"
-                                                        onClick={removeImage}
-                                                    >
-                                                        <Trash2 />
-                                                    </Button>
-                                                </div>
-                                            ) : (
-                                                <>
-                                                    <FormControl>
-                                                        <Input
-                                                            type="file"
-                                                            className="!mt-1 focus-visible:ring-2"
-                                                            disabled={!editValues}
-                                                            accept={ACCEPTED_FILES}
-                                                            ref={imageRef}
-                                                            onChange={(e) => uploadImage(e)}
-                                                        />
-                                                    </FormControl>
-                                                </>
-                                            )}
-                                            <FormMessage />
-                                        </>
-                                    )}
+                                    <FileInput
+                                        fieldName="image"
+                                        disabled={!editValues}
+                                        acceptedFiles={ACCEPTED_FILES}
+                                        maxFileSizeInBits={MAX_FILE_SIZE_IN_BITS}
+                                        maxFileSize={MAX_FILE_SIZE}
+                                        value={field.value}
+                                        submitFunction={() => updateSettings(form.getValues())}
+                                    />
                                 </FormItem>
                             )}
                         />
