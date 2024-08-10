@@ -7,7 +7,9 @@ import { z } from "zod"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import {
+    createDefaultOpenGraphValues,
     createDefaultStyleSettingsValues,
+    openGraphDefaultValues,
     styleSettingsDefaultValues,
 } from "@/lib/settings/defaultValues"
 import { buttonStyleOptions, fontStyleOptions } from "@/lib/settings/options"
@@ -76,7 +78,7 @@ export const StylingForm: FunctionComponent = () => {
         const data = {
             id: site.id,
             // @ts-expect-error bc site.settings is not typed bc jsonb type
-            settings: { style: createStyleSettingsData(values), openGraph: site.settings.openGraph },
+            settings: { style: createStyleSettingsData(values), openGraph: site.settings.openGraph ?? createDefaultOpenGraphValues(openGraphDefaultValues) },
         }
 
         const response = await fetch("/api/builder/update-site-settings", {

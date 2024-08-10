@@ -7,30 +7,30 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
-import { createDefaultOpenGraphValues, openGraphDefaultValues } from "@/lib/settings/defaultValues"
+import { createDefaultOpenGraphValues, createDefaultStyleSettingsValues, createStyleObject, openGraphDefaultValues, styleSettingsDefaultValues } from "@/lib/settings/defaultValues"
 import { OpenGraphDefaultValues } from "@/lib/settings/types"
 import { createClient } from "@/lib/supabase/client"
 import { createUuid } from "@/lib/utils"
 
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { Textarea } from "@/components/ui/textarea"
 
 const MAX_FILE_SIZE = "5MB"
 const MAX_FILE_SIZE_IN_BITS = 5 * 1024 * 1024 // MAX FILE SIZE OF 5MB
 const ACCEPTED_FILES = "image/png, image/jpeg, image/jpg, image/svg+xml"
 
 const formSchema = z.object({
-    // title: z.string().min(2).max(50),
-    // description: z.string().min(2).max(50),
-    // type: z.string().min(2).max(50),
-    // url: z.string().min(2).max(50),
-    image: z.object(
-        {
+    title: z.string().min(2).max(50),
+    description: z.string().min(2).max(50),
+    image: z
+        .object({
             url: z.string(),
             extension: z.string(),
             path: z.string(),
-        }).refine((data) => data.url !== "", { message: "Please upload an image." }),
+        })
+        .refine((data) => data.url !== "", { message: "Please upload an image." }),
 })
 
 export const OpenGraph: FunctionComponent = () => {
@@ -42,12 +42,14 @@ export const OpenGraph: FunctionComponent = () => {
         resolver: zodResolver(formSchema),
         defaultValues: createDefaultOpenGraphValues(
             openGraphDefaultValues,
+            site.url,
+            site.name,
             //@ts-expect-error bc site.settings is not typed bc jsonb type
             site.settings ? (site.settings.openGraph as OpenGraphDefaultValues) : null
         ),
     })
 
-    const [editValues, setEditValues] = useState(true)
+    const [editValues, setEditValues] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [isSucceeded, setIsSucceeded] = useState(false)
     const [hasError, setHasError] = useState(false)
@@ -57,10 +59,10 @@ export const OpenGraph: FunctionComponent = () => {
 
     const createOpenGraphSettingsData = (values: z.infer<typeof formSchema>) => {
         return {
-            // title: values.title,
-            // description: values.description,
-            // type: openGraphDefaultValues.type,
-            // url: values.url,
+            title: values.title,
+            description: values.description,
+            type: openGraphDefaultValues.type,
+            url: site.url,
             image: values.image,
         }
     }
@@ -143,7 +145,7 @@ export const OpenGraph: FunctionComponent = () => {
         const data = {
             id: site.id,
             // @ts-expect-error bc site.settings is not typed bc jsonb type
-            settings: { style: site.settings.style, openGraph: createOpenGraphSettingsData(values) },
+            settings: { style: site.settings.style ?? createDefaultStyleSettingsValues(styleSettingsDefaultValues), openGraph: createOpenGraphSettingsData(values) },
         }
 
         const response = await fetch("/api/builder/update-site-settings", {
@@ -201,10 +203,41 @@ export const OpenGraph: FunctionComponent = () => {
                     >
                         <FormField
                             control={form.control}
-                            name="image"
-                            disabled={!editValues}
+                            name="title"
                             render={({ field }) => (
                                 <FormItem>
+                                    <FormLabel>title</FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            disabled={!editValues}
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="description"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>description</FormLabel>
+                                    <FormControl>
+                                        <Textarea
+                                            disabled={!editValues}
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="image"
+                            render={({ field }) => (
+                                <FormItem className="!pb-3">
                                     <FormLabel>image</FormLabel>
                                     {imageIsUploading ? (
                                         <div
@@ -226,6 +259,7 @@ export const OpenGraph: FunctionComponent = () => {
                                                     <Button
                                                         variant={null}
                                                         type="button"
+                                                        disabled={!editValues}
                                                         className="absolute -right-10 top-0 transition-colors hover:text-red-600"
                                                         onClick={removeImage}
                                                     >
@@ -238,12 +272,12 @@ export const OpenGraph: FunctionComponent = () => {
                                                         <Input
                                                             type="file"
                                                             className="!mt-1 focus-visible:ring-2"
+                                                            disabled={!editValues}
                                                             accept={ACCEPTED_FILES}
                                                             ref={imageRef}
                                                             onChange={(e) => uploadImage(e)}
                                                         />
                                                     </FormControl>
-                                                    <FormDescription>upload a image </FormDescription>
                                                 </>
                                             )}
                                             <FormMessage />
