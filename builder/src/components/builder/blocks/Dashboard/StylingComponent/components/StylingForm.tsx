@@ -32,7 +32,7 @@ export const StylingForm: FunctionComponent = () => {
         defaultValues: createDefaultStyleSettingsValues(
             styleSettingsDefaultValues,
             //@ts-expect-error bc site.settings is not typed bc jsonb type
-            site.settings[0] ? (site.settings[0].style as StyleSettingsDefaultValues) : null
+            site.settings ? (site.settings.style as StyleSettingsDefaultValues) : null
         ),
     })
 

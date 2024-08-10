@@ -75,11 +75,15 @@ export const createStyleObject = (settings: any) => {
 
 // OPEN GRAPH
 export const openGraphDefaultValues = {
-    title: "",
-    description: "made with blrplt builder",
-    type: "website",
-    url: "",
-    image: "",
+    // title: "",
+    // description: "made with blrplt builder",
+    // type: "website",
+    // url: "",
+    image: {
+        url: "",
+        extension: "",
+        path: "",
+    },
 }
 
 export const addDefaultOpenGraphValues = () => {
@@ -91,7 +95,16 @@ export const createDefaultOpenGraphValues = (defaultValues: OpenGraphDefaultValu
     
     Object.keys(defaultValues).forEach((key) => {
         const settingKey = key as keyof typeof defaultValues;
-        
+
+        if(settingKey === 'image') {
+            // @ts-expect-error because of different otions in in styling
+            values[settingKey] = {
+                ...defaultValues[settingKey] as Record<string, any>,
+                ...(existingData?.[settingKey] as Record<string, any> ?? {}),
+            };
+            return
+        }
+
         values[settingKey] = existingData?.[settingKey] ?? defaultValues[settingKey];
     });
     

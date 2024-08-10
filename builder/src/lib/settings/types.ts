@@ -32,11 +32,15 @@ export interface StyleSettingsDefaultValues {
 
 // OPEN GRAPH
 export interface OpenGraphDefaultValues {
-    title: string;
-    description: string;
-    type: string;
-    url: string;
-    image: string;
+    // title: string;
+    // description: string;
+    // type: string;
+    // url: string;
+    image: {
+        url: string;
+        extension: string;
+        path: string;
+    };
 }
 
 export interface SettingsValues {
