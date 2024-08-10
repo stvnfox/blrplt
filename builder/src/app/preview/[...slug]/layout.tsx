@@ -11,6 +11,9 @@ import PreviewContextProvider from "@/providers/PreviewContextProvider"
 const inter = Inter({ subsets: ["latin"] })
 
 let title: string
+let description: string
+let url: string
+let image: string
 
 export default async function RootLayout({
     children,
@@ -31,7 +34,15 @@ export default async function RootLayout({
         redirect("https://builder.blrplt.dev")
     }
 
-    title = sites[0].name
+    // @ts-expect-error because of not typed settings bc jsonb type
+    title = sites[0].settings.openGraph.title
+    // @ts-expect-error because of not typed settings bc jsonb type
+    description = sites[0].settings.openGraph.description
+    // @ts-expect-error because of not typed settings bc jsonb type
+    url = sites[0].settings.openGraph.url
+    // @ts-expect-error because of not typed settings bc jsonb type
+    image = sites[0].settings.openGraph.image.url
+
     const siteStyles = createStyleObject(sites[0].settings)
 
     return (
@@ -53,5 +64,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     return {
         title: title,
+        description: description,
+        openGraph: {
+            title: title,
+            description: description,
+            url: 'https://builder.blrplt.dev/' + url,
+            type: "website",
+            images: [image],
+        },
     }
 }
