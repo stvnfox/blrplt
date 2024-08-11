@@ -51,3 +51,74 @@ export const positionOptions = [
         label: "right",
     },
 ]
+
+export const backgroundColorOptions = [
+    {
+        value: "primary",
+        label: "primary",
+    },
+    {
+        value: "secondary",
+        label: "secondary",
+    },
+    {
+        value: "tertiary",
+        label: "tertiary",
+    },
+]
+
+export const textColorOptions = [
+    {
+        value: "primary",
+        label: "primary",
+    },
+    {
+        value: "secondary",
+        label: "secondary",
+    },
+    {
+        value: "tertiary",
+        label: "tertiary",
+    },
+]
+
+export const headingColorOptions = [
+    {
+        value: "primary",
+        label: "primary",
+    },
+    {
+        value: "secondary",
+        label: "secondary",
+    },
+]
+
+export const buttonColorOptions = [
+    {
+        value: "primary",
+        label: "primary",
+    },
+    {
+        value: "secondary",
+        label: "secondary",
+    },
+]
+
+export const buttonStyleOptions = [
+    {
+        value: "default",
+        label: "default",
+    },
+    {
+        value: "outline",
+        label: "outline",
+    },
+    {
+        value: "ghost",
+        label: "ghost",
+    },
+    {
+        value: "link",
+        label: "link",
+    },
+]

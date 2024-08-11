@@ -29,7 +29,10 @@ const config = {
           secondary: "var(--text-secondary)",
           tertiary: "var(--text-tertiary)",
         },
-        headings: "var(--headings-color)",
+        headings: {
+          primary: "var(--headings-primary)",
+          secondary: "var(--headings-secondary)",
+        },
       },
       // Add custom font styles
       keyframes: {

@@ -6,6 +6,9 @@ export const componentSchemas = {
         title: z.string().min(2),
         subtitle: z.string(),
         description: z.string(),
+        backgroundColor: z.string(),
+        textColor: z.string(),
+        headingColor: z.string(),
     }),
     usps: z.object({
         title: z.string().min(2),

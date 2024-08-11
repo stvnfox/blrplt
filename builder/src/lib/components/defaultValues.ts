@@ -6,6 +6,9 @@ export const componentDefaultValues: ComponentDefaultValues = {
         title: "welcome to blrplt builder",
         subtitle: "the best landing page builder",
         description: "pick your components and start building your landing page in a breeze",
+        backgroundColor: "primary",
+        textColor: "primary",
+        headingColor: "secondary",
     },
     usps: {
         title: "blrplt builder - unique selling points",
@@ -120,4 +123,41 @@ export const createDefaultFormValues = (
     })
 
     return formValues
+}
+
+export const getBackgroundColor = (color: string) => {
+    switch(color) {
+        case "primary":
+            return "bg-background-primary"
+        case "secondary":
+            return "bg-background-secondary"
+        case "tertiary":
+            return "bg-background-tertiary"
+        default:
+            return "bg-background-primary"
+    }
+}
+
+export const getHeadingColor = (color: string) => {
+    switch(color) {
+        case "primary":
+            return "text-headings-primary"
+        case "secondary":
+            return "text-headings-secondary"
+        default:
+            return "text-headings-primary"
+    }
+}
+
+export const getTextColor = (color: string) => {
+    switch(color) {
+        case "primary":
+            return "text-text-primary"
+        case "secondary":
+            return "text-text-secondary"
+        case "tertiary":
+            return "text-text-tertiary"
+        default:
+            return "text-text-primary"
+    }
 }

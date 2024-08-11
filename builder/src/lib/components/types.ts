@@ -64,6 +64,9 @@ export interface Header {
     title: string;
     subtitle: string;
     description: string;
+    backgroundColor: string;
+    textColor: string;
+    headingColor: string;
 }
 
 // TODO: Add types for form fields

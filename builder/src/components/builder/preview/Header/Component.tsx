@@ -1,5 +1,7 @@
 import { FunctionComponent } from "react"
+import clsx from "clsx"
 
+import { getBackgroundColor, getHeadingColor, getTextColor } from "@/lib/components/defaultValues"
 import { Header } from "@/lib/components/types"
 
 type HeaderProps = {
@@ -8,10 +10,10 @@ type HeaderProps = {
 
 export const HeaderComponent: FunctionComponent<HeaderProps> = ({ data }) => {
     return (
-        <header className="py-24 mt-16 text-center">
-            <h1 className="text-headings mb-2 text-7xl">{data.title}</h1>
-            <h2 className="mb-5 text-3xl">{data.subtitle}</h2>
-            <p className="text-sm">{data.description}</p>
+        <header className={clsx("py-24 mt-16 text-center", getBackgroundColor(data.backgroundColor))}>
+            <h1 className={clsx("text-headings mb-2 text-7xl", getHeadingColor(data.headingColor))}>{data.title}</h1>
+            <h2 className={clsx("mb-5 text-3xl", getHeadingColor(data.headingColor))}>{data.subtitle}</h2>
+            <p className={clsx("text-sm", getTextColor(data.textColor))}>{data.description}</p>
         </header>
     )
 }
