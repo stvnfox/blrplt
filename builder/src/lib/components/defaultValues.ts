@@ -8,7 +8,7 @@ export const componentDefaultValues: ComponentDefaultValues = {
         description: "pick your components and start building your landing page in a breeze",
         backgroundColor: "primary",
         textColor: "primary",
-        headingColor: "secondary",
+        headingColor: "primary",
     },
     usps: {
         title: "blrplt builder - unique selling points",

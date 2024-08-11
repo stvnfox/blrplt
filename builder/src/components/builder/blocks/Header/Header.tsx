@@ -72,6 +72,7 @@ export const Header: FunctionComponent<ComponentProps> = ({ form }) => {
                                 </FormItem>
                             )}
                         />
+                        <h3 className="text-lg font-semibold mb-2">style options</h3>
                         <FormField
                             control={form.control}
                             name="header.backgroundColor"
