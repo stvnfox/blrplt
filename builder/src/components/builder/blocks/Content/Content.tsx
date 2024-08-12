@@ -3,10 +3,17 @@
 import { FunctionComponent } from "react"
 
 import { ComponentProps } from "@/lib/components/types"
-import { positionOptions } from "@/lib/components/options"
+import {
+    backgroundColorOptions,
+    buttonLookOptions,
+    buttonStyleOptions,
+    headingColorOptions,
+    positionOptions,
+    textColorOptions,
+} from "@/lib/components/options"
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -138,7 +145,7 @@ export const Content: FunctionComponent<ComponentProps> = ({ form }) => {
                                 />
                             </div>
                         </div>
-                        <div className="mt-6">
+                        <div className="my-6">
                             <Label
                                 htmlFor="content-cta-block"
                                 className="text-sm font-normal text-neutral-500"
@@ -197,8 +204,174 @@ export const Content: FunctionComponent<ComponentProps> = ({ form }) => {
                                         </FormItem>
                                     )}
                                 />
+                                <FormField
+                                    control={form.control}
+                                    name="content.cta.buttonLook"
+                                    render={({ field }) => (
+                                        <FormItem className="mb-4">
+                                            <FormLabel>button look</FormLabel>
+                                            <Select
+                                                onValueChange={field.onChange}
+                                                defaultValue={field.value}
+                                            >
+                                                <FormControl>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="select a button look" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    {buttonLookOptions.map((option, index) => (
+                                                        <SelectItem
+                                                            key={`option-${index}`}
+                                                            value={option.value}
+                                                        >
+                                                            {option.label}
+                                                        </SelectItem>
+                                                    ))}
+                                                </SelectContent>
+                                            </Select>
+                                            <FormDescription className="!mt-0">
+                                                you can set the value for these colors on the settings page
+                                            </FormDescription>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="content.cta.buttonStyle"
+                                    render={({ field }) => (
+                                        <FormItem className="mb-4">
+                                            <FormLabel>button style</FormLabel>
+                                            <Select
+                                                onValueChange={field.onChange}
+                                                defaultValue={field.value}
+                                            >
+                                                <FormControl>
+                                                    <SelectTrigger>
+                                                        <SelectValue placeholder="select a button style" />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    {buttonStyleOptions.map((option, index) => (
+                                                        <SelectItem
+                                                            key={`option-${index}`}
+                                                            value={option.value}
+                                                        >
+                                                            {option.label}
+                                                        </SelectItem>
+                                                    ))}
+                                                </SelectContent>
+                                            </Select>
+                                            <FormDescription className="!mt-0">
+                                                you can set the value for these colors on the settings page
+                                            </FormDescription>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
                             </div>
                         </div>
+                        <h3 className="mb-2 text-lg font-semibold">style options</h3>
+                        <FormField
+                            control={form.control}
+                            name="content.backgroundColor"
+                            render={({ field }) => (
+                                <FormItem className="mb-4">
+                                    <FormLabel>background color</FormLabel>
+                                    <Select
+                                        onValueChange={field.onChange}
+                                        defaultValue={field.value}
+                                    >
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="select a background color" />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {backgroundColorOptions.map((option, index) => (
+                                                <SelectItem
+                                                    key={`option-${index}`}
+                                                    value={option.value}
+                                                >
+                                                    {option.label}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormDescription className="!mt-0">
+                                        you can set the value for these colors on the settings page
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="content.headingColor"
+                            render={({ field }) => (
+                                <FormItem className="mb-4">
+                                    <FormLabel>heading color</FormLabel>
+                                    <Select
+                                        onValueChange={field.onChange}
+                                        defaultValue={field.value}
+                                    >
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="select a header color" />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {headingColorOptions.map((option, index) => (
+                                                <SelectItem
+                                                    key={`option-${index}`}
+                                                    value={option.value}
+                                                >
+                                                    {option.label}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormDescription className="!mt-0">
+                                        you can set the value for these colors on the settings page
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="content.textColor"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>text color</FormLabel>
+                                    <Select
+                                        onValueChange={field.onChange}
+                                        defaultValue={field.value}
+                                    >
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="select a text color" />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {textColorOptions.map((option, index) => (
+                                                <SelectItem
+                                                    key={`option-${index}`}
+                                                    value={option.value}
+                                                >
+                                                    {option.label}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormDescription className="!mt-0">
+                                        you can set the value for these colors on the settings page
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                         <div className="text-right">
                             <RemoveComponentButton component="content" />
                         </div>

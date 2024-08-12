@@ -91,6 +91,8 @@ export const componentDefaultValues: ComponentDefaultValues = {
             label: "get started",
             href: "/",
             ariaLabel: "click here to get started",
+            buttonStyle: "default",
+            buttonLook: "primary"
         },
         image: {
             src: {
@@ -100,7 +102,10 @@ export const componentDefaultValues: ComponentDefaultValues = {
             },
             alt: "random image",
             position: "left",
-        }
+        },
+        backgroundColor: "primary",
+        textColor: "primary",
+        headingColor: "primary",
     }
 }
 
@@ -159,5 +164,16 @@ export const getTextColor = (color: string) => {
             return "text-text-tertiary"
         default:
             return "text-text-primary"
+    }
+}
+
+export const getButtonLook = (look: string) => {
+    switch(look) {
+        case "primary":
+            return "bg-button-background-primary text-button-text-primary hover:opacity-90 transition-opacity"
+        case "secondary":
+            return "bg-button-background-secondary text-button-text-secondary hover:opacity-90 transition-opacity"
+        default:
+            return "bg-button-background-primary text-button-text-primary hover:opacity-90 transition-opacity"
     }
 }

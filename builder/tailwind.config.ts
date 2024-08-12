@@ -33,6 +33,14 @@ const config = {
           primary: "var(--headings-primary)",
           secondary: "var(--headings-secondary)",
         },
+        "button-background": {
+          primary: "var(--buttons-primary-background)",
+          secondary: "var(--buttons-secondary-background)",
+        },
+        "button-text": {
+          primary: "var(--buttons-primary-text)",
+          secondary: "var(--buttons-secondary-text)",
+        },
       },
       // Add custom font styles
       keyframes: {

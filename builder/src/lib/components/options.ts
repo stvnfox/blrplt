@@ -93,7 +93,7 @@ export const headingColorOptions = [
     },
 ]
 
-export const buttonColorOptions = [
+export const buttonLookOptions = [
     {
         value: "primary",
         label: "primary",

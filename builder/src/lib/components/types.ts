@@ -11,6 +11,8 @@ export interface Content {
         label: string;
         href: string;
         ariaLabel: string;
+        buttonLook: string;
+        buttonStyle: string;
     };
     image: {
         src: {
@@ -21,6 +23,9 @@ export interface Content {
         alt: string;
         position?: 'left' | 'right';
     };
+    backgroundColor: string;
+    textColor: string;
+    headingColor: string;
 }
 
 export interface FaqItem {

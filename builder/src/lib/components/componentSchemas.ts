@@ -53,6 +53,8 @@ export const componentSchemas = {
             label: z.string().min(2),
             href: z.string().min(1),
             ariaLabel: z.string().min(2),
+            buttonStyle: z.string(),
+            buttonLook: z.string()
         }),
         image: z.object({
             src: z.object({
@@ -63,6 +65,9 @@ export const componentSchemas = {
             alt: z.string().min(2),
             position: z.string().default('left'),
         }).required(),
+        backgroundColor: z.string(),
+        textColor: z.string(),
+        headingColor: z.string(),
     }),
     // ... add more component schemas here
 }
