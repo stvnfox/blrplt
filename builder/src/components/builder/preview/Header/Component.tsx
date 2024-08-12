@@ -10,8 +10,8 @@ type HeaderProps = {
 
 export const HeaderComponent: FunctionComponent<HeaderProps> = ({ data }) => {
     return (
-        <header className={clsx("py-24 mt-16 text-center", getBackgroundColor(data.backgroundColor))}>
-            <h1 className={clsx("text-headings mb-2 text-7xl", getHeadingColor(data.headingColor))}>{data.title}</h1>
+        <header className={clsx("mt-16 py-24 text-center", getBackgroundColor(data.backgroundColor))}>
+            <h1 className={clsx("mb-2 text-7xl text-headings", getHeadingColor(data.headingColor))}>{data.title}</h1>
             <h2 className={clsx("mb-5 text-3xl", getHeadingColor(data.headingColor))}>{data.subtitle}</h2>
             <p className={clsx("text-sm", getTextColor(data.textColor))}>{data.description}</p>
         </header>
