@@ -8,9 +8,9 @@ import { z } from "zod"
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import {
     createDefaultOpenGraphValues,
-    createDefaultStyleSettingsValues,
+    createDefaultTemplateSettingsValues,
+    defaultTemplateSettingValues,
     openGraphDefaultValues,
-    styleSettingsDefaultValues,
 } from "@/lib/settings/defaultValues"
 import { OpenGraphDefaultValues } from "@/lib/settings/types"
 
@@ -71,7 +71,7 @@ export const OpenGraph: FunctionComponent = () => {
             id: site.id,
             settings: {
                 // @ts-expect-error bc site.settings is not typed bc jsonb type
-                style: site.settings.style ?? createDefaultStyleSettingsValues(styleSettingsDefaultValues),
+                template: site.settings.template ?? createDefaultTemplateSettingsValues(defaultTemplateSettingValues),
                 openGraph: createOpenGraphSettingsData(values),
             },
         }

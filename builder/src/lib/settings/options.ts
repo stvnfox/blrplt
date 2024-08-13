@@ -1,3 +1,5 @@
+import { Template } from "./types"
+
 export const fontStyleOptions = [
     {
         value: "sans-serif",
@@ -316,4 +318,12 @@ export const colorOptions = [
             "900": "#701A75",
         },
     },
+]
+
+export const templateOptions = [
+    { value: Template.Minimal, label: "minimal & elegant" },
+    { value: Template.Modern, label: "modern & clean" },
+    { value: Template.Bold, label: "bold & vibrant" },
+    { value: Template.Professional, label: "professional & trustworthy" },
+    { value: Template.Custom, label: "custom" },
 ]

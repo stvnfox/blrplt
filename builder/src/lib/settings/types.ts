@@ -46,3 +46,11 @@ export interface SettingsValues {
     style: StyleSettingsDefaultValues;
     openGraph: OpenGraphDefaultValues;
 }
+
+export enum Template {
+    Minimal = "minimal",
+    Modern = "modern",
+    Bold = "bold",
+    Professional = "professional",
+    Custom = "custom",
+}

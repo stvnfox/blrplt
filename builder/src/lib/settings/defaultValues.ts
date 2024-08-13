@@ -1,57 +1,44 @@
-import { OpenGraphDefaultValues, StyleSettingsDefaultValues } from "./types";
+import { OpenGraphDefaultValues, StyleSettingsDefaultValues, Template } from "./types";
 
-// STYLE
-export const styleSettingsDefaultValues: StyleSettingsDefaultValues = {
-    background: {
-        primary: "#ffffff",
-        secondary: "#f9fafb",
-        tertiary: "#f4f5f7",
-    },
-    text: {
-        primary: "#000000",
-        secondary: "#6b7280",
-        tertiary: "#9ca3af",
-    },
-    headings: {
-        primary: "#000000",
-        secondary: "#6b7280",
-    },
-    font: {
-        style: "sans-serif",
-    },
-    buttons: {
-        primary: {
-            background: "#2563eb",
-            text: "#ffffff",
+// TEMPLATE
+export const defaultTemplateSettingValues = {
+    template: {
+        choice: Template.Minimal,
+        customOptions: {
+            backgroundColor: "",
+            textColor: "",
+            primaryColor: "",
+            secondaryColor: "",
         },
-        secondary: {
-            background: "#f9fafb",
-            text: "#6b7280",
-        },
-        style: "default",
     },
 }
 
-export const addDefaultStyleSettingsValues = () => {
-    return styleSettingsDefaultValues;
+export const addDefaultTemplateSettingsValues = () => {
+    return defaultTemplateSettingValues;
 }
 
-export const createDefaultStyleSettingsValues = (defaultValues: StyleSettingsDefaultValues, existingData?: StyleSettingsDefaultValues) => {
-    const values: StyleSettingsDefaultValues = defaultValues;
-    
+export const createDefaultTemplateSettingsValues = (defaultValues: typeof defaultTemplateSettingValues, existingData?: typeof defaultTemplateSettingValues) => {
+    const values = defaultValues;
+
     Object.keys(defaultValues).forEach((key) => {
-        const settingKey = key as keyof StyleSettingsDefaultValues;
-        
-        // @ts-expect-error because of different otions in in styling
-        values[settingKey] = {
-            ...defaultValues[settingKey] as Record<string, any>,
-            ...(existingData?.[settingKey] as Record<string, any> ?? {}),
-        };
+        const settingKey = key as keyof typeof defaultValues;
+
+        if(settingKey === 'template') {
+            // @ts-expect-error because of different otions in in styling
+            values[settingKey] = {
+                ...defaultValues[settingKey] as Record<string, any>,
+                ...(existingData?.[settingKey] as Record<string, any> ?? {}),
+            };
+            return
+        }
+
+        values[settingKey] = existingData?.[settingKey] ?? defaultValues[settingKey];
     });
     
     return values
 }
 
+//TODO: adjust createStyleObject to template changes
 export const createStyleObject = (settings: any) => {
     return `
         :root {
