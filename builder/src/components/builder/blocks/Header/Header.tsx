@@ -118,7 +118,7 @@ export const Header: FunctionComponent<ComponentProps> = ({ form }) => {
                                     >
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder="select a header color" />
+                                                <SelectValue placeholder="select a heading color" />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>

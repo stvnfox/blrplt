@@ -38,6 +38,9 @@ export interface Faq {
     title: string;
     description: string;
     items: FaqItem[];
+    backgroundColor: string;
+    textColor: string;
+    headingColor: string;
 }
 
 export interface PricingItem {

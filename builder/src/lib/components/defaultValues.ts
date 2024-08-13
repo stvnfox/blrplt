@@ -82,7 +82,10 @@ export const componentDefaultValues: ComponentDefaultValues = {
                 answer: "blrplt builder - frequently asked questions",
                 id: createUuid(),
             }
-        ]
+        ],
+        backgroundColor: "primary",
+        textColor: "primary",
+        headingColor: "primary",
     },
     content: {
         title: "blrplt builder - content block",
@@ -175,5 +178,18 @@ export const getButtonLook = (look: string) => {
             return "bg-button-background-secondary text-button-text-secondary hover:opacity-90 transition-opacity"
         default:
             return "bg-button-background-primary text-button-text-primary hover:opacity-90 transition-opacity"
+    }
+}
+
+export const getBorderColor = (color: string) => {
+    switch(color) {
+        case "primary":
+            return "border-border-primary"
+        case "secondary":
+            return "border-border-secondary"
+        case "tertiary":
+            return "border-border-tertiary"
+        default:
+            return "border-border-primary"
     }
 }

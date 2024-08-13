@@ -125,7 +125,7 @@ export const Content: FunctionComponent<ComponentProps> = ({ form }) => {
                                             >
                                                 <FormControl>
                                                     <SelectTrigger>
-                                                        <SelectValue placeholder="Select a position" />
+                                                        <SelectValue placeholder="select a position" />
                                                     </SelectTrigger>
                                                 </FormControl>
                                                 <SelectContent>
@@ -318,7 +318,7 @@ export const Content: FunctionComponent<ComponentProps> = ({ form }) => {
                                     >
                                         <FormControl>
                                             <SelectTrigger>
-                                                <SelectValue placeholder="select a header color" />
+                                                <SelectValue placeholder="select a heading color" />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>

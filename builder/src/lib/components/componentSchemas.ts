@@ -38,6 +38,9 @@ export const componentSchemas = {
     faq: z.object({
         title: z.string().min(2),
         description: z.string(),
+        backgroundColor: z.string(),
+        textColor: z.string(),
+        headingColor: z.string(),
         items: z.array(
             z.object({
                 question: z.string().min(2),
