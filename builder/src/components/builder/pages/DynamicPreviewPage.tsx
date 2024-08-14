@@ -17,9 +17,9 @@ export const DynamicPreviewPage: FunctionComponent<DynamicPreviewPageProps> = ({
     const page = sites[0].pages.filter((page: any) => page.name.toLowerCase() === currentPage.toLowerCase())[0]
 
     return (
-        <main className="m-8">
+        <main className="bg-background p-3 md:p-8">
             <div className="flex items-center justify-between">
-                <h2 className="mb-2 text-2xl">{siteName}</h2>
+                <a href="/" className="mb-2 text-xl md:text-2xl text-baseText hover:text-primary transition-colors">{siteName}</a>
             </div>
             <ComponentMapper
                 // @ts-expect-error because page isn't typed because jsobb scheme is not available

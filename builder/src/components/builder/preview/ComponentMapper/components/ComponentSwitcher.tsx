@@ -14,7 +14,7 @@ type ComponentSwitcherProps = {
 
 export const ComponentSwitcher: FunctionComponent<ComponentSwitcherProps> = ({ component }) => {
     return (
-        <div className="px-4 md:px-8">
+        <div>
             {component.type === "header" && <HeaderComponent data={component.data} />}
             {component.type === "usps" && <UspsComponent data={component.data} />}
             {component.type === "pricing" && <PricingComponent data={component.data} />}
