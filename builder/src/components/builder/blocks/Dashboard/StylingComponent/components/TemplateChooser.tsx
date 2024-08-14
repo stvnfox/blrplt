@@ -104,6 +104,7 @@ export const TemplateChooser: FunctionComponent = () => {
                                 <RadioGroup
                                     onValueChange={field.onChange}
                                     defaultValue={field.value}
+                                    disabled={!editValues}
                                     className="flex flex-col space-y-1"
                                 >
                                     {templateOptions.map((option) => (
