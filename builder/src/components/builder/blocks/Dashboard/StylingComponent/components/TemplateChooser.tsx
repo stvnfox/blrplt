@@ -71,14 +71,14 @@ export const TemplateChooser: FunctionComponent = () => {
         }
     }
 
+    const isNotCustomTemplate = form.getValues("template.choice") !== Template.Custom;
+    const hasBackgroundColor = form.getValues("template.customOptions.backgroundColor") !== "";
+    const hasTextColor = form.getValues("template.customOptions.textColor") !== "";
+    const hasPrimaryColor = form.getValues("template.customOptions.primaryColor") !== "";
+    const shouldResetCustomOptions = isNotCustomTemplate && hasBackgroundColor && hasTextColor && hasPrimaryColor;
+
     useEffect(() => {
-        if (
-            form.getValues("template.choice") !== Template.Custom &&
-            form.getValues("template.customOptions.backgroundColor") !== "" &&
-            form.getValues("template.customOptions.textColor") !== "" &&
-            form.getValues("template.customOptions.primaryColor") !== "" &&
-            form.getValues("template.customOptions.secondaryColor") !== ""
-        ) {
+        if (shouldResetCustomOptions) {
             form.setValue("template.customOptions", {
                 backgroundColor: "",
                 textColor: "",

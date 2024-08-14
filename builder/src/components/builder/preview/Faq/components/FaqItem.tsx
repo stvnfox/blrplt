@@ -1,30 +1,25 @@
 import { FunctionComponent, useState } from "react"
 
 import { FaqItem } from "@/lib/components/types"
-import { getBackgroundColor, getBorderColor, getHeadingColor, getTextColor } from "@/lib/components/defaultValues"
-import { cn } from "@/lib/utils"
 
 type FaqItemComponentProps = {
     item: FaqItem
-    bgColor: string
-    textColor: string
-    headingColor: string
 }
 
-export const FaqItemComponent: FunctionComponent<FaqItemComponentProps> = ({ item, bgColor, textColor, headingColor }) => {
+export const FaqItemComponent: FunctionComponent<FaqItemComponentProps> = ({ item }) => {
     const [showAnswer, setShowAnswer] = useState(false)
 
     return (
         <div
-            className={cn("active mb-8 rounded-xl border border-solid p-4 transition duration-500", getBackgroundColor(bgColor), getBorderColor(textColor))}
+            className="active mb-8 rounded-xl border border-solid p-4 transition duration-500"
             id={`${item.id}-item`}
         >
             <button
-                className={cn("group inline-flex w-full items-center justify-between text-left text-lg font-normal leading-8 transition duration-500 ", getTextColor(textColor))}
+                className="group inline-flex w-full items-center justify-between text-left text-lg font-normal leading-8 transition duration-500"
                 id={`${item.id}-item`}
                 onClick={() => setShowAnswer(!showAnswer)}
             >
-                <h5 className={cn(getHeadingColor(headingColor))}>{item.question}</h5>
+                <h5 className="text-textBase">{item.question}</h5>
                 {!showAnswer ? (
                     <svg
                         className="block h-6 w-6 origin-center transition duration-500 group-hover:text-indigo-600"
@@ -62,7 +57,7 @@ export const FaqItemComponent: FunctionComponent<FaqItemComponentProps> = ({ ite
                     id={`${item.id}-item-collapse`}
                     className="w-full overflow-hidden pr-4 mt-2"
                 >
-                    <p className={cn("text-base font-normal leading-6", getTextColor(textColor))}>
+                    <p className="text-base font-normal leading-6">
                         {item.answer}
                     </p>
                 </div>

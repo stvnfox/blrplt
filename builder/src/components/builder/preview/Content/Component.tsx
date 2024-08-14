@@ -1,7 +1,6 @@
 import { FunctionComponent } from "react"
 
 import { Content } from "@/lib/components/types"
-import { getBackgroundColor, getButtonLook, getHeadingColor, getTextColor } from "@/lib/components/defaultValues"
 import { cn } from "@/lib/utils"
 // import { Button } from "@/components/ui/button"
 
@@ -13,7 +12,7 @@ export const ContentComponent: FunctionComponent<ContentComponentProps> = ({ dat
     const imageLeft = data.image.position === "left"
 
     return (
-        <section className={cn(getBackgroundColor(data.backgroundColor))}>
+        <section>
             <div className="container mx-auto flex flex-col items-center px-5 py-24 md:flex-row">
                 <div
                     className={cn(
@@ -33,20 +32,15 @@ export const ContentComponent: FunctionComponent<ContentComponentProps> = ({ dat
                         imageLeft ? "order-1 md:pl-16 lg:pl-24" : "order-0 md:pr-16 lg:pr-24"
                     )}
                 >
-                    <h2 className={cn("mb-4 text-3xl font-medium sm:text-4xl", getHeadingColor(data.headingColor))}>
-                        {data.title}
-                    </h2>
-                    <p className={cn("mb-8 leading-relaxed", getTextColor(data.textColor))}>{data.description}</p>
+                    <h2 className="text-primary mb-4 text-3xl font-medium sm:text-4xl">{data.title}</h2>
+                    <p className="text-baseText mb-8 leading-relaxed">{data.description}</p>
                     {data.cta && (
                         // TODO: Implement button styles from settings
                         // <Button asChild variant={"link"} className={cn(getButtonLook(data.cta.buttonLook))}>
                         <a
                             href={data.cta?.href}
                             aria-label={data.cta?.ariaLabel}
-                            className={cn(
-                                "inline-flex rounded border-0 px-6 py-2 text-lg focus:outline-none",
-                                getButtonLook(data.cta.buttonLook)
-                            )}
+                            className="bg-primary inline-flex rounded border-0 px-6 py-2 text-lg text-white focus:outline-none"
                         >
                             {data.cta?.label}
                         </a>

@@ -1,4 +1,5 @@
-import { OpenGraphDefaultValues, StyleSettingsDefaultValues, Template } from "./types";
+import { setBoldTemplate, setCustomTemplate, setMinimalTemplate, setModernTemplate, setProfessionalTemplate } from "./createTemplate";
+import { OpenGraphDefaultValues, Template } from "./types";
 
 // TEMPLATE
 export const defaultTemplateSettingValues = {
@@ -38,26 +39,21 @@ export const createDefaultTemplateSettingsValues = (defaultValues: typeof defaul
     return values
 }
 
-//TODO: adjust createStyleObject to template changes
 export const createStyleObject = (settings: any) => {
-    return `
-        :root {
-            --background-primary: ${settings.style.background.primary};
-            --background-secondary: ${settings.style.background.secondary};
-            --background-tertiary: ${settings.style.background.tertiary};
-            --text-primary: ${settings.style.text.primary};
-            --text-secondary: ${settings.style.text.secondary};
-            --text-tertiary: ${settings.style.text.tertiary};
-            --headings-primary: ${settings.style.headings.primary};
-            --headings-secondary: ${settings.style.headings.secondary};
-            --font-style: ${settings.style.font.style};
-            --buttons-primary-background: ${settings.style.buttons.primary.background};
-            --buttons-primary-text: ${settings.style.buttons.primary.text};
-            --buttons-secondary-background: ${settings.style.buttons.secondary.background};
-            --buttons-secondary-text: ${settings.style.buttons.secondary.text};
-            --buttons-style: ${settings.style.buttons.style};
-        }
-    `
+    switch(settings.template.choice) {
+        case Template.Minimal:
+            return setMinimalTemplate();
+        case Template.Modern:
+            return setModernTemplate();
+        case Template.Bold:
+            return setBoldTemplate();
+        case Template.Professional:
+            return setProfessionalTemplate();
+        case Template.Custom:
+            return setCustomTemplate(settings.template.customOptions);
+        default:
+            return setMinimalTemplate();
+    }
 }
 
 // OPEN GRAPH

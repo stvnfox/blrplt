@@ -19,28 +19,10 @@ const config = {
     },
     extend: {
       colors: {
-        background: {
-          primary: "var(--background-primary)",
-          secondary: "var(--background-secondary)",
-          tertiary: "var(--background-tertiary)",
-        },
-        text: {
-          primary: "var(--text-primary)",
-          secondary: "var(--text-secondary)",
-          tertiary: "var(--text-tertiary)",
-        },
-        headings: {
-          primary: "var(--headings-primary)",
-          secondary: "var(--headings-secondary)",
-        },
-        "button-background": {
-          primary: "var(--buttons-primary-background)",
-          secondary: "var(--buttons-secondary-background)",
-        },
-        "button-text": {
-          primary: "var(--buttons-primary-text)",
-          secondary: "var(--buttons-secondary-text)",
-        },
+        primary: "var(--primary-color)",
+        secondary: "var(--secondary-color)",
+        background: "var(--background-color)",
+        baseText: "var(--text-color)",
       },
       // Add custom font styles
       keyframes: {
