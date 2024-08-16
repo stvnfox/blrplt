@@ -3,17 +3,10 @@
 import { FunctionComponent } from "react"
 
 import { ComponentProps } from "@/lib/components/types"
-import {
-    backgroundColorOptions,
-    buttonLookOptions,
-    buttonStyleOptions,
-    headingColorOptions,
-    positionOptions,
-    textColorOptions,
-} from "@/lib/components/options"
+import { positionOptions } from "@/lib/components/options"
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
