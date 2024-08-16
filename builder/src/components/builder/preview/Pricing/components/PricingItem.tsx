@@ -8,15 +8,15 @@ type PricingItemProps = {
 
 export const PricingItemComponent: FunctionComponent<PricingItemProps> = ({ item }) => (
     <div className="w-full p-4 md:w-1/2 xl:w-1/4">
-        <div className="relative flex h-full flex-col overflow-hidden rounded-lg border-2 border-indigo-500 p-6">
+        <div className="relative flex h-full flex-col overflow-hidden rounded-lg border-2 border-primary p-6">
             {item.mostPopular}
             {item.mostPopular && (
-                <span className="absolute right-0 top-0 rounded-bl bg-indigo-500 px-3 py-1 text-xs uppercase tracking-widest text-white">
+                <span className="absolute right-0 top-0 rounded-bl bg-primary px-3 py-1 text-xs uppercase tracking-widest text-background">
                     Most popular
                 </span>
             )}
             <h4 className="title-font mb-1 text-sm font-medium tracking-widest">{item.title}</h4>
-            <h3 className="mb-4 flex items-center border-b border-gray-200 pb-4 text-5xl leading-none text-gray-900">
+            <h3 className="mb-4 flex items-center border-b border-primary pb-4 text-5xl leading-none text-primary">
                 <span>${item.price} {item.mostPopular}</span>
                 {/* <span className="ml-1 text-lg font-normal text-gray-500">/mo</span> */}
             </h3>
@@ -25,7 +25,7 @@ export const PricingItemComponent: FunctionComponent<PricingItemProps> = ({ item
                     key={`pricing-include-${index}`}
                     className="mb-2 flex items-start text-gray-600 flex-grow"
                 >
-                    <span className="mr-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-gray-400 text-white">
+                    <span className="mr-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-secondary text-background">
                         <svg
                             fill="none"
                             stroke="currentColor"

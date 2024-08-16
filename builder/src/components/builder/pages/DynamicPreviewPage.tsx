@@ -17,8 +17,8 @@ export const DynamicPreviewPage: FunctionComponent<DynamicPreviewPageProps> = ({
     const page = sites[0].pages.filter((page: any) => page.name.toLowerCase() === currentPage.toLowerCase())[0]
 
     return (
-        <main className="bg-background p-3 md:p-8">
-            <div className="flex items-center justify-between">
+        <main className="bg-background py-4 md:py-8">
+            <div className="container flex items-center justify-between">
                 <a href="/" className="mb-2 text-xl md:text-2xl text-baseText hover:text-primary transition-colors">{siteName}</a>
             </div>
             <ComponentMapper

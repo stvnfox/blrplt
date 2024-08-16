@@ -8,11 +8,11 @@ type PricingComponentProps = {
 
 export const PricingComponent: FunctionComponent<PricingComponentProps> = ({ data }) => {
     return (
-        <section className="body-font overflow-hidden text-gray-600">
-            <div className="container mx-auto px-5 py-24">
-                <div className="mb-20 flex w-full flex-col text-center">
-                    <h1 className="title-font mb-2 text-3xl font-medium text-gray-900 sm:text-4xl">{data.title}</h1>
-                    <p className="mx-auto text-base leading-relaxed text-gray-500 lg:w-2/3">{data.description}</p>
+        <section className="overflow-hidden">
+            <div className="py-12 md:py-24">
+                <div className="mb-10 md:mb-20 flex w-full flex-col text-center">
+                    <h1 className="title-font mb-2 text-3xl font-medium text-primary sm:text-4xl">{data.title}</h1>
+                    <p className="mx-auto leading-relaxed text-baseText lg:w-2/3 mt-2">{data.description}</p>
                 </div>
                 <div className="-m-4 flex flex-wrap justify-center">
                     {data.items.map((item, index) => {

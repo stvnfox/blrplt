@@ -8,23 +8,10 @@ type UspItemProps = {
 
 export const UspItemComponent: FunctionComponent<UspItemProps> = ({ item }) => {
     return (
-        <div className="flex flex-col items-center p-4 text-center md:w-1/3">
-            <div className="mb-5 inline-flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-indigo-100 text-indigo-500">
-                <svg
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="h-10 w-10"
-                    viewBox="0 0 24 24"
-                >
-                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                </svg>
-            </div>
-            <div className="flex-grow">
-                <h2 className="title-font mb-3 text-lg font-medium text-gray-900">{item.title}</h2>
-                <p className="text-base leading-relaxed">
+        <div className="flex flex-col items-center text-center w-full md:w-[300px] md:min-w-[300px]">
+            <div className="flex-grow border-neutral-200 rounded-xl border-2 border-primary pt-10 pb-16 px-8">
+                <h2 className="mb-3 text-lg font-medium text-primary text-pretty">{item.title}</h2>
+                <p className="leading-relaxed text-baseText">
                     {item.description}
                 </p>
                 {/* <a className="mt-3 inline-flex items-center text-indigo-500">

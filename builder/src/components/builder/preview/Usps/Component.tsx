@@ -10,15 +10,14 @@ type UspsProps = {
 
 export const UspsComponent: FunctionComponent<UspsProps> = ({ data }) => {
     return (
-        <section className="body-font text-gray-600">
-            <div className="container mx-auto px-5 py-24">
-                <div className="mb-20 text-center">
-                    <h2 className="title-font mb-4 text-2xl font-medium text-gray-900 sm:text-3xl">{data.title}</h2>
+            <div className="py-12 md:py-24">
+                <div className="mb-12 text-center">
+                    <h2 className="title-font mb-4 text-2xl font-medium text-baseText sm:text-3xl">{data.title}</h2>
                     <div className="mt-6 flex justify-center">
-                        <div className="inline-flex h-1 w-16 rounded-full bg-indigo-500"></div>
+                        <div className="inline-flex h-1 w-16 rounded-full bg-primary"></div>
                     </div>
                 </div>
-                <div className="-mx-4 -mb-10 -mt-4 flex flex-wrap space-y-6 sm:-m-4 md:space-y-0 justify-center">
+                <div className="flex flex-wrap space-y-6 md:space-y-0 gap-x-12 justify-center">
                     {data.items.map((item, index) => {
                         return (
                             <UspItem
@@ -32,6 +31,5 @@ export const UspsComponent: FunctionComponent<UspsProps> = ({ data }) => {
                     Button
                 </button> */}
             </div>
-        </section>
     )
 }

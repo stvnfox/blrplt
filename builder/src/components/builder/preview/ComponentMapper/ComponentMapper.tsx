@@ -17,7 +17,7 @@ type ComponentMapperProps = {
 
 export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ components, slug }) => {
     return (
-        <section className="space-y-4">
+        <section className="container space-y-4">
             {components.map((component, index) => {
                 return (
                     <ComponentSwitcher
