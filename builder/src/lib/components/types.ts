@@ -11,8 +11,6 @@ export interface Content {
         label: string;
         href: string;
         ariaLabel: string;
-        buttonLook: string;
-        buttonStyle: string;
     };
     image: {
         src: {
@@ -23,9 +21,6 @@ export interface Content {
         alt: string;
         position?: 'left' | 'right';
     };
-    backgroundColor: string;
-    textColor: string;
-    headingColor: string;
 }
 
 export interface FaqItem {
@@ -38,9 +33,6 @@ export interface Faq {
     title: string;
     description: string;
     items: FaqItem[];
-    backgroundColor: string;
-    textColor: string;
-    headingColor: string;
 }
 
 export interface PricingItem {
@@ -72,9 +64,6 @@ export interface Header {
     title: string;
     subtitle: string;
     description: string;
-    backgroundColor: string;
-    textColor: string;
-    headingColor: string;
 }
 
 // TODO: Add types for form fields

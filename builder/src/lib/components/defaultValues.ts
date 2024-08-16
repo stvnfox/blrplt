@@ -6,9 +6,6 @@ export const componentDefaultValues: ComponentDefaultValues = {
         title: "welcome to blrplt builder",
         subtitle: "the best landing page builder",
         description: "pick your components and start building your landing page in a breeze",
-        backgroundColor: "primary",
-        textColor: "primary",
-        headingColor: "primary",
     },
     usps: {
         title: "blrplt builder - unique selling points",
@@ -83,9 +80,6 @@ export const componentDefaultValues: ComponentDefaultValues = {
                 id: createUuid(),
             }
         ],
-        backgroundColor: "primary",
-        textColor: "primary",
-        headingColor: "primary",
     },
     content: {
         title: "blrplt builder - content block",
@@ -94,8 +88,6 @@ export const componentDefaultValues: ComponentDefaultValues = {
             label: "get started",
             href: "/",
             ariaLabel: "click here to get started",
-            buttonStyle: "default",
-            buttonLook: "primary"
         },
         image: {
             src: {
@@ -106,9 +98,6 @@ export const componentDefaultValues: ComponentDefaultValues = {
             alt: "random image",
             position: "left",
         },
-        backgroundColor: "primary",
-        textColor: "primary",
-        headingColor: "primary",
     }
 }
 
