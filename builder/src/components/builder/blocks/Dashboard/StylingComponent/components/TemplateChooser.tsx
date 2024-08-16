@@ -62,6 +62,7 @@ export const TemplateChooser: FunctionComponent = () => {
 
         if (response.status === 200) {
             setStatus("success")
+            setEditValues(false)
 
             setTimeout(() => {
                 setStatus("idle")
@@ -75,7 +76,8 @@ export const TemplateChooser: FunctionComponent = () => {
     const hasBackgroundColor = form.getValues("template.customOptions.backgroundColor") !== "";
     const hasTextColor = form.getValues("template.customOptions.textColor") !== "";
     const hasPrimaryColor = form.getValues("template.customOptions.primaryColor") !== "";
-    const shouldResetCustomOptions = isNotCustomTemplate && hasBackgroundColor && hasTextColor && hasPrimaryColor;
+    const hasSecondaryColor = form.getValues("template.customOptions.secondaryColor") !== "";
+    const shouldResetCustomOptions = isNotCustomTemplate && (hasBackgroundColor || hasTextColor || hasPrimaryColor || hasSecondaryColor);
 
     useEffect(() => {
         if (shouldResetCustomOptions) {
