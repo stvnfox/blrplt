@@ -22,7 +22,7 @@ export default function Settings() {
             />
             <StylingComponent />
             <HeadingComponent
-                title="open graph settings"
+                title="seo settings"
             />
             <OpenGraph />
         </section>
