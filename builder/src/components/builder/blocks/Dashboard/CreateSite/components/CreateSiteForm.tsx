@@ -79,10 +79,10 @@ export function CreateSiteForm({ setOpen }: { setOpen: () => void }) {
             url: formattedUrl,
             id: createUuid(),
             userId: user,
-            settings: [
-                { template: addDefaultTemplateSettingsValues() },
-                { openGraph: addDefaultOpenGraphValues(values.name, values.url) },
-            ],
+            settings: {
+                template: addDefaultTemplateSettingsValues(),
+                openGraph: addDefaultOpenGraphValues(values.name, values.url) 
+            },
             pages: [
                 {
                     name: "Home",
