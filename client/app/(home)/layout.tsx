@@ -35,6 +35,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     icons: {
       icon: '/icon.ico',
+    },
+    verification: {
+      google: "L9CWIdtPdszeYs50_jyhGuzYEQg41prlEz6uAr7utJU",
     }
   }
 }

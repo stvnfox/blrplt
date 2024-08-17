@@ -1,5 +1,6 @@
 import './globals.css'
 
+import { Metadata } from 'next'
 import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
 
 import { Toaster } from '@/components/ui/toaster'
@@ -21,6 +22,14 @@ const mono = IBM_Plex_Mono({
   subsets: ['latin'],
   weight: ['500', '700'],
 })
+
+export const metadata: Metadata = {
+  title: 'blrplt builder',
+  description: 'the place where you can build a landing page in 10 minutes',
+  verification: {
+    google: "L9CWIdtPdszeYs50_jyhGuzYEQg41prlEz6uAr7utJU"
+  }
+}
 
 export default async function RootLayout({
   children,
