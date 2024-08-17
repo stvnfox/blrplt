@@ -72,5 +72,8 @@ export async function generateMetadata({
             type: "website",
             images: [image],
         },
+        verification: {
+            google: "L9CWIdtPdszeYs50_jyhGuzYEQg41prlEz6uAr7utJU"
+        }
     }
 }

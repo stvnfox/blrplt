@@ -9,7 +9,10 @@ import { NavigationComponent } from "@/components/builder/layout/NavigationCompo
 
 export const metadata: Metadata = {
     title: "blrplt builder",
-    description: "the place where you can build a website quickly without any hassle",
+    description: "the place where you can build a landing page quickly without any hassle",
+    verification: {
+        google: "L9CWIdtPdszeYs50_jyhGuzYEQg41prlEz6uAr7utJU"
+    }
 }
 
 export default async function RootLayout({

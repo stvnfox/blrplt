@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
     title: "blrplt builder",
     description: "the place where you can build a website quickly without any hassle",
+    verification: {
+        google: "L9CWIdtPdszeYs50_jyhGuzYEQg41prlEz6uAr7utJU"
+    }
 }
 
 export default function RootLayout({
