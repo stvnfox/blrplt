@@ -12,7 +12,11 @@ import { Input } from "@/components/ui/input"
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { createUuid } from "@/lib/utils"
 import { componentDefaultValues } from "@/lib/components/defaultValues"
-import { addDefaultOpenGraphValues, addDefaultTemplateSettingsValues } from "@/lib/settings/defaultValues"
+import {
+    addDefaultOpenGraphValues,
+    addDefaultTemplateSettingsValues,
+    openGraphDefaultValues,
+} from "@/lib/settings/defaultValues"
 import { checkIfUrlIsAvailable } from "@/lib/urlCheck"
 
 const formSchema = z.object({
@@ -75,7 +79,10 @@ export function CreateSiteForm({ setOpen }: { setOpen: () => void }) {
             url: formattedUrl,
             id: createUuid(),
             userId: user,
-            settings: [{ template: addDefaultTemplateSettingsValues() }, { openGraph: addDefaultOpenGraphValues() }],
+            settings: {
+                template: addDefaultTemplateSettingsValues(),
+                openGraph: addDefaultOpenGraphValues(values.name, values.url) 
+            },
             pages: [
                 {
                     name: "Home",
