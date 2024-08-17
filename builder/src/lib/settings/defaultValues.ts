@@ -69,8 +69,12 @@ export const openGraphDefaultValues = {
     },
 }
 
-export const addDefaultOpenGraphValues = () => {
-    return openGraphDefaultValues;
+export const addDefaultOpenGraphValues = (siteName: string, siteUrl: string) => {
+    return {
+        ...openGraphDefaultValues,
+        title: siteName,
+        url: siteUrl,
+    }
 }
 
 export const createDefaultOpenGraphValues = (defaultValues: OpenGraphDefaultValues, siteUrl: string, siteName: string, existingData?: OpenGraphDefaultValues) => {
