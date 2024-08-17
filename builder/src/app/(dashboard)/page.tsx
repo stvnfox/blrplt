@@ -12,7 +12,7 @@ export default function Dashboard() {
     return (
         <section className="flex flex-1 flex-col gap-4">
             <div className="flex w-full items-center justify-between pt-4 px-4 md:pt-8 md:px-8">
-                <h1>{siteName ? siteName : "blrplt builder"} - site settings</h1>
+                <h1>{ siteName } - { siteName !== "blrplt builder" ? "site settings" : "dashboard" }</h1>
             </div>
             {sites[0] ? (
                 <>
