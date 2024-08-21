@@ -6,19 +6,18 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { resetPassword } from "@/actions/auth"
-
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import { Status, StatusType } from "@/lib/types"
 
 const formSchema = z.object({
     email: z.string().email(),
 })
 
-export default function RegisterPage() {
-    const [showMessage, setShowMessage] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
+export default function ForgotPasswordPage() {
+    const [message, setMessage] = useState("")
+    const [status, setStatus] = useState<StatusType>(Status.Idle)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -28,15 +27,25 @@ export default function RegisterPage() {
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        setIsLoading(true)
+        setStatus(Status.Loading)
+        setMessage("")
 
-        const response = await resetPassword(values.email)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(values),
+        })
+        const data = await response.json()
 
-        if (response.message === "succeeded") {
-            setShowMessage(true)
+        if (data.status !== 201) {
+            setStatus(Status.Error)
+            setMessage(data.message)
+            return
         }
 
-        setIsLoading(false)
+        setStatus("success")
     }
 
     return (
@@ -63,12 +72,15 @@ export default function RegisterPage() {
                             </FormItem>
                         )}
                     />
-                    {showMessage && (
+                    {status === Status.Success && (
                         <p className="text-sm font-semibold">please check your email for further instructions</p>
+                    )}
+                    {status === Status.Error && (
+                        <p className="text-sm font-semibold text-red-600">{message}</p>
                     )}
                     <Button
                         type="submit"
-                        disabled={isLoading}
+                        disabled={status === Status.Loading}
                     >
                         reset password
                     </Button>
