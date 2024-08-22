@@ -76,7 +76,7 @@ export default function ForgotPasswordPage() {
                         <p className="text-sm font-semibold">please check your email for further instructions</p>
                     )}
                     {status === Status.Error && (
-                        <p className="text-sm font-semibold text-red-600">{message}</p>
+                        <p className="text-sm font-semibold text-red-600 lowercase">{message}</p>
                     )}
                     <Button
                         type="submit"

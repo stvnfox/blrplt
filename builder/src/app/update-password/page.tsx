@@ -1,13 +1,14 @@
 "use client"
 
+import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { HandMetal } from "lucide-react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { updatePassword } from "@/actions/auth"
 import { createClient } from "@/lib/supabase/client"
+import { StatusType, Status } from "@/lib/types"
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
@@ -23,12 +24,14 @@ const formSchema = z
         path: ["confirmPassword"],
     })
 
-export default function RegisterPage() {
-    const [isSucceeded, setIsSucceeded] = useState(false)
-    const [hasError, setHasError] = useState(false)
+export default function UpdatePasswordPage() {
+    const [status, setStatus] = useState<StatusType>(Status.Idle)
     const [message, setMessage] = useState("")
-    const [isLoading, setIsLoading] = useState(false)
     const [isExpired, setIsExpired] = useState(false)
+
+    const params = useSearchParams()
+    const code = params.get('code') ?? ""
+    const [tokens, setTokens] = useState({ access_token: "", refresh_token: "" })
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -39,32 +42,58 @@ export default function RegisterPage() {
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        setIsLoading(true)
+        setStatus(Status.Loading)
+        setMessage("")
 
-        const response = await updatePassword(values.password)
-
-        if (response.status === "success") {
-            setIsSucceeded(true)
-            form.reset()
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/update-password`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${tokens.access_token}`
+            },
+            body: JSON.stringify({ password: values.password, access_token: tokens.access_token, refresh_token: tokens.refresh_token }),
+        })
+        const data = await response.json()
+        
+        if(data.status !== 201) {
+            setStatus(Status.Error)
+            setMessage(data.message)
+            return
         }
 
-        if (response.status === "failed") {
-            setHasError(true)
-        }
+        setStatus(Status.Success)
+        setMessage(data.message)
+    }
 
-        setMessage(response.message)
-        setIsLoading(false)
+    const verifyToken = async () => {
+        const supabase = createClient()
+
+        const { data, error } = await supabase.auth.verifyOtp({
+            token_hash: code,
+            type: 'email'
+        })
+
+        if(data.session) {
+            supabase.auth.onAuthStateChange((event, session) => {
+                if(event === 'SIGNED_IN' && session) {
+                    setTokens({
+                        access_token: session.access_token,
+                        refresh_token: session.refresh_token
+                    })
+                }
+
+                if(event === 'INITIAL_SESSION' && !session) {
+                    setIsExpired(true)
+                }
+            })
+        }
     }
 
     useEffect(() => {
-        const supabase = createClient()
-
-        supabase.auth.onAuthStateChange((event, session) => {
-            if (event === "INITIAL_SESSION" && !session) {
-                setIsExpired(true)
-            }
-        })
-    }, [])
+        if(code) {
+            verifyToken()
+        }
+    }, [code])
 
     return (
         <main className="flex min-h-screen items-center justify-center">
@@ -113,8 +142,8 @@ export default function RegisterPage() {
                                     </FormItem>
                                 )}
                             />
-                            {hasError && <p className="text-sm text-red-500">{message}</p>}
-                            {isSucceeded ? (
+                            {status === Status.Error && <p className="text-sm text-red-500">{message}</p>}
+                            {status === Status.Success ? (
                                 <>
                                     <p className="text-sm text-green-500">{message}</p>
                                     <a
@@ -129,7 +158,7 @@ export default function RegisterPage() {
                                     <Button
                                         type="submit"
                                         className="h-10 rounded border-2 border-black bg-black p-2 text-sm font-normal text-white shadow-none transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
-                                        disabled={isLoading}
+                                        disabled={status === Status.Loading}
                                     >
                                         save new password
                                     </Button>
