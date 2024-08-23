@@ -62,8 +62,13 @@ export const AccountMenu: FunctionComponent = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem disabled>support (soon)</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                    <Button onClick={logout}>logout</Button>
+                <DropdownMenuItem className="!hover:bg-transparant">
+                    <Button
+                        className="w-full cursor-pointer"
+                        onClick={logout}
+                    >
+                        logout
+                    </Button>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
