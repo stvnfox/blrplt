@@ -19,10 +19,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 export const AccountMenu: FunctionComponent = () => {
-    const { sites } = useBuilderContext()
+    const { siteName } = useBuilderContext()
     const supabase = createClient()
     const router = useRouter()
-    const siteName = sites[0] ? sites[0].name : "blrplt builder"
 
     const logout = async () => {
         const { error } = await supabase.auth.signOut()
