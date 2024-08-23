@@ -30,7 +30,7 @@ export default function UpdatePasswordComponent() {
     const [isExpired, setIsExpired] = useState(false)
 
     const params = useSearchParams()
-    const code = params.get('code') ?? ""
+    const code = params.get("code") ?? ""
     const [tokens, setTokens] = useState({ access_token: "", refresh_token: "" })
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -49,13 +49,17 @@ export default function UpdatePasswordComponent() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${tokens.access_token}`
+                Authorization: `Bearer ${tokens.access_token}`,
             },
-            body: JSON.stringify({ password: values.password, access_token: tokens.access_token, refresh_token: tokens.refresh_token }),
+            body: JSON.stringify({
+                password: values.password,
+                access_token: tokens.access_token,
+                refresh_token: tokens.refresh_token,
+            }),
         })
         const data = await response.json()
-        
-        if(data.status !== 201) {
+
+        if (data.status !== 201) {
             setStatus(Status.Error)
             setMessage(data.message)
             return
@@ -70,19 +74,19 @@ export default function UpdatePasswordComponent() {
 
         const { data, error } = await supabase.auth.verifyOtp({
             token_hash: code,
-            type: 'email'
+            type: "email",
         })
 
-        if(data.session) {
+        if (data.session) {
             supabase.auth.onAuthStateChange((event, session) => {
-                if(event === 'SIGNED_IN' && session) {
+                if (event === "SIGNED_IN" && session) {
                     setTokens({
                         access_token: session.access_token,
-                        refresh_token: session.refresh_token
+                        refresh_token: session.refresh_token,
                     })
                 }
 
-                if(event === 'INITIAL_SESSION' && !session) {
+                if (event === "INITIAL_SESSION" && !session) {
                     setIsExpired(true)
                 }
             })
@@ -90,7 +94,7 @@ export default function UpdatePasswordComponent() {
     }
 
     useEffect(() => {
-        if(code) {
+        if (code) {
             verifyToken()
         }
     }, [code])
@@ -147,7 +151,7 @@ export default function UpdatePasswordComponent() {
                                 <>
                                     <p className="text-sm text-green-500">{message}</p>
                                     <a
-                                        className="h-10 text-center rounded border-2 border-black bg-black p-2 text-sm font-normal text-white shadow-none transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
+                                        className="h-10 rounded border-2 border-black bg-black p-2 text-center text-sm font-normal text-white shadow-none transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
                                         href="/login"
                                     >
                                         log in here!

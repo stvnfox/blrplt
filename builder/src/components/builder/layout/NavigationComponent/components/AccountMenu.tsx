@@ -2,6 +2,7 @@
 
 import { FunctionComponent } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { CircleUser } from "lucide-react"
 
 import { createClient } from "@/lib/supabase/client"
@@ -17,7 +18,6 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-
 export const AccountMenu: FunctionComponent = () => {
     const { sites } = useBuilderContext()
     const supabase = createClient()
@@ -30,7 +30,7 @@ export const AccountMenu: FunctionComponent = () => {
         if (error) {
             router.push("/error")
         }
-    
+
         router.push("/login")
     }
 
@@ -46,16 +46,24 @@ export const AccountMenu: FunctionComponent = () => {
                     <span className="sr-only">Toggle user menu</span>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-64" align="end">
+            <DropdownMenuContent
+                className="w-64"
+                align="end"
+            >
                 <DropdownMenuLabel>{siteName}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem disabled>settings (soon)</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                    <Link
+                        className="hover:cursor-pointer"
+                        href="/settings"
+                    >
+                        settings
+                    </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem disabled>support (soon)</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                    <Button onClick={logout}>
-                        logout
-                    </Button>
+                    <Button onClick={logout}>logout</Button>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
