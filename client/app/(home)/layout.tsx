@@ -1,5 +1,6 @@
 import '@/styles/index.css'
 
+import { Analytics } from "@vercel/analytics/react"
 import type { Metadata, Viewport } from 'next'
 import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
@@ -64,6 +65,7 @@ export default async function IndexRoute({
           <Footer />
         </Suspense>
       </div>
+      <Analytics />
       {draftMode().isEnabled && <LiveVisualEditing />}
     </>
   )
