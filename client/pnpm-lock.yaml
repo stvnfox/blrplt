@@ -77,6 +77,9 @@ importers:
       next-sanity:
         specifier: 9.0.11
         version: 9.0.11(@sanity/client@6.21.3)(@sanity/icons@2.11.8(react@18.3.0))(@sanity/types@3.40.0)(@sanity/ui@2.1.4(react-dom@18.3.0(react@18.3.0))(react-is@18.3.1)(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)))(next@14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(react@18.3.0)(sanity@3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.6))(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))
+      next-sitemap:
+        specifier: ^4.2.3
+        version: 4.2.3(next@14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))
       postgres:
         specifier: ^3.4.4
         version: 3.4.4
@@ -868,6 +871,9 @@ packages:
   '@codemirror/view@6.32.0':
     resolution: {integrity: sha512-AgVNvED2QTsZp5e3syoHLsrWtwJFYWdx1Vr/m3f4h1ATQz0ax60CfXF3Htdmk69k2MlYZw8gXesnQdHtzyVmAw==}
 
+  '@corex/deepmerge@4.0.43':
+    resolution: {integrity: sha512-N8uEMrMPL0cu/bdboEWpQYb/0i2K5Qn8eCsxzOmxSggJbbQte7ljMRoXm917AbntqTGOzdTu+vP3KOOzoC70HQ==}
+
   '@dnd-kit/accessibility@3.1.0':
     resolution: {integrity: sha512-ea7IkhKvlJUv9iSHJOnxinBcoOI3ppGnnL+VDJ75O45Nss6HtZd8IdN8touXPDtASfeI2T2LImb8VOZcL47wjQ==}
     peerDependencies:
@@ -1557,6 +1563,9 @@ packages:
 
   '@lezer/lr@1.4.2':
     resolution: {integrity: sha512-pu0K1jCIdnQ12aWNaAVU5bzi7Bd1w54J3ECgANPmYLtQKP0HBj2cE/5coBD66MT10xbtIuUr7tg0Shbsvk0mDA==}
+
+  '@next/env@13.5.6':
+    resolution: {integrity: sha512-Yac/bV5sBGkkEXmAX5FWPS9Mmo2rthrOPRQQNfycJPkjUAUclomCPH7QFVCDQ4Mp2k2K1SSM6m0zrxYrOwtFQw==}
 
   '@next/env@14.1.4':
     resolution: {integrity: sha512-e7X7bbn3Z6DWnDi75UWn+REgAbLEqxI8Tq2pkFOFAMpWAWApz/YCUhtWMWn410h8Q2fYiYL7Yg5OlxMOCfFjJQ==}
@@ -4867,6 +4876,13 @@ packages:
       sanity: ^3.37.1
       styled-components: ^6.1
 
+  next-sitemap@4.2.3:
+    resolution: {integrity: sha512-vjdCxeDuWDzldhCnyFCQipw5bfpl4HmZA7uoo3GAaYGjGgfL4Cxb1CiztPuWGmS+auYs7/8OekRS8C2cjdAsjQ==}
+    engines: {node: '>=14.18'}
+    hasBin: true
+    peerDependencies:
+      next: '*'
+
   next@14.1.4:
     resolution: {integrity: sha512-1WTaXeSrUwlz/XcnhGTY7+8eiaFvdet5z9u3V2jb+Ek1vFo0VhHKSAIJvDWfQpttWjnyw14kBeq28TPq7bTeEQ==}
     engines: {node: '>=18.17.0'}
@@ -7453,6 +7469,8 @@ snapshots:
       style-mod: 4.1.2
       w3c-keyname: 2.2.8
 
+  '@corex/deepmerge@4.0.43': {}
+
   '@dnd-kit/accessibility@3.1.0(react@18.3.0)':
     dependencies:
       react: 18.3.0
@@ -7892,6 +7910,8 @@ snapshots:
   '@lezer/lr@1.4.2':
     dependencies:
       '@lezer/common': 1.2.1
+
+  '@next/env@13.5.6': {}
 
   '@next/env@14.1.4': {}
 
@@ -8600,14 +8620,6 @@ snapshots:
       - react
       - supports-color
 
-  '@sanity/client@6.21.3':
-    dependencies:
-      '@sanity/eventsource': 5.0.2
-      get-it: 8.6.5
-      rxjs: 7.8.1
-    transitivePeerDependencies:
-      - debug
-
   '@sanity/client@6.21.3(debug@3.2.7)':
     dependencies:
       '@sanity/eventsource': 5.0.2
@@ -8648,7 +8660,7 @@ snapshots:
 
   '@sanity/core-loader@1.6.10(@sanity/client@6.21.3)':
     dependencies:
-      '@sanity/client': 6.21.3
+      '@sanity/client': 6.21.3(debug@4.3.6)
 
   '@sanity/demo@2.0.0(@sanity/color@3.0.6)(tailwindcss@3.4.3)':
     dependencies:
@@ -8776,7 +8788,7 @@ snapshots:
 
   '@sanity/presentation@1.12.7(@sanity/client@6.21.3(debug@4.3.6))(react-dom@18.3.0(react@18.3.0))(react-is@18.3.1)(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))':
     dependencies:
-      '@sanity/client': 6.21.3
+      '@sanity/client': 6.21.3(debug@4.3.6)
       '@sanity/icons': 2.11.8(react@18.3.0)
       '@sanity/preview-url-secret': 1.6.11(@sanity/client@6.21.3(debug@4.3.6))
       '@sanity/ui': 2.1.4(react-dom@18.3.0(react@18.3.0))(react-is@18.3.1)(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))
@@ -8797,12 +8809,12 @@ snapshots:
 
   '@sanity/preview-kit-compat@1.4.19(@sanity/client@6.21.3)(react@18.3.0)':
     dependencies:
-      '@sanity/client': 6.21.3
+      '@sanity/client': 6.21.3(debug@4.3.6)
       react: 18.3.0
 
   '@sanity/preview-kit@5.0.47(@sanity/client@6.21.3)(react@18.3.0)':
     dependencies:
-      '@sanity/client': 6.21.3
+      '@sanity/client': 6.21.3(debug@4.3.6)
       '@sanity/preview-kit-compat': 1.4.19(@sanity/client@6.21.3)(react@18.3.0)
       mendoza: 3.0.7
     optionalDependencies:
@@ -8810,12 +8822,12 @@ snapshots:
 
   '@sanity/preview-url-secret@1.6.11(@sanity/client@6.21.3(debug@4.3.6))':
     dependencies:
-      '@sanity/client': 6.21.3
+      '@sanity/client': 6.21.3(debug@4.3.6)
       '@sanity/uuid': 3.0.2
 
   '@sanity/react-loader@1.9.15(@sanity/client@6.21.3)(react@18.3.0)':
     dependencies:
-      '@sanity/client': 6.21.3
+      '@sanity/client': 6.21.3(debug@4.3.6)
       '@sanity/core-loader': 1.6.10(@sanity/client@6.21.3)
       react: 18.3.0
 
@@ -8877,7 +8889,7 @@ snapshots:
 
   '@sanity/types@3.40.0':
     dependencies:
-      '@sanity/client': 6.21.3
+      '@sanity/client': 6.21.3(debug@4.3.6)
       '@types/react': 18.3.0
     transitivePeerDependencies:
       - debug
@@ -8972,7 +8984,7 @@ snapshots:
       scroll-into-view-if-needed: 3.1.0
       valibot: 0.30.0
     optionalDependencies:
-      '@sanity/client': 6.21.3
+      '@sanity/client': 6.21.3(debug@4.3.6)
       next: 14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
 
   '@selderee/plugin-htmlparser2@0.11.0':
@@ -10500,7 +10512,7 @@ snapshots:
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.9.0(eslint@8.57.0)
       eslint-plugin-react: 7.35.0(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.2(eslint@8.57.0)
@@ -10533,7 +10545,7 @@ snapshots:
       enhanced-resolve: 5.17.1
       eslint: 8.57.0
       eslint-module-utils: 2.8.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0)
       fast-glob: 3.3.2
       get-tsconfig: 4.7.6
       is-core-module: 2.15.1
@@ -10555,7 +10567,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@7.2.0(eslint@8.57.0)(typescript@5.4.5))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1(eslint@8.57.0))(eslint@8.57.0))(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.5
@@ -10821,10 +10833,6 @@ snapshots:
     optionalDependencies:
       debug: 3.2.7
 
-  follow-redirects@1.15.6(debug@4.3.6):
-    optionalDependencies:
-      debug: 4.3.6
-
   for-each@0.3.3:
     dependencies:
       is-callable: 1.2.7
@@ -10898,18 +10906,6 @@ snapshots:
       has-symbols: 1.0.3
       hasown: 2.0.2
 
-  get-it@8.6.5:
-    dependencies:
-      '@types/follow-redirects': 1.14.4
-      '@types/progress-stream': 2.0.5
-      decompress-response: 7.0.0
-      follow-redirects: 1.15.6(debug@3.2.7)
-      is-retry-allowed: 2.2.0
-      progress-stream: 2.0.0
-      tunnel-agent: 0.6.0
-    transitivePeerDependencies:
-      - debug
-
   get-it@8.6.5(debug@3.2.7):
     dependencies:
       '@types/follow-redirects': 1.14.4
@@ -10927,7 +10923,7 @@ snapshots:
       '@types/follow-redirects': 1.14.4
       '@types/progress-stream': 2.0.5
       decompress-response: 7.0.0
-      follow-redirects: 1.15.6(debug@4.3.6)
+      follow-redirects: 1.15.6(debug@3.2.7)
       is-retry-allowed: 2.2.0
       progress-stream: 2.0.0
       tunnel-agent: 0.6.0
@@ -11739,7 +11735,7 @@ snapshots:
   next-sanity@9.0.11(@sanity/client@6.21.3)(@sanity/icons@2.11.8(react@18.3.0))(@sanity/types@3.40.0)(@sanity/ui@2.1.4(react-dom@18.3.0(react@18.3.0))(react-is@18.3.1)(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)))(next@14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(react@18.3.0)(sanity@3.39.0(@types/node@20.14.2)(@types/react@18.3.0)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0))(terser@5.31.6))(styled-components@6.1.8(react-dom@18.3.0(react@18.3.0))(react@18.3.0)):
     dependencies:
       '@portabletext/react': 3.1.0(react@18.3.0)
-      '@sanity/client': 6.21.3
+      '@sanity/client': 6.21.3(debug@4.3.6)
       '@sanity/icons': 2.11.8(react@18.3.0)
       '@sanity/preview-kit': 5.0.47(@sanity/client@6.21.3)(react@18.3.0)
       '@sanity/types': 3.40.0
@@ -11755,6 +11751,14 @@ snapshots:
       - '@remix-run/react'
       - '@sveltejs/kit'
       - svelte
+
+  next-sitemap@4.2.3(next@14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)):
+    dependencies:
+      '@corex/deepmerge': 4.0.43
+      '@next/env': 13.5.6
+      fast-glob: 3.3.2
+      minimist: 1.2.8
+      next: 14.2.3(@babel/core@7.25.2)(react-dom@18.3.0(react@18.3.0))(react@18.3.0)
 
   next@14.1.4(@babel/core@7.24.5)(react-dom@18.3.0(react@18.3.0))(react@18.3.0):
     dependencies:
@@ -12566,7 +12570,7 @@ snapshots:
       '@sanity/bifur-client': 0.3.1
       '@sanity/block-tools': 3.39.0
       '@sanity/cli': 3.39.0(react@18.3.0)
-      '@sanity/client': 6.21.3
+      '@sanity/client': 6.21.3(debug@4.3.6)
       '@sanity/color': 3.0.6
       '@sanity/diff': 3.39.0
       '@sanity/diff-match-patch': 3.1.1
