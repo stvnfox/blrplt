@@ -5,8 +5,11 @@ import { HandMetal } from "lucide-react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { useRouter } from "next/navigation"
 
-import { login } from "@/actions/auth"
+import { Status, StatusType } from "@/lib/types"
+import { createClient } from "@/lib/supabase/client"
+import { revalidateLayout } from "@/actions/revalidate"
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
@@ -18,9 +21,8 @@ const formSchema = z.object({
 })
 
 export default function LoginPage() {
-    const [hasError, setHasError] = useState(false)
-    const [message, setMessage] = useState("")
-    const [isLoading, setIsLoading] = useState(false)
+    const router = useRouter()
+    const [status, setStatus] = useState<StatusType>(Status.Idle)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -31,16 +33,36 @@ export default function LoginPage() {
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        setIsLoading(true)
+        setStatus(Status.Loading)
 
-        const response = await login(values.email, values.password)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(values),
+        })
+        const data = await response.json()
 
-        if (response) {
-            setHasError(true)
-            setMessage(response.message)
+        if (!response.ok) {
+            setStatus(Status.Error)
+            return
         }
 
-        setIsLoading(false)
+        const supabase = createClient()
+
+        const { error } = await supabase.auth.setSession({
+            access_token: data.access_token,
+            refresh_token: data.refresh_token,
+        })
+
+        if (error) {
+            setStatus(Status.Error)
+            return
+        }
+
+        revalidateLayout()
+        router.push("/")
     }
 
     return (
@@ -78,7 +100,7 @@ export default function LoginPage() {
                                 <div className="flex items-center justify-between">
                                     <FormLabel className="text-sm font-normal">password</FormLabel>
                                     <a
-                                        className="text-sm hover:underline focus:outline-dashed focus:outline-offset-3 focus:outline-black rounded"
+                                        className="focus:outline-offset-3 rounded text-sm hover:underline focus:outline-dashed focus:outline-black"
                                         href="/forgot-password"
                                     >
                                         forgot password?
@@ -95,11 +117,15 @@ export default function LoginPage() {
                             </FormItem>
                         )}
                     />
-                    {hasError && <p className="text-sm text-red-500">{message}</p>}
+                    {status === Status.Error && (
+                        <p className="text-sm text-red-500">
+                            something went wrong, are you sure you have the right email and password?
+                        </p>
+                    )}
                     <Button
                         type="submit"
                         className="h-10 rounded border-2 border-black bg-black p-2 text-sm font-normal text-white shadow-none transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
-                        disabled={isLoading}
+                        disabled={status === Status.Loading}
                     >
                         login
                     </Button>

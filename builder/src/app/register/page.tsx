@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
-import { signup } from "@/actions/auth"
+import { StatusType, Status } from "@/lib/types"
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
@@ -18,10 +18,8 @@ const formSchema = z.object({
 })
 
 export default function RegisterPage() {
-    const [isSucceeded, setIsSucceeded] = useState(false)
-    const [hasError, setHasError] = useState(false)
     const [message, setMessage] = useState("")
-    const [isLoading, setIsLoading] = useState(false)
+    const [status, setStatus] = useState<StatusType>(Status.Idle)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -32,21 +30,31 @@ export default function RegisterPage() {
     })
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        setIsLoading(true)
+        setStatus(Status.Loading)
 
-        const response = await signup(values.email, values.password)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(values),
+        })
 
-        if (response.status === "success") {
-            setIsSucceeded(true)
-            form.reset()
+        if(!response.ok) {
+            switch(response.status) {
+                case 409:
+                    setStatus(Status.Error)
+                    setMessage("email already exists")
+                    break
+                default:
+                    setStatus(Status.Error)
+                    setMessage("something went wrong, please try again")
+            }
+            return
         }
 
-        if (response.status === "failed") {
-            setHasError(true)
-        }
-
-        setMessage(response.message)
-        setIsLoading(false)
+        setMessage("your account has been created, please check your email to verify your account")
+        setStatus(Status.Success)
     }
 
     return (
@@ -95,8 +103,8 @@ export default function RegisterPage() {
                             </FormItem>
                         )}
                     />
-                    {hasError && <p className="text-sm text-red-500">{message}</p>}
-                    {isSucceeded ? (
+                    {status === Status.Error && <p className="text-sm text-red-500">{message}</p>}
+                    {status === Status.Success ? (
                         <>
                             <p className="text-sm text-green-500">{message}</p>
                             <a
@@ -111,7 +119,7 @@ export default function RegisterPage() {
                             <Button
                                 type="submit"
                                 className="h-10 rounded border-2 border-black bg-black p-2 text-sm font-normal text-white shadow-none transition-colors hover:bg-white hover:text-black focus:outline-dashed focus:outline-offset-2 focus:outline-black"
-                                disabled={isLoading}
+                                disabled={status === Status.Loading}
                             >
                                 sign up
                             </Button>
