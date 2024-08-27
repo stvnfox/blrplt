@@ -27,7 +27,7 @@ export async function Header(props: HeaderProps) {
       )}
       {/* Introduction */}
       {introduction && (
-        <div className="mt-4 font-sans text-gray-600 md:text-base md:w-[500px] mx-auto">
+        <div className="mt-4 font-sans text-gray-600 lg:text-base lg:w-[500px] mx-auto">
           <CustomPortableText value={introduction} />
         </div>
       )}
