@@ -23,6 +23,7 @@ export const SocialLinks: FunctionComponent<SocialLinksProps> = ({ items }) => {
         <a
           key={index}
           href={item.socialUrl}
+          aria-label={`Check out our ${item.socialPlatform} website`}
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-full w-8 h-8 flex items-center justify-center bg-gray-700 fill-white hover:bg-orange-600 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-600 focus-visible:outline-none transition-colors"
