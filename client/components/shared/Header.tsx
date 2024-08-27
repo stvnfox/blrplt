@@ -21,9 +21,9 @@ export async function Header(props: HeaderProps) {
     <div className={`${centered ? 'text-center mx-auto' : 'w-5/6 lg:w-1/5'}`}>
       {/* Title */}
       {title && (
-        <div className="text-3xl font-extrabold tracking-tight md:text-5xl mb-6">
+        <h1 className="text-3xl font-extrabold tracking-tight md:text-5xl mb-6">
           {title}
-        </div>
+        </h1>
       )}
       {/* Introduction */}
       {introduction && (
