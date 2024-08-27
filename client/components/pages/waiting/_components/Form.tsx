@@ -1,6 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Label } from "@sanity/ui"
 import { useMutation } from "@tanstack/react-query"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -11,6 +12,7 @@ import {
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
@@ -85,7 +87,8 @@ export function WaitingListForm(props: WaitingListFormProps) {
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="space-y-0">
+              <FormLabel className="sr-only !mb-0">Email</FormLabel>
               <FormControl>
                 <Input className="md:w-[400px]" placeholder={placeholder} {...field} />
               </FormControl>
