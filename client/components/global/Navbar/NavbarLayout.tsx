@@ -26,6 +26,7 @@ export default function Navbar(props: NavbarProps) {
         <Link
           href="https://builder.blrplt.dev"
           className="flex items-center gap-2 text-lg hover:text-orange-600 transition-colors md:text-xl focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-orange-600 focus-visible:outline-none rounded"
+          aria-label='Go to the "builder" website'
         >
           <UserCircle />
         </Link>
