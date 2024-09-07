@@ -29,7 +29,7 @@ export const DashboardComponent: FunctionComponent = () => {
                         <PageDesigner />
                     </div>
                 </div>
-                <div className="border-l border-neutral-100 p-4 md:p-8 md:w-1/4 ">
+                <div className="border-l border-neutral-100 p-4 md:py-8 md:px-5 md:w-1/4 ">
                     <PageDesignerSidebar />
                 </div>
             </section>

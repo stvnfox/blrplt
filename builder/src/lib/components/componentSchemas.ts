@@ -23,7 +23,7 @@ export const componentSchemas = {
             z.object({
                 title: z.string().min(2),
                 description: z.string(),
-                price: z.coerce.number().min(0),
+                price: z.coerce.number().min(0).or(z.undefined()),
                 currency: z.string().default("EUR"),
                 mostPopular: z.boolean().default(false),
                 includes: z.array(

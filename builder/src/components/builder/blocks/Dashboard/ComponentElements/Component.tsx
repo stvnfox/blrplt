@@ -1,9 +1,10 @@
 import { ReactElement } from "react"
 
 import { HeaderComponent } from "../components/Header/Component"
+import { PricingComponent } from "../components/Pricing/Component"
 
 //TODO: Add more components here
-export type ComponentsType = "header"
+export type ComponentsType = "header" | "pricing"
 
 export type ComponentElementType = {
     type: ComponentsType
@@ -33,6 +34,7 @@ export type ComponentElementInstance = {
 type ComponentElementsType = {
     [key in ComponentsType]: ComponentElementType
 }
-export const PageDesignerElements: ComponentElementsType = {
+export const PageDesignerComponents: ComponentElementsType = {
     header: HeaderComponent,
+    pricing: PricingComponent
 }

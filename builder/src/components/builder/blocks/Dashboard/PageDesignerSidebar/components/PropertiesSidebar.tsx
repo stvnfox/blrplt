@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react"
 
 import { useDesigner } from "@/lib/hooks/useDesigner"
-import { PageDesignerElements } from "../../ComponentElements/Component"
+import { PageDesignerComponents } from "../../ComponentElements/Component"
 
 import { Button } from "@/components/ui/button"
 import { XIcon } from "lucide-react"
@@ -11,7 +11,7 @@ export const PropertiesSidebar: FunctionComponent = () => {
 
     if (!selectedComponent) return null
 
-    const PropertiesForm = PageDesignerElements[selectedComponent.type].propertiesComponent
+    const PropertiesForm = PageDesignerComponents[selectedComponent.type].propertiesComponent
 
     const resetSelectedComponent = () => {
         setSelectedComponent(null)
@@ -19,8 +19,8 @@ export const PropertiesSidebar: FunctionComponent = () => {
 
     return (
         <>
-            <div className="flex items-center justify-between">
-                <h4 className="text-sm text-neutral-800">Component properties</h4>
+            <div className="flex items-center justify-between -mt-1">
+                <h4 className="text-neutral-800">component properties</h4>
                 <Button
                     variant="ghost"
                     size="sm"

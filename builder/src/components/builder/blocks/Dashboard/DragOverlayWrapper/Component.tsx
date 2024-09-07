@@ -1,7 +1,7 @@
 import { FunctionComponent, useState } from 'react';
 import { Active, DragOverlay, DragStartEvent, useDndMonitor } from '@dnd-kit/core';
 
-import { ComponentsType, PageDesignerElements } from '../ComponentElements/Component';
+import { ComponentsType, PageDesignerComponents } from '../ComponentElements/Component';
 import { useDesigner } from '@/lib/hooks/useDesigner';
 
 import { SidebarButtonOverlay } from '../PageDesignerSidebar/components/SidebarButtonOverlay';
@@ -29,7 +29,7 @@ export const DragOverlayWrapper: FunctionComponent = () => {
 
     if (isSidebarButton) {
         const type: ComponentsType = draggedItem.data?.current?.type
-        node = <SidebarButtonOverlay element={PageDesignerElements[type]}/>
+        node = <SidebarButtonOverlay element={PageDesignerComponents[type]}/>
     }
 
     const isDesignerComponent = draggedItem?.data?.current?.isDesignerComponent
@@ -41,7 +41,7 @@ export const DragOverlayWrapper: FunctionComponent = () => {
         if(!component) {
             node = <div>Component not found!</div>
         } else {
-            const DesignerComponent = PageDesignerElements[component.type].designerComponent
+            const DesignerComponent = PageDesignerComponents[component.type].designerComponent
 
             node = (
                 <div className='opacity-80 pointer pointer-events-none'>

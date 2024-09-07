@@ -18,10 +18,10 @@ export const DesignerComponent: FunctionComponent<HeaderDesignerComponentProps> 
             {helperText && <p className='text-xs text-neutral-500'>{helperText}</p>}
 
             <div className='flex flex-col gap-2 w-full mt-4 p-4 bg-neutral-200 rounded-md'>
-                <span className="mb-5 w-fit rounded-full bg-white px-3 py-1.5 text-background md:mb-2 md:text-sm">
+                <span className="w-fit rounded-full bg-white px-3 py-1.5 text-background md:text-sm">
                     {subtitle}
                 </span>
-                <p className="mb-1 text-balance text-3xl text-primary md:mb-4 md:text-6xl">{title}</p>
+                <p className="text-balance text-3xl text-primary md:text-4xl">{title}</p>
                 <p className="text text-balance text-baseText">{description}</p>
             </div>
         </div>

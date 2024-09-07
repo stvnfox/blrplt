@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useDraggable, useDroppable } from "@dnd-kit/core"
 import { Trash2 } from "lucide-react"
 
-import { ComponentElementInstance, PageDesignerElements } from "../ComponentElements/Component"
+import { ComponentElementInstance, PageDesignerComponents } from "../ComponentElements/Component"
 import { cn } from "@/lib/utils"
 import { useDesigner } from "@/lib/hooks/useDesigner"
 
@@ -12,7 +12,7 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
     const { removeComponent, setSelectedComponent } = useDesigner()
     const [mouseIsOver, setMouseIsOver] = useState(false)
 
-    const DesignerElement = PageDesignerElements[component.type].designerComponent
+    const DesignerElement = PageDesignerComponents[component.type].designerComponent
 
     const topHalf = useDroppable({
         id: component.id + "-top",

@@ -5,7 +5,7 @@ import { DragEndEvent, useDndMonitor, useDroppable } from "@dnd-kit/core"
 
 import { cn, createUuid } from "@/lib/utils"
 import { useDesigner } from "@/lib/hooks/useDesigner"
-import { ComponentsType, PageDesignerElements } from "../ComponentElements/Component"
+import { ComponentsType, PageDesignerComponents } from "../ComponentElements/Component"
 
 import { DesignerComponentWrapper } from "../DesignerComponentWrapper/Component"
 
@@ -36,7 +36,7 @@ export const PageDesigner: FunctionComponent = () => {
             const droppingSidebarButtonOverDropArea = isSidebarButton && isDroppingOverDesignerDropArea
             if (droppingSidebarButtonOverDropArea) {
                 const type: ComponentsType = active.data?.current?.type
-                const newComponent = PageDesignerElements[type].construct(createUuid())
+                const newComponent = PageDesignerComponents[type].construct(createUuid())
 
                 addComponent(totalAddedComponents, newComponent)
                 return
@@ -48,7 +48,7 @@ export const PageDesigner: FunctionComponent = () => {
             const droppingSidebarButtonOverDesignerComponent = isSidebarButton && droppingOverDesignerComponent
             if (droppingSidebarButtonOverDesignerComponent) {
                 const type: ComponentsType = active.data?.current?.type
-                const newComponent = PageDesignerElements[type].construct(createUuid())
+                const newComponent = PageDesignerComponents[type].construct(createUuid())
 
                 const overId = over.data?.current?.elementId
                 const componentIndex = components.findIndex((component) => component.id === overId)
@@ -103,7 +103,7 @@ export const PageDesigner: FunctionComponent = () => {
                 )}
             >
                 {components.length > 0 && (
-                    <div className="flex flex-col gap-4 w-full mb-4">
+                    <div className="flex flex-col gap-4 w-full">
                         {components.map(component => {
                             return <DesignerComponentWrapper key={component.id} component={component} />;
                         })}

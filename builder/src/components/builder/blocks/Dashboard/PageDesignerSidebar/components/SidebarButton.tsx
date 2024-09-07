@@ -7,16 +7,16 @@ import { ComponentElementType } from "../../ComponentElements/Component"
 import { Button } from "@/components/ui/button"
 
 type SidebarButtonProps = {
-    element: ComponentElementType
+    component: ComponentElementType
 }
 
-export const SidebarButton: FunctionComponent<SidebarButtonProps> = ({ element }) => {
-    const { label, icon } = element.designerButtonElement
+export const SidebarButton: FunctionComponent<SidebarButtonProps> = ({ component }) => {
+    const { label, icon } = component.designerButtonElement
 
     const draggable = useDraggable({
-        id: `sidebar-button-${element.type}`,
+        id: `sidebar-button-${component.type}`,
         data: {
-            type: element.type,
+            type: component.type,
             isSidebarButton: true
         }
     })
