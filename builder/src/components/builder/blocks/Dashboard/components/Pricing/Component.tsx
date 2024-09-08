@@ -68,7 +68,7 @@ export const PricingComponent: ComponentElementType = {
         extraAttributes 
     }),
     designerButtonElement: {
-        icon: <Wallet size={16}/>,
+        icon: <Wallet size={22}/>,
         label: "pricing"
     },
     designerComponent: DesignerComponent,

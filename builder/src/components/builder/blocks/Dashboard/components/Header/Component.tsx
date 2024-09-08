@@ -1,6 +1,6 @@
 "use client"
 
-import { ThumbsUp } from "lucide-react"
+import { Captions } from "lucide-react"
 import { ComponentsType, ComponentElementType, ComponentElementInstance } from "../../ComponentElements/Component"
 
 import { DesignerComponent } from "./DesignerComponent"
@@ -28,7 +28,7 @@ export const HeaderComponent: ComponentElementType = {
         extraAttributes 
     }),
     designerButtonElement: {
-        icon: <ThumbsUp size={16}/>,
+        icon: <Captions size={24}/>,
         label: "header"
     },
     designerComponent: DesignerComponent,
