@@ -27,12 +27,12 @@ export const DashboardComponent: FunctionComponent = () => {
             collisionDetection={closestCenter}
         >
             <section className="flex flex-grow">
-                <div className="px-4 pt-4 md:w-3/4 md:px-8 md:py-8">
+                <div className="px-4 pt-4 w-full md:px-8 md:py-8">
                     <div className="h-full w-full rounded-md bg-neutral-100 dark:bg-neutral-800">
                         <PageDesigner />
                     </div>
                 </div>
-                <div className="border-l border-neutral-100 p-4 md:w-1/4 md:px-5 md:py-8 ">
+                <div className="border-l border-neutral-100 p-4 md:w-96 md:px-5 md:py-8">
                     <PageDesignerSidebar />
                 </div>
             </section>
