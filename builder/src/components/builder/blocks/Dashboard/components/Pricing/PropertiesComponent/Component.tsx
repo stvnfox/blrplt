@@ -136,6 +136,7 @@ export const PropertiesComponent: FunctionComponent<HeaderPropertiesComponentPro
                                 key={`${item}-${itemIndex}`}
                                 itemIndex={itemIndex}
                                 form={form}
+                                keyDownEvent={(e) => handleChangeOnEnter(e)}
                             />
                         </AccordionItem>
                     ))}

@@ -14,10 +14,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea"
 import { PlusIcon, XIcon } from "lucide-react"
 
-export const PricingItemComponent: FunctionComponent<ComponentProps & { itemIndex: number }> = ({
-    itemIndex,
-    form,
-}) => {
+export const PricingItemComponent: FunctionComponent<
+    ComponentProps & {
+        itemIndex: number
+        keyDownEvent: (e: React.KeyboardEvent<HTMLInputElement> | React.KeyboardEvent<HTMLTextAreaElement>) => void
+    }
+> = ({ itemIndex, form, keyDownEvent }) => {
     const { control } = useFormContext()
     const {
         fields: includeFields,
@@ -53,6 +55,7 @@ export const PricingItemComponent: FunctionComponent<ComponentProps & { itemInde
                                     <Input
                                         className="rounded shadow-none"
                                         {...field}
+                                        onKeyDown={(e) => keyDownEvent(e)}
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -69,6 +72,7 @@ export const PricingItemComponent: FunctionComponent<ComponentProps & { itemInde
                                     <Textarea
                                         className="rounded shadow-none"
                                         {...field}
+                                        onKeyDown={(e) => keyDownEvent(e)}
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -86,6 +90,7 @@ export const PricingItemComponent: FunctionComponent<ComponentProps & { itemInde
                                         className="rounded shadow-none"
                                         type="number"
                                         {...field}
+                                        onKeyDown={(e) => keyDownEvent(e)}
                                     />
                                 </FormControl>
                                 <FormMessage />
@@ -151,6 +156,7 @@ export const PricingItemComponent: FunctionComponent<ComponentProps & { itemInde
                                                     <Input
                                                         className="rounded shadow-none"
                                                         {...field}
+                                                        onKeyDown={(e) => keyDownEvent(e)}
                                                     />
                                                 </FormControl>
                                                 <Button
