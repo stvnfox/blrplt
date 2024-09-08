@@ -20,7 +20,7 @@ export const PageDesigner: FunctionComponent = () => {
     })
 
     const resetSelectedComponent = () => {
-        if(selectedComponent) setSelectedComponent(null)
+        if (selectedComponent) setSelectedComponent(null)
     }
 
     const totalAddedComponents = components.length
@@ -41,10 +41,11 @@ export const PageDesigner: FunctionComponent = () => {
                 addComponent(totalAddedComponents, newComponent)
                 return
             }
-            
+
             const isDroppingOverDesignerComponentTopHalf = over.data?.current?.isTopHalf
             const isDroppingOverDesignerComponentBottomHalf = over.data?.current?.isBottomHalf
-            const droppingOverDesignerComponent = isDroppingOverDesignerComponentTopHalf || isDroppingOverDesignerComponentBottomHalf
+            const droppingOverDesignerComponent =
+                isDroppingOverDesignerComponentTopHalf || isDroppingOverDesignerComponentBottomHalf
             const droppingSidebarButtonOverDesignerComponent = isSidebarButton && droppingOverDesignerComponent
             if (droppingSidebarButtonOverDesignerComponent) {
                 const type: ComponentsType = active.data?.current?.type
@@ -53,12 +54,12 @@ export const PageDesigner: FunctionComponent = () => {
                 const overId = over.data?.current?.elementId
                 const componentIndex = components.findIndex((component) => component.id === overId)
 
-                if(componentIndex === -1) {
+                if (componentIndex === -1) {
                     throw new Error("component not found")
                 }
 
                 let indexNewComponent = componentIndex
-                if(isDroppingOverDesignerComponentBottomHalf) {
+                if (isDroppingOverDesignerComponentBottomHalf) {
                     indexNewComponent += 1
                 }
 
@@ -68,22 +69,22 @@ export const PageDesigner: FunctionComponent = () => {
 
             const isDraggingDesignerComponent = active.data?.current?.isDesignerComponent
             const isDraggingOverDesignerComponent = droppingOverDesignerComponent && isDraggingDesignerComponent
-            if(isDraggingOverDesignerComponent) {
+            if (isDraggingOverDesignerComponent) {
                 const activeId = active.data?.current?.componentId
                 const overId = over.data?.current?.elementId
 
                 const activeComponentIndex = components.findIndex((component) => component.id === activeId)
                 const overComponentIndex = components.findIndex((component) => component.id === overId)
 
-                if(activeComponentIndex === -1 || overComponentIndex === -1) {
+                if (activeComponentIndex === -1 || overComponentIndex === -1) {
                     throw new Error("component not found")
                 }
 
-                const activeComponent = {...components[activeComponentIndex]}
+                const activeComponent = { ...components[activeComponentIndex] }
                 removeComponent(activeId)
 
                 let indexNewComponent = overComponentIndex
-                if(isDroppingOverDesignerComponentBottomHalf) {
+                if (isDroppingOverDesignerComponentBottomHalf) {
                     indexNewComponent + 1
                 }
 
@@ -94,7 +95,10 @@ export const PageDesigner: FunctionComponent = () => {
     })
 
     return (
-        <div className="h-full w-full" onClick={resetSelectedComponent}>
+        <div
+            className="h-full w-full"
+            onClick={resetSelectedComponent}
+        >
             <div
                 ref={droppable.setNodeRef}
                 className={cn(
@@ -103,9 +107,14 @@ export const PageDesigner: FunctionComponent = () => {
                 )}
             >
                 {components.length > 0 && (
-                    <div className="flex flex-col gap-4 w-full">
-                        {components.map(component => {
-                            return <DesignerComponentWrapper key={component.id} component={component} />;
+                    <div className="flex w-full flex-col gap-4">
+                        {components.map((component) => {
+                            return (
+                                <DesignerComponentWrapper
+                                    key={component.id}
+                                    component={component}
+                                />
+                            )
                         })}
                     </div>
                 )}
@@ -113,7 +122,9 @@ export const PageDesigner: FunctionComponent = () => {
                     <div className="h-32 w-full rounded-md border-2 border-neutral-200 bg-neutral-50 p-4"></div>
                 )}
                 {!droppable.isOver && components.length === 0 && (
-                    <h3 className="text-muted-foreground flex flex-grow items-center justify-center text-xl font-bold">drop any component here</h3>
+                    <h3 className="text-muted-foreground flex flex-grow items-center justify-center text-xl font-bold">
+                        drop any component here
+                    </h3>
                 )}
             </div>
         </div>

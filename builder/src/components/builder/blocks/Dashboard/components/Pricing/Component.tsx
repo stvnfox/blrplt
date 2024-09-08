@@ -43,20 +43,20 @@ const extraAttributes = {
                 "blrplt builder - basic",
             ]
         },
-        // {
-        //     title: "blrplt builder - pro",
-        //     description: "blrplt builder - pro",
-        //     price: 49.99,
-        //     currency: "EUR",
-        //     mostPopular: false,
-        //     includes: [
-        //         "blrplt builder - pro",
-        //     ]
-        // }
+        {
+            title: "blrplt builder - pro",
+            description: "blrplt builder - pro",
+            price: 49.99,
+            currency: "EUR",
+            mostPopular: false,
+            includes: [
+                "blrplt builder - pro",
+            ]
+        }
     ]
 }
 
-export type CustomHeaderInstance = ComponentElementInstance & {
+export type CustomPricingInstance = ComponentElementInstance & {
     extraAttributes: typeof extraAttributes
 }
 

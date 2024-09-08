@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react"
 
-import { CustomHeaderInstance } from "./Component"
+import { CustomPricingInstance } from "./Component"
 import { ComponentElementInstance } from "../../ComponentElements/Component"
 import { Label } from "@/components/ui/label"
 
@@ -9,7 +9,7 @@ type PricingDesignerComponentProps = {
 }
 
 export const DesignerComponent: FunctionComponent<PricingDesignerComponentProps> = ({ instance }) => {
-    const data = instance as CustomHeaderInstance
+    const data = instance as CustomPricingInstance
     const { label, helperText, title, description, items } = data.extraAttributes
 
     return (
