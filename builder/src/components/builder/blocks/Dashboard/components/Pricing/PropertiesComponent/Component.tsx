@@ -18,11 +18,11 @@ import { Accordion, AccordionItem } from "@/components/ui/accordion"
 
 const formSchema = componentSchemas.pricing
 
-type HeaderPropertiesComponentProps = {
+type PricingPropertiesComponentProps = {
     instance: ComponentElementInstance
 }
 
-export const PropertiesComponent: FunctionComponent<HeaderPropertiesComponentProps> = ({ instance }) => {
+export const PropertiesComponent: FunctionComponent<PricingPropertiesComponentProps> = ({ instance }) => {
     const { updateComponent } = useDesigner()
 
     const form = useForm<z.infer<typeof formSchema>>({
