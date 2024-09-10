@@ -40,8 +40,8 @@ export const PropertiesComponent: FunctionComponent<PricingPropertiesComponentPr
         form.setValue("items", [
             ...pricingItems,
             {
-                title: "",
-                description: "",
+                title: componentDefaultValues.pricing.items[0].title,
+                description: componentDefaultValues.pricing.items[0].description,
                 price: undefined,
                 currency: "EUR",
                 includes: [],
@@ -127,13 +127,12 @@ export const PropertiesComponent: FunctionComponent<PricingPropertiesComponentPr
                     collapsible
                     className="flex flex-col gap-2"
                 >
-                    {pricingItems.map((item, itemIndex) => (
+                    {pricingItems.map((_, itemIndex) => (
                         <AccordionItem
                             key={`pricing-component-${itemIndex}`}
                             value={`pricing-component-${itemIndex}`}
                         >
                             <PricingItemComponent
-                                key={`${item}-${itemIndex}`}
                                 itemIndex={itemIndex}
                                 form={form}
                                 keyDownEvent={(e) => handleChangeOnEnter(e)}

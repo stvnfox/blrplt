@@ -19,7 +19,7 @@ export const PricingItemComponent: FunctionComponent<
         itemIndex: number
         keyDownEvent: (e: React.KeyboardEvent<HTMLInputElement> | React.KeyboardEvent<HTMLTextAreaElement>) => void
     }
-> = ({ itemIndex, form, keyDownEvent }) => {
+> = ({ itemIndex, keyDownEvent }) => {
     const { control } = useFormContext()
     const {
         fields: includeFields,
@@ -46,7 +46,7 @@ export const PricingItemComponent: FunctionComponent<
                     className="mt-4 space-y-4"
                 >
                     <FormField
-                        control={form.control}
+                        control={control}
                         name={`items.${itemIndex}.title`}
                         render={({ field }) => (
                             <FormItem>
@@ -63,7 +63,7 @@ export const PricingItemComponent: FunctionComponent<
                         )}
                     />
                     <FormField
-                        control={form.control}
+                        control={control}
                         name={`items.${itemIndex}.description`}
                         render={({ field }) => (
                             <FormItem>
@@ -80,7 +80,7 @@ export const PricingItemComponent: FunctionComponent<
                         )}
                     />
                     <FormField
-                        control={form.control}
+                        control={control}
                         name={`items.${itemIndex}.price`}
                         render={({ field }) => (
                             <FormItem>
@@ -98,7 +98,7 @@ export const PricingItemComponent: FunctionComponent<
                         )}
                     />
                     <FormField
-                        control={form.control}
+                        control={control}
                         name={`items.${itemIndex}.currency`}
                         render={({ field }) => (
                             <FormItem>
@@ -148,7 +148,7 @@ export const PricingItemComponent: FunctionComponent<
                                     className="mt-2 space-y-4"
                                 >
                                     <FormField
-                                        control={form.control}
+                                        control={control}
                                         name={`items.${itemIndex}.includes[${includeIndex}]`}
                                         render={({ field }) => (
                                             <FormItem className="flex flex-row items-center space-x-2 space-y-0">
@@ -190,7 +190,7 @@ export const PricingItemComponent: FunctionComponent<
                         </div>
                     </div>
                     <FormField
-                        control={form.control}
+                        control={control}
                         name={`items.${itemIndex}.mostPopular`}
                         render={({ field }) => (
                             <FormItem className="flex flex-row items-center space-x-2 space-y-0">

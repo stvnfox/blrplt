@@ -19,7 +19,7 @@ interface PricingItem {
 
 const extraAttributes = {
     label: "pricing",
-    helperText: "this is the pricing component",
+    helperText: "display your product or service pricing clearly",
     title: "title",
     description: "description",
     items: [
