@@ -57,6 +57,7 @@ export interface UspItem {
 
 export interface Usps {
     title: string;
+    description: string;
     items: UspItem[];
 }
 
@@ -68,7 +69,7 @@ export interface Header {
 
 // TODO: Add types for form fields
 export type ComponentProps = {
-    form: any
+    form?: any
 }
 
 export interface ComponentDefaultValues {

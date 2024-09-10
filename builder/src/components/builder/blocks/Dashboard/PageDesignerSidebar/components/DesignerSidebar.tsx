@@ -11,6 +11,7 @@ export const DesignerSidebar: FunctionComponent = () => {
             <div className="flex flex-col gap-y-2">
                 <SidebarButton component={PageDesignerComponents.header} />
                 <SidebarButton component={PageDesignerComponents.pricing} />
+                <SidebarButton component={PageDesignerComponents.usps} />
             </div>
         </>
     )

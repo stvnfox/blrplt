@@ -9,6 +9,7 @@ export const componentDefaultValues: ComponentDefaultValues = {
     },
     usps: {
         title: "blrplt builder - unique selling points",
+        description: "highlight what sets you apart from the competition.",
         items: [
             {
                 title: "blrplt builder - unique selling points",
