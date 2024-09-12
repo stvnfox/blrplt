@@ -3,9 +3,10 @@ import { ReactElement } from "react"
 import { HeaderComponent } from "../components/Header/Component"
 import { PricingComponent } from "../components/Pricing/Component"
 import { UspsComponent } from "../components/Usps/Component"
+import { FaqComponent } from "../components/Faq/Component"
 
 //TODO: Add more components here
-export type ComponentsType = "header" | "pricing" | "usps"
+export type ComponentsType = "header" | "pricing" | "usps" | "faq"
 
 export type ComponentElementType = {
     type: ComponentsType
@@ -38,5 +39,6 @@ type ComponentElementsType = {
 export const PageDesignerComponents: ComponentElementsType = {
     header: HeaderComponent,
     pricing: PricingComponent,
-    usps: UspsComponent
+    usps: UspsComponent,
+    faq: FaqComponent
 }
