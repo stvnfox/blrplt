@@ -44,23 +44,23 @@ export const componentSchemas = {
             })
         ),
     }),
-    content: z.object({
+    feature: z.object({
         title: z.string().min(2),
         description: z.string(),
         cta: z.object({
             label: z.string().min(2),
             href: z.string().min(1),
             ariaLabel: z.string().min(2),
-        }),
+        }).or(z.undefined()),
         image: z.object({
             src: z.object({
-                url: z.string().min(1),
-                extension: z.string().min(2),
-                path: z.string().min(2),
-            }).refine((data) => data.url !== "", { message: "Please upload an image." }),
+                url: z.string(),
+                extension: z.string(),
+                path: z.string(),
+            }),
             alt: z.string().min(2),
             position: z.string().default('left'),
-        }).required(),
+        }),
     }),
     // ... add more component schemas here
 }

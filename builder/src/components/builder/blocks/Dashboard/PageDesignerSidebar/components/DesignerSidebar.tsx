@@ -13,6 +13,7 @@ export const DesignerSidebar: FunctionComponent = () => {
                 <SidebarButton component={PageDesignerComponents.pricing} />
                 <SidebarButton component={PageDesignerComponents.usps} />
                 <SidebarButton component={PageDesignerComponents.faq} />
+                <SidebarButton component={PageDesignerComponents.feature} />
             </div>
         </>
     )

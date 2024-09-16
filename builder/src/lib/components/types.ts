@@ -4,7 +4,7 @@ export type ComponentOption = {
     disabled: boolean
 }
 
-export interface Content {
+export interface Feature {
     title: string;
     description?: string;
     cta?: {
@@ -77,7 +77,7 @@ export interface ComponentDefaultValues {
     usps: Usps;
     pricing: Pricing;
     faq: Faq;
-    content: Content;
+    feature: Feature;
 }
 
 export type ComponentKey = keyof ComponentDefaultValues;

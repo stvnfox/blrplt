@@ -82,9 +82,9 @@ export const componentDefaultValues: ComponentDefaultValues = {
             }
         ],
     },
-    content: {
-        title: "blrplt builder - content block",
-        description: "blrplt builder - content block",
+    feature: {
+        title: "blrplt builder - feature block",
+        description: "blrplt builder - feature block",
         cta: {
             label: "get started",
             href: "/",

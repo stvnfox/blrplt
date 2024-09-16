@@ -73,7 +73,7 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
                 className="absolute bottom-0 h-1/2 w-full rounded-b-md"
             />
             {mouseIsOver && (
-                <div className="absolute h-full w-full rounded-md border-2 border-neutral-200 bg-white/20">
+                <div className="absolute h-full w-full rounded-md border-2 border-neutral-200 bg-white/80">
                     <div className="absolute right-0 z-10 h-full">
                         <Button
                             className="flex h-full w-24 justify-center rounded-l-none rounded-r-md border-red-500 bg-red-500 text-white shadow-none hover:bg-red-600 hover:text-white"
@@ -91,7 +91,7 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
                 </div>
             )}
             {topHalf.isOver && <div className="absolute h-2 w-full rounded-t-md bg-neutral-600" />}
-            <div className={cn("rounded-md transition-opacity", mouseIsOver && "opacity-40")}>
+            <div className={cn("rounded-md transition-opacity", mouseIsOver && "bg-neutral-600/20")}>
                 <DesignerElement instance={component} />
             </div>
             {bottomHalf.isOver && <div className="absolute bottom-0 h-2 w-full rounded-b-md bg-neutral-600" />}
