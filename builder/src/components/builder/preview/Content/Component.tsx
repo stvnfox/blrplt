@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react"
 
-import { Content } from "@/lib/components/types"
+import { Feature } from "@/lib/components/types"
 import { cn } from "@/lib/utils"
 
 type ContentComponentProps = {
-    data: Content
+    data: Feature
 }
 
 export const ContentComponent: FunctionComponent<ContentComponentProps> = ({ data }) => {
