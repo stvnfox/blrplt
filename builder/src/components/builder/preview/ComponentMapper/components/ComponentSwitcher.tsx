@@ -19,7 +19,7 @@ export const ComponentSwitcher: FunctionComponent<ComponentSwitcherProps> = ({ c
             {component.type === "usps" && <UspsComponent data={component.data} />}
             {component.type === "pricing" && <PricingComponent data={component.data} />}
             {component.type === "faq" && <FaqComponent data={component.data} />}
-            {component.type === "content" && <ContentComponent data={component.data} />}
+            {component.type === "feature" && <ContentComponent data={component.data} />}
         </div>
     )
 }
