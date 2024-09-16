@@ -83,6 +83,6 @@ export interface ComponentDefaultValues {
 export type ComponentKey = keyof ComponentDefaultValues;
 
 export type SelectorComponentKey = keyof ComponentDefaultValues;
-export const selectorComponentKeys = ['header', 'usps', 'pricing', 'faq', 'content'] as const;
+export const selectorComponentKeys = ['header', 'usps', 'pricing', 'faq', 'feature'] as const;
 
 export type SelectorComponentKeyType = typeof selectorComponentKeys[number];
