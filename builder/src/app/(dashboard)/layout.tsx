@@ -23,6 +23,8 @@ export default async function RootLayout({
     children: React.ReactNode
 }>) {
     const { user, sites } = await fetchSiteData()
+    // @ts-expect-error bc pages isn't typed
+    const components = sites[0].pages[0]?.components ?? []
 
     return (
         <main className="flex min-h-screen w-full flex-col">
@@ -31,7 +33,7 @@ export default async function RootLayout({
                 userEmail={user.email}
                 userSites={sites}
             >
-                <DesignerContextProvider>
+                <DesignerContextProvider components={components}>
                     <NavigationComponent />
                     {children}
                 </DesignerContextProvider>

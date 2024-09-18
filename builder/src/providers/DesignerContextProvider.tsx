@@ -16,12 +16,13 @@ type DesignerContext = {
 export const DesignerContext = createContext<DesignerContext | null>(null)
 
 type DesignerContextProviderProps = {
+    components: ComponentElementInstance[]
     children: React.ReactNode
 }
 
 export default function DesignerContextProvider(props: DesignerContextProviderProps) {
-    const { children } = props
-    const [components, setComponents] = useState<ComponentElementInstance[]>([])
+    const { children, components: savedComponents } = props
+    const [components, setComponents] = useState<ComponentElementInstance[]>(savedComponents)
     const [selectedComponent, setSelectedComponent] = useState<ComponentElementInstance | null>(null)
 
     const addComponent = (index: number, component: ComponentElementInstance) => {
