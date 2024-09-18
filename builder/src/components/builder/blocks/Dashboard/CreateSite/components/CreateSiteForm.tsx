@@ -85,18 +85,18 @@ export function CreateSiteForm({ setOpen }: { setOpen: () => void }) {
             },
             pages: [
                 {
-                    name: "Home",
+                    name: "home",
                     id: createUuid(),
                     url: "/builder/pages/home",
                     components: [
                         {
-                            order: 0,
+                            id: createUuid(),
                             type: "header",
-                            data: {
-                                title: componentDefaultValues.header.title,
-                                subtitle: componentDefaultValues.header.subtitle,
+                            extraAttributes: {
                                 description: componentDefaultValues.header.description,
-                            },
+                                subtitle: componentDefaultValues.header.subtitle,
+                                title: componentDefaultValues.header.title,
+                            }
                         },
                     ],
                 },
