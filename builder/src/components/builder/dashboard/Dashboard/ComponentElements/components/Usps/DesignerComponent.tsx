@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react"
 
 import { CustomUspsInstance } from "./Component"
-import { ComponentElementInstance } from "../../ComponentElements/Component"
+import { ComponentElementInstance } from "@/components/builder/dashboard/Dashboard/ComponentElements/Component"
 
 import { Label } from "@/components/ui/label"
 

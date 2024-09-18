@@ -1,7 +1,7 @@
 "use client"
 
 import { MessageCircleQuestionIcon } from "lucide-react"
-import { ComponentsType, ComponentElementType, ComponentElementInstance } from "../../ComponentElements/Component"
+import { ComponentsType, ComponentElementType, ComponentElementInstance } from "../../Component"
 import { createUuid } from "@/lib/utils"
 
 import { DesignerComponent } from "./DesignerComponent"

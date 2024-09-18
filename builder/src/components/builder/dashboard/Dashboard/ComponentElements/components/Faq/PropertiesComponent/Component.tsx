@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { PlusIcon } from "lucide-react"
 
-import { ComponentElementInstance } from "../../../ComponentElements/Component"
+import { ComponentElementInstance } from "@/components/builder/dashboard/Dashboard/ComponentElements/Component"
 import { componentSchemas } from "@/lib/components/componentSchemas"
 import { componentDefaultValues } from "@/lib/components/defaultValues"
 import { useDesigner } from "@/lib/hooks/useDesigner"

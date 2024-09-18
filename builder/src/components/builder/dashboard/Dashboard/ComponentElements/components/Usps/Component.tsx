@@ -1,7 +1,7 @@
 "use client"
 
 import { Tags } from "lucide-react"
-import { ComponentsType, ComponentElementType, ComponentElementInstance } from "../../ComponentElements/Component"
+import { ComponentsType, ComponentElementType, ComponentElementInstance } from "../../Component"
 
 import { DesignerComponent } from "./DesignerComponent"
 import { PropertiesComponent } from "./PropertiesComponent/Component"

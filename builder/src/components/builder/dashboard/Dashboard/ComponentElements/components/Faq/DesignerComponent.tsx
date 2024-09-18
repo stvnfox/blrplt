@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react"
 
 import { CustomFaqInstance } from "./Component"
-import { ComponentElementInstance } from "../../ComponentElements/Component"
+import { ComponentElementInstance } from "@/components/builder/dashboard/Dashboard/ComponentElements/Component"
 import { Label } from "@/components/ui/label"
 
 type FaqDesignerComponentProps = {

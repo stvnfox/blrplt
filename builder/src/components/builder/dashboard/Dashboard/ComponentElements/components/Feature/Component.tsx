@@ -1,7 +1,7 @@
 "use client"
 
 import { LayoutList } from "lucide-react"
-import { ComponentsType, ComponentElementType, ComponentElementInstance } from "../../ComponentElements/Component"
+import { ComponentsType, ComponentElementType, ComponentElementInstance } from "../../Component"
 
 import { DesignerComponent } from "./DesignerComponent"
 import { PropertiesComponent } from "./PropertiesComponent"

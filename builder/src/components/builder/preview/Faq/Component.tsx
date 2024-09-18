@@ -1,14 +1,18 @@
 import { FunctionComponent } from "react"
 
-import { Faq } from "@/lib/components/types"
+import { ComponentElementInstance } from "@/components/builder/dashboard/Dashboard/ComponentElements/Component"
+import { CustomFaqInstance } from "../../dashboard/Dashboard/ComponentElements/components/Faq/Component"
 
 import { FaqItemComponent } from "./components/FaqItem"
 
 type FaqComponentProps = {
-    data: Faq
+    instance: ComponentElementInstance
 }
 
-export const FaqComponent: FunctionComponent<FaqComponentProps> = ({ data }) => {
+export const FaqComponent: FunctionComponent<FaqComponentProps> = ({ instance }) => {
+    const data = instance as CustomFaqInstance
+    const { title, description, items } = data.extraAttributes
+
     return (
         <section className="py-12 md:py-24">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -18,15 +22,15 @@ export const FaqComponent: FunctionComponent<FaqComponentProps> = ({ data }) => 
                             "font-manrope text-center text-4xl font-bold leading-[3.25rem] text-primary"
                         
                     >
-                        {data.title}
+                        {title}
                     </h2>
-                    <p className="mt-4 text-center text-baseText">{data.description}</p>
+                    <p className="mt-4 text-center text-baseText">{description}</p>
                 </div>
                 <div
                     className="accordion-group"
                     data-accordion="default-accordion"
                 >
-                    {data.items.map((item, index) => (
+                    {items.map((item, index) => (
                         <FaqItemComponent
                             key={`faq-item-${index}`}
                             item={item}
