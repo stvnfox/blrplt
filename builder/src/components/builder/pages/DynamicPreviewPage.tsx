@@ -24,8 +24,6 @@ export const DynamicPreviewPage: FunctionComponent<DynamicPreviewPageProps> = ({
             <ComponentMapper
                 // @ts-expect-error because page isn't typed because jsobb scheme is not available
                 components={page?.components}
-                // @ts-expect-error because page isn't typed because jsobb scheme is not available
-                slug={page?.name}
             />
         </main>
     )

@@ -1,21 +1,14 @@
 import { FunctionComponent } from "react"
 
-import { ComponentKey } from "@/lib/components/types"
+import { ComponentElementInstance } from "../../dashboard/Dashboard/ComponentElements/Component"
 
 import { ComponentSwitcher } from "./components/ComponentSwitcher"
 
-export type BuilderComponent = {
-    order: number
-    type: ComponentKey
-    data: any
-}
-
 type ComponentMapperProps = {
-    components: BuilderComponent[]
-    slug: string
+    components: ComponentElementInstance[]
 }
 
-export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ components, slug }) => {
+export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ components }) => {
     return (
         <section className="container space-y-4">
             {components.map((component, index) => {
@@ -23,7 +16,6 @@ export const ComponentMapper: FunctionComponent<ComponentMapperProps> = ({ compo
                     <ComponentSwitcher
                         key={`component-${component.type}-${index}`}
                         component={component}
-                        slug={slug}
                     />
                 )
             })}
