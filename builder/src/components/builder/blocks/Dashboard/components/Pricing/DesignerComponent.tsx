@@ -27,10 +27,8 @@ export const DesignerComponent: FunctionComponent<PricingDesignerComponentProps>
                                 key={`pricing-item-${index}`}
                                 className="w-full p-4 lg:w-48"
                             >
-                                <div className="relative flex h-full flex-col overflow-hidden rounded-lg border-2 border-primary p-3">
-                                    <h4 className="title-font text-sm font-medium tracking-widest">
-                                        {item.title}
-                                    </h4>
+                                <div className="flex h-full flex-col overflow-hidden rounded-lg border-2 border-primary p-3">
+                                    <h4 className="title-font text-sm font-medium tracking-widest">{item.title}</h4>
                                     <h3 className="mb-2 flex items-center border-b border-primary pb-4 text-xl leading-none text-primary">
                                         <span>
                                             {item.currency} {item.price} {item.mostPopular}
