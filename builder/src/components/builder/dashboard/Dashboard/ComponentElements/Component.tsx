@@ -1,10 +1,10 @@
 import { ReactElement } from "react"
 
-import { HeaderComponent } from "../components/Header/Component"
-import { PricingComponent } from "../components/Pricing/Component"
-import { UspsComponent } from "../components/Usps/Component"
-import { FaqComponent } from "../components/Faq/Component"
-import { FeatureComponent } from "../components/Feature/Component"
+import { HeaderComponent } from "./components/Header/Component"
+import { PricingComponent } from "./components/Pricing/Component"
+import { UspsComponent } from "./components/Usps/Component"
+import { FaqComponent } from "./components/Faq/Component"
+import { FeatureComponent } from "./components/Feature/Component"
 
 //TODO: Add more components here
 export type ComponentsType = "header" | "pricing" | "usps" | "faq" | "feature"

@@ -3,10 +3,10 @@
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 
 import { HeadingComponent } from "@/components/builder/layout/HeadingComponent"
-import { OpenGraph } from "@/components/builder/blocks/Dashboard/OpenGraph/OpenGraph"
-import { SiteComponent } from "@/components/builder/blocks/Dashboard/SiteComponent/SiteComponent"
-import { StylingComponent } from "@/components/builder/blocks/Dashboard/StylingComponent/StylingComponent"
-import { CreateSiteComponent } from "@/components/builder/blocks/Dashboard/CreateSite/CreateSiteComponent"
+import { OpenGraph } from "@/components/builder/dashboard/Settings/OpenGraph/OpenGraph"
+import { SiteComponent } from "@/components/builder/dashboard/Settings/SiteComponent/SiteComponent"
+import { StylingComponent } from "@/components/builder/dashboard/Settings/StylingComponent/StylingComponent"
+import { CreateSiteComponent } from "@/components/builder/dashboard/Dashboard/CreateSite/CreateSiteComponent"
 
 export default function Settings() {
     const { sites } = useBuilderContext()
@@ -14,7 +14,7 @@ export default function Settings() {
 
     return (
         <section className="flex flex-1 flex-col gap-4">
-            {sites[0] ? (
+            {site ? (
                 <>
                     <HeadingComponent
                         title="site settings"

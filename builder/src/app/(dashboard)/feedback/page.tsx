@@ -1,4 +1,4 @@
-import { FeedbackComponent } from "@/components/builder/blocks/Feedback/Component";
+import { FeedbackComponent } from "@/components/builder/dashboard/Feedback/Component";
 
 export default function Feedback() {
     return (

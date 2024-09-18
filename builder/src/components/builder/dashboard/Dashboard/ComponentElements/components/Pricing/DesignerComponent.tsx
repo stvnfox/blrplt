@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react"
 
 import { CustomPricingInstance } from "./Component"
-import { ComponentElementInstance } from "../../ComponentElements/Component"
+import { ComponentElementInstance } from "../../Component"
 import { Label } from "@/components/ui/label"
 
 type PricingDesignerComponentProps = {

@@ -2,7 +2,7 @@
 
 import { createContext, Dispatch, SetStateAction, useState } from "react"
 
-import { ComponentElementInstance } from "@/components/builder/blocks/Dashboard/ComponentElements/Component"
+import { ComponentElementInstance } from "@/components/builder/dashboard/Dashboard/ComponentElements/Component"
 
 type DesignerContext = {
     components: ComponentElementInstance[]
