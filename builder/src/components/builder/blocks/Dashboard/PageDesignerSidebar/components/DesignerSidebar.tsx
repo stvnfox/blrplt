@@ -9,7 +9,6 @@ export const DesignerSidebar: FunctionComponent = () => {
         <>
             <h2 className="mb-3">builder - components</h2>
             <div className="flex flex-col gap-y-2">
-                <SidebarButton component={PageDesignerComponents.header} />
                 <SidebarButton component={PageDesignerComponents.pricing} />
                 <SidebarButton component={PageDesignerComponents.usps} />
                 <SidebarButton component={PageDesignerComponents.faq} />

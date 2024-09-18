@@ -21,6 +21,7 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
             elementId: component.id,
             isTopHalf: true,
         },
+        disabled: component.type === "header",
     })
 
     const bottomHalf = useDroppable({
@@ -30,6 +31,7 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
             elementId: component.id,
             isBottomHalf: true,
         },
+        disabled: component.type === "header",
     })
 
     const draggable = useDraggable({
@@ -39,6 +41,7 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
             componentId: component.id,
             isDesignerComponent: true,
         },
+        disabled: component.type === "header",
     })
 
     if (draggable.isDragging) return null
@@ -74,18 +77,20 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
             />
             {mouseIsOver && (
                 <div className="absolute h-full w-full rounded-md border-2 border-neutral-200 bg-white/80">
-                    <div className="absolute right-0 z-10 h-full">
-                        <Button
-                            className="flex h-full w-24 justify-center rounded-l-none rounded-r-md border-red-500 bg-red-500 text-white shadow-none hover:bg-red-600 hover:text-white"
-                            variant="outline"
-                            onClick={(e) => handleRemoveComponent(e)}
-                        >
-                            <Trash2 />
-                        </Button>
-                    </div>
+                    {component.type !== "header" && (
+                        <div className="absolute right-0 z-10 h-full">
+                            <Button
+                                className="flex h-full w-24 justify-center rounded-l-none rounded-r-md border-red-500 bg-red-500 text-white shadow-none hover:bg-red-600 hover:text-white"
+                                variant="outline"
+                                onClick={(e) => handleRemoveComponent(e)}
+                            >
+                                <Trash2 />
+                            </Button>
+                        </div>
+                    )}
                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                         <p className="animate-pulse text-sm font-semibold text-black">
-                            Click for properties or drag to move
+                            Click for properties {component.type !== "header" && " or drag to move"}
                         </p>
                     </div>
                 </div>
