@@ -1,14 +1,12 @@
 import { FunctionComponent } from "react"
 import { closestCenter, DndContext, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core"
 
-import { createUuid } from "@/lib/utils"
-
 import { PageDesigner } from "./PageDesigner/Component"
 import { PageDesignerSidebar } from "./PageDesignerSidebar/Component"
 import { DragOverlayWrapper } from "./DragOverlayWrapper/Component"
 
 export const DashboardComponent: FunctionComponent = () => {
-    const id = createUuid()
+    const id = 'dnd-context-180920241201'
 
     const mouseSensor = useSensor(MouseSensor, {
         activationConstraint: {
