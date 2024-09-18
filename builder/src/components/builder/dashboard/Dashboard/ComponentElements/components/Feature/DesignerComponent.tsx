@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react"
 
 import { CustomFeatureInstance } from "./Component"
-import { ComponentElementInstance } from "@/components/builder/dashboard/Dashboard/ComponentElements/Component""../../Component"
+import { ComponentElementInstance } from "@/components/builder/dashboard/Dashboard/ComponentElements/Component"
 import { cn } from "@/lib/utils"
 
 import { Label } from "@/components/ui/label"
