@@ -1,7 +1,7 @@
 "use client"
 
 import { FunctionComponent } from "react"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import Link from "next/link"
 import { CircleUser } from "lucide-react"
 
@@ -17,11 +17,13 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { cn } from "@/lib/utils"
 
 export const AccountMenu: FunctionComponent = () => {
     const { siteName } = useBuilderContext()
     const supabase = createClient()
     const router = useRouter()
+    const pathname = usePathname()
 
     const logout = async () => {
         const { error } = await supabase.auth.signOut()
@@ -39,9 +41,9 @@ export const AccountMenu: FunctionComponent = () => {
                 <Button
                     variant="secondary"
                     size="icon"
-                    className="rounded-full"
+                    className="rounded-full border border-neutral-100 shadow-none transition-colors hover:border-neutral-200"
                 >
-                    <CircleUser className="h-5 w-5" />
+                    <CircleUser size={20} />
                     <span className="sr-only">Toggle user menu</span>
                 </Button>
             </DropdownMenuTrigger>
@@ -53,12 +55,47 @@ export const AccountMenu: FunctionComponent = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
                     <Link
-                        className="hover:cursor-pointer"
+                        className={cn("hover:cursor-pointer", pathname === "/" && "bg-neutral-100 font-semibold")}
+                        href="/"
+                    >
+                        dashboard
+                    </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                    <Link
+                        className={cn(
+                            "hover:cursor-pointer",
+                            pathname === "/settings" && "bg-neutral-100 font-semibold"
+                        )}
                         href="/settings"
                     >
                         settings
                     </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                    <Link
+                        className={cn(
+                            "hover:cursor-pointer",
+                            pathname === "/feedback" && "bg-neutral-100 font-semibold"
+                        )}
+                        href="/feedback"
+                    >
+                        feedback
+                    </Link>
+                </DropdownMenuItem>
+                {/* <Link
+                    href="/settings"
+                    className={cn(pathname === "/settings" && "underline underline-offset-2")}
+                >
+                    settings
+                </Link>
+                <Link
+                    href="/feedback"
+                    className={cn("flex items-center gap-1", pathname === "/feedback" && "underline underline-offset-2")}
+                >
+                    feedback
+                    <Megaphone className="h-5 w-5" />
+                </Link> */}
                 <DropdownMenuItem disabled>support (soon)</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="!hover:bg-transparant">

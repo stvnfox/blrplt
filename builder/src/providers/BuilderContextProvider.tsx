@@ -38,7 +38,7 @@ const defaultValues = {
 export const BuilderContext = createContext<BuilderContextInterface>(defaultValues)
 
 export default function BuilderContextProvider(props: BuilderContextProps) {
-    const { children, userId, userEmail, userSites} = props
+    const { children, userId, userEmail, userSites } = props
     const [user] = useState(userId)
     const [email] = useState(userEmail)
     const [sites, updateSites] = useState(userSites)
