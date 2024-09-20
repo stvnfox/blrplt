@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       icon: '/icon.ico',
     },
     verification: {
-      google: "L9CWIdtPdszeYs50_jyhGuzYEQg41prlEz6uAr7utJU",
+      google: process.env.GOOGLE_VERIFICATION_CODE,
     }
   }
 }

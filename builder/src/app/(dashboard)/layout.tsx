@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: "blrplt builder",
     description: "the place where you can build a landing page quickly without any hassle",
     verification: {
-        google: "L9CWIdtPdszeYs50_jyhGuzYEQg41prlEz6uAr7utJU",
+        google: process.env.GOOGLE_VERIFICATION_CODE,
     },
 }
 
