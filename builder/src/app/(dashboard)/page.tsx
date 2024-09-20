@@ -3,7 +3,7 @@
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 
 import { DashboardComponent } from "@/components/builder/dashboard/Dashboard/Component"
-import { CreateSiteComponent } from "@/components/builder/dashboard/Dashboard/CreateSite/CreateSiteComponent"
+import { CreateSiteComponent } from "@/components/builder/dashboard/Dashboard/CreateSite/Component"
 
 export default function Dashboard() {
     const { sites, siteName } = useBuilderContext()

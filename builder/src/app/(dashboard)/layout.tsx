@@ -7,7 +7,7 @@ import DesignerContextProvider from "@/providers/DesignerContextProvider"
 
 import { fetchSiteData } from "@/actions/data"
 
-import { NavigationComponent } from "@/components/builder/layout/NavigationComponent/NavigationComponent"
+import { NavigationComponent } from "@/components/builder/layout/NavigationComponent/Component"
 
 export const metadata: Metadata = {
     title: "blrplt builder",
