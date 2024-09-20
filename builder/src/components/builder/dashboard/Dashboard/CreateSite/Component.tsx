@@ -1,5 +1,6 @@
 "use client"
-import { useState } from "react"
+
+import { FunctionComponent, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -12,7 +13,7 @@ import {
 } from "@/components/ui/dialog"
 import { CreateSiteForm } from "./components/CreateSiteForm"
 
-export function CreateSiteComponent(){
+export const CreateSiteComponent: FunctionComponent = () => {
     const [open, setOpen] = useState(false)
 
     const closeAfterSubmit = () => {

@@ -3,10 +3,10 @@
 import { useBuilderContext } from "@/providers/BuilderContextProvider"
 
 import { HeadingComponent } from "@/components/builder/layout/HeadingComponent"
-import { OpenGraph } from "@/components/builder/dashboard/Settings/OpenGraph/OpenGraph"
-import { SiteComponent } from "@/components/builder/dashboard/Settings/SiteComponent/SiteComponent"
-import { StylingComponent } from "@/components/builder/dashboard/Settings/StylingComponent/StylingComponent"
-import { CreateSiteComponent } from "@/components/builder/dashboard/Dashboard/CreateSite/CreateSiteComponent"
+import { OpenGraph } from "@/components/builder/dashboard/Settings/OpenGraph/Component"
+import { SiteComponent } from "@/components/builder/dashboard/Settings/SiteComponent/Component"
+import { StylingComponent } from "@/components/builder/dashboard/Settings/StylingComponent/Component"
+import { CreateSiteComponent } from "@/components/builder/dashboard/Dashboard/CreateSite/Component"
 
 export default function Settings() {
     const { sites } = useBuilderContext()
