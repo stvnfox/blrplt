@@ -1,4 +1,3 @@
-import { NavigationComponent } from "@/components/builder/layout/NavigationComponent/NavigationComponent";
 import Link from "next/link";
 import { HandMetal, ThumbsDown } from "lucide-react";
 
