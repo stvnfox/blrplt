@@ -127,8 +127,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@tanstack/eslint-plugin-query':
-        specifier: ^5.56.1
-        version: 5.56.1(eslint@8.57.0)(typescript@5.4.5)
+        specifier: ^5.57.1
+        version: 5.57.1(eslint@8.57.0)(typescript@5.4.5)
       '@types/node':
         specifier: 20.14.2
         version: 20.14.2
@@ -2520,8 +2520,8 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
 
-  '@tanstack/eslint-plugin-query@5.56.1':
-    resolution: {integrity: sha512-IUm2Zy5BXOqMbaa7QwNg3cPa5NP5Rm3pIFCFpe7Y3pLC7Ftp8Q0Y8GU2uNpCbMFW79jHJXdQ4Oxnu1eTQr8GXQ==}
+  '@tanstack/eslint-plugin-query@5.57.1':
+    resolution: {integrity: sha512-HrfX4NqVseUZiRFBEOjS61bYIU5Qb9TeLEraOj0yMruCFIXz4reP62Cpq6BwZfMMASV7GfWAFiRvMbg7J/U05Q==}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
 
@@ -3630,8 +3630,8 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  electron-to-chromium@1.5.26:
-    resolution: {integrity: sha512-Z+OMe9M/V6Ep9n/52+b7lkvYEps26z4Yz3vjWL1V61W0q+VLF1pOHhMY17sa4roz4AWmULSI8E6SAojZA5L0YQ==}
+  electron-to-chromium@1.5.27:
+    resolution: {integrity: sha512-o37j1vZqCoEgBuWWXLHQgTN/KDKe7zwpiY5CPeq2RvUqOyJw9xnrULzZAEVQ5p4h+zjMk7hgtOoPdnLxr7m/jw==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -5636,8 +5636,8 @@ packages:
     resolution: {integrity: sha512-l0OE8wL34P4nJH/H2ffoaniAokM2qSmrtXHmlpvYr5AVVX8msAyW0l8NVJFDxlSK4u3Uh/f41cQheDVdnYijwQ==}
     hasBin: true
 
-  rollup@3.29.4:
-    resolution: {integrity: sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==}
+  rollup@3.29.5:
+    resolution: {integrity: sha512-GVsDdsbJzzy4S/v3dqWPJ7EfvZJfCHiDqe80IyrF59LYuP+e6U1LJoUqeuqRbwAWoMNoXivMNeNAOf5E22VA1w==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
 
@@ -9107,7 +9107,7 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.3
 
-  '@tanstack/eslint-plugin-query@5.56.1(eslint@8.57.0)(typescript@5.4.5)':
+  '@tanstack/eslint-plugin-query@5.57.1(eslint@8.57.0)(typescript@5.4.5)':
     dependencies:
       '@typescript-eslint/utils': 8.6.0(eslint@8.57.0)(typescript@5.4.5)
       eslint: 8.57.0
@@ -9738,7 +9738,7 @@ snapshots:
   browserslist@4.23.3:
     dependencies:
       caniuse-lite: 1.0.30001662
-      electron-to-chromium: 1.5.26
+      electron-to-chromium: 1.5.27
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
 
@@ -10271,7 +10271,7 @@ snapshots:
       minimatch: 9.0.1
       semver: 7.6.3
 
-  electron-to-chromium@1.5.26: {}
+  electron-to-chromium@1.5.27: {}
 
   emoji-regex@8.0.0: {}
 
@@ -12586,7 +12586,7 @@ snapshots:
     dependencies:
       glob: 10.4.5
 
-  rollup@3.29.4:
+  rollup@3.29.5:
     optionalDependencies:
       fsevents: 2.3.3
 
@@ -13537,7 +13537,7 @@ snapshots:
     dependencies:
       esbuild: 0.18.20
       postcss: 8.4.38
-      rollup: 3.29.4
+      rollup: 3.29.5
     optionalDependencies:
       '@types/node': 20.14.2
       fsevents: 2.3.3
