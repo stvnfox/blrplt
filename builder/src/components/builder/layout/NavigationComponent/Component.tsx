@@ -8,6 +8,7 @@ import { useBuilderContext } from "@/providers/BuilderContextProvider"
 
 import { AccountMenu } from "./components/AccountMenu"
 import { MobileNavigation } from "./components/MobileNavigation"
+import { PublishButton } from "./components/PublishButton"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
@@ -54,12 +55,7 @@ export const NavigationComponent: FunctionComponent = () => {
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
-                        <Button
-                            variant="default"
-                            className="mr-3 shadow-none"
-                        >
-                            publish
-                        </Button>
+                        <PublishButton />
                     </>
                 )}
                 <Separator

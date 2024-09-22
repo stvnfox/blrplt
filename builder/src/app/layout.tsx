@@ -1,5 +1,9 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+
+import TanstackProvider from "@/providers/TanstackProvider"
+
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -9,7 +13,7 @@ export const metadata: Metadata = {
     description: "the place where you can build a website quickly without any hassle",
     verification: {
         google: process.env.GOOGLE_VERIFICATION_CODE,
-    }
+    },
 }
 
 export default function RootLayout({
@@ -19,7 +23,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>{children}</body>
+            <body className={inter.className}>
+                <TanstackProvider>
+                    {children}
+                    <ReactQueryDevtools />
+                </TanstackProvider>
+            </body>
         </html>
     )
 }

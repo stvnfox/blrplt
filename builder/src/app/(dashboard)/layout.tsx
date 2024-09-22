@@ -8,6 +8,7 @@ import DesignerContextProvider from "@/providers/DesignerContextProvider"
 import { fetchSiteData } from "@/actions/data"
 
 import { NavigationComponent } from "@/components/builder/layout/NavigationComponent/Component"
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
     title: "blrplt builder",
@@ -36,6 +37,7 @@ export default async function RootLayout({
                 <DesignerContextProvider components={components}>
                     <NavigationComponent />
                     {children}
+                    <Toaster />
                 </DesignerContextProvider>
             </BuilderContextProvider>
         </main>

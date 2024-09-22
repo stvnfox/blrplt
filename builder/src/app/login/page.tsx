@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { useRouter } from "next/navigation"
 
+import { useBuilderContext } from "@/providers/BuilderContextProvider"
 import { Status, StatusType } from "@/lib/types"
 import { createClient } from "@/lib/supabase/client"
 import { revalidateLayout } from "@/actions/revalidate"
@@ -49,6 +50,9 @@ export default function LoginPage() {
             return
         }
 
+        // set token in localStorage
+        sessionStorage.setItem("token", data.access_token)
+        // setSession for Supabase
         const supabase = createClient()
 
         const { error } = await supabase.auth.setSession({
