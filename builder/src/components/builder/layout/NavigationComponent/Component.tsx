@@ -60,7 +60,7 @@ export const NavigationComponent: FunctionComponent = () => {
                 )}
                 <Separator
                     orientation="vertical"
-                    className="mr-2 h-16"
+                    className="md:mr-2.5 h-16"
                 />
                 <AccountMenu />
             </div>
