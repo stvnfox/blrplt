@@ -4,7 +4,7 @@ import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { prisma } from "@/lib/db"
 
-export async function fetchSiteData() {
+export async function fetchData() {
     const supabase = createClient()
     const { data, error } = await supabase.auth.getUser()
 
