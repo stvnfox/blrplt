@@ -51,7 +51,10 @@ export const PropertiesComponent: FunctionComponent<FaqPropertiesComponentProps>
     }
 
     const removeItem = (index: number) => {
-        form.setValue("items", faqItems.filter((_, i) => i !== index))
+        form.setValue(
+            "items",
+            faqItems.filter((_, i) => i !== index)
+        )
 
         handleChanges(form.getValues())
     }
@@ -125,7 +128,7 @@ export const PropertiesComponent: FunctionComponent<FaqPropertiesComponentProps>
                         </FormItem>
                     )}
                 />
-                <h3 className="mt-8 text-sm font-semibold">pricing items</h3>
+                <h3 className="mt-8 text-sm font-semibold">frequently asked question items</h3>
                 <Accordion
                     type="single"
                     collapsible
