@@ -11,6 +11,8 @@ type DesignerContext = {
     selectedComponent: ComponentElementInstance | null
     setSelectedComponent: Dispatch<SetStateAction<ComponentElementInstance | null>>
     updateComponent: (id: string, component: ComponentElementInstance) => void
+    addedComponent: string
+    setAddedComponent: Dispatch<SetStateAction<string>>
 }
 
 export const DesignerContext = createContext<DesignerContext | null>(null)
@@ -24,6 +26,7 @@ export default function DesignerContextProvider(props: DesignerContextProviderPr
     const { children, components: savedComponents } = props
     const [components, setComponents] = useState<ComponentElementInstance[]>(savedComponents)
     const [selectedComponent, setSelectedComponent] = useState<ComponentElementInstance | null>(null)
+    const [addedComponent, setAddedComponent] = useState<string>("")
 
     const addComponent = (index: number, component: ComponentElementInstance) => {
         setComponents((prev) => {
@@ -58,6 +61,8 @@ export default function DesignerContextProvider(props: DesignerContextProviderPr
                 selectedComponent,
                 setSelectedComponent,
                 updateComponent,
+                addedComponent,
+                setAddedComponent,
             }}
         >
             {children}

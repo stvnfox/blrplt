@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useDraggable, useDroppable } from "@dnd-kit/core"
 import { Trash2 } from "lucide-react"
 
@@ -9,8 +9,9 @@ import { useDesigner } from "@/lib/hooks/useDesigner"
 import { Button } from "@/components/ui/button"
 
 export const DesignerComponentWrapper = ({ component }: { component: ComponentElementInstance }) => {
-    const { removeComponent, setSelectedComponent } = useDesigner()
+    const { removeComponent, setSelectedComponent, addedComponent } = useDesigner()
     const [mouseIsOver, setMouseIsOver] = useState(false)
+    const addedElementRef = useRef<HTMLDivElement>(null)
 
     const DesignerElement = PageDesignerComponents[component.type].designerComponent
 
@@ -57,6 +58,12 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
         setSelectedComponent(null)
     }
 
+    useEffect(() => {
+        if (addedComponent && addedComponent === component.id && addedElementRef.current) {
+            addedElementRef.current.scrollIntoView({ behavior: "smooth", block: "center" })
+        }
+    }, [addedComponent])
+
     return (
         <div
             ref={draggable.setNodeRef}
@@ -96,7 +103,10 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
                 </div>
             )}
             {topHalf.isOver && <div className="absolute h-2 w-full rounded-t-md bg-neutral-600" />}
-            <div className={cn("rounded-md transition-opacity", mouseIsOver && "bg-neutral-600/20")}>
+            <div
+                ref={addedElementRef}
+                className={cn("rounded-md transition-opacity", mouseIsOver && "bg-neutral-600/20")}
+            >
                 <DesignerElement instance={component} />
             </div>
             {bottomHalf.isOver && <div className="absolute bottom-0 h-2 w-full rounded-b-md bg-neutral-600" />}
