@@ -18,8 +18,8 @@ export const PropertiesSidebar: FunctionComponent = () => {
     }
 
     return (
-        <>
-            <div className="flex items-center justify-between -mt-1">
+        <div className="sticky top-[92px]">
+            <div className="-mt-1 flex items-center justify-between">
                 <h4 className="text-neutral-800">component properties</h4>
                 <Button
                     variant="ghost"
@@ -29,7 +29,7 @@ export const PropertiesSidebar: FunctionComponent = () => {
                     <XIcon size={16} />
                 </Button>
             </div>
-            <PropertiesForm instance={selectedComponent}/>
-        </>
+            <PropertiesForm instance={selectedComponent} />
+        </div>
     )
 }
