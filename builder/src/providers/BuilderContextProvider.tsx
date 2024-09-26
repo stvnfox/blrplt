@@ -47,8 +47,8 @@ const defaultValues = {
 export const BuilderContext = createContext<BuilderContextInterface>(defaultValues)
 
 const getTokenFromStorage = () => {
-    if(typeof window === "undefined") return ""
-    
+    if (typeof window === "undefined") return ""
+
     return sessionStorage.getItem("token") || ""
 }
 
@@ -61,7 +61,7 @@ export default function BuilderContextProvider(props: BuilderContextProps) {
     const siteName = sites[0] ? sites[0].name : "blrplt builder"
     const siteId = sites[0] ? sites[0].id : ""
     // @ts-expect-error - pages is a jsonb column so no types are available
-    const pageId = sites[0].pages[0]?.id
+    const pageId = sites[0] ? sites[0].pages[0]?.id : ""
 
     return (
         <BuilderContext.Provider value={{ token, setToken, user, email, sites, updateSites, siteName, siteId, pageId }}>

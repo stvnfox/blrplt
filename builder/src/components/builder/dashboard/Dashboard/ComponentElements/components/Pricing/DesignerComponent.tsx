@@ -1,7 +1,8 @@
-import { FunctionComponent } from "react"
+import { FunctionComponent, useEffect, useRef } from "react"
 
 import { CustomPricingInstance } from "./Component"
 import { ComponentElementInstance } from "@/components/builder/dashboard/Dashboard/ComponentElements/Component"
+import { useDesigner } from "@/lib/hooks/useDesigner"
 
 import { Label } from "@/components/ui/label"
 
@@ -12,6 +13,15 @@ type PricingDesignerComponentProps = {
 export const DesignerComponent: FunctionComponent<PricingDesignerComponentProps> = ({ instance }) => {
     const data = instance as CustomPricingInstance
     const { label, helperText, title, description, items } = data.extraAttributes
+
+    const { addedComponent } = useDesigner()
+    const addedElementRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (addedComponent && addedComponent === instance.id && addedElementRef.current) {
+            addedElementRef.current.scrollIntoView({ behavior: "smooth", block: "center" })
+        }
+    }, [addedComponent])
 
     return (
         <div className="rounded-md border-2 border-neutral-200 bg-white p-4">

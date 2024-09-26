@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 
 import "../globals.css"
 
@@ -25,7 +26,7 @@ export default async function RootLayout({
 }>) {
     const { user, sites } = await fetchData()
     // @ts-expect-error bc pages isn't typed
-    const components = sites[0].pages[0]?.components ?? []
+    const components = sites[0] ? sites[0].pages[0]?.components : []
 
     return (
         <main className="flex min-h-screen w-full flex-col">
@@ -38,6 +39,7 @@ export default async function RootLayout({
                     <NavigationComponent />
                     {children}
                     <Toaster />
+                    <ReactQueryDevtools />
                 </DesignerContextProvider>
             </BuilderContextProvider>
         </main>

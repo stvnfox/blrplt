@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 
 import TanstackProvider from "@/providers/TanstackProvider"
 
@@ -24,10 +23,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <TanstackProvider>
-                    {children}
-                    <ReactQueryDevtools />
-                </TanstackProvider>
+                <TanstackProvider>{children}</TanstackProvider>
             </body>
         </html>
     )

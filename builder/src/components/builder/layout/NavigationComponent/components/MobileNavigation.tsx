@@ -4,12 +4,14 @@ import { usePathname } from "next/navigation"
 import { HandMetal, Megaphone, Menu } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import { useBuilderContext } from "@/providers/BuilderContextProvider"
 
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetDescription, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 
 export const MobileNavigation: FunctionComponent = () => {
     const pathname = usePathname()
+    const { sites } = useBuilderContext()
 
     const [open, setOpen] = useState(false)
 
@@ -43,13 +45,15 @@ export const MobileNavigation: FunctionComponent = () => {
                     >
                         dashboard
                     </Link>
-                    <Link
-                        href="/settings"
-                        className={cn(pathname === "/settings" && "underline underline-offset-2")}
-                        onClick={() => setOpen(false)}
-                    >
-                        settings
-                    </Link>
+                    {sites[0] && (
+                        <Link
+                            href="/settings"
+                            className={cn(pathname === "/settings" && "underline underline-offset-2")}
+                            onClick={() => setOpen(false)}
+                        >
+                            settings
+                        </Link>
+                    )}
                     <Link
                         href="/feedback"
                         className={cn(

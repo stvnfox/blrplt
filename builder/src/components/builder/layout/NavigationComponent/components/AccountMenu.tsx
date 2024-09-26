@@ -20,7 +20,7 @@ import {
 import { cn } from "@/lib/utils"
 
 export const AccountMenu: FunctionComponent = () => {
-    const { siteName } = useBuilderContext()
+    const { siteName, sites } = useBuilderContext()
     const supabase = createClient()
     const router = useRouter()
     const pathname = usePathname()
@@ -61,17 +61,22 @@ export const AccountMenu: FunctionComponent = () => {
                         dashboard
                     </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                    <Link
-                        className={cn(
-                            "hover:cursor-pointer",
-                            pathname === "/settings" && "bg-neutral-100 font-semibold"
-                        )}
-                        href="/settings"
+                {sites[0] && (
+                    <DropdownMenuItem
+                        asChild
+                        disabled={!sites[0]}
                     >
-                        settings
-                    </Link>
-                </DropdownMenuItem>
+                        <Link
+                            className={cn(
+                                "hover:cursor-pointer",
+                                pathname === "/settings" && "bg-neutral-100 font-semibold"
+                            )}
+                            href="/settings"
+                        >
+                            settings
+                        </Link>
+                    </DropdownMenuItem>
+                )}
                 <DropdownMenuItem asChild>
                     <Link
                         className={cn(
@@ -83,19 +88,6 @@ export const AccountMenu: FunctionComponent = () => {
                         feedback
                     </Link>
                 </DropdownMenuItem>
-                {/* <Link
-                    href="/settings"
-                    className={cn(pathname === "/settings" && "underline underline-offset-2")}
-                >
-                    settings
-                </Link>
-                <Link
-                    href="/feedback"
-                    className={cn("flex items-center gap-1", pathname === "/feedback" && "underline underline-offset-2")}
-                >
-                    feedback
-                    <Megaphone className="h-5 w-5" />
-                </Link> */}
                 <DropdownMenuItem disabled>support (soon)</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="!hover:bg-transparant">

@@ -1,8 +1,9 @@
-import { FunctionComponent } from "react"
+import { FunctionComponent, useEffect, useRef } from "react"
 
 import { CustomFeatureInstance } from "./Component"
 import { ComponentElementInstance } from "@/components/builder/dashboard/Dashboard/ComponentElements/Component"
 import { cn } from "@/lib/utils"
+import { useDesigner } from "@/lib/hooks/useDesigner"
 
 import { Label } from "@/components/ui/label"
 
@@ -16,8 +17,20 @@ export const DesignerComponent: FunctionComponent<FeatureDesignerComponentProps>
 
     const imageLeft = image.position === "left"
 
+    const { addedComponent } = useDesigner()
+    const addedElementRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (addedComponent && addedComponent === instance.id && addedElementRef.current) {
+            addedElementRef.current.scrollIntoView({ behavior: "smooth", block: "center" })
+        }
+    }, [addedComponent])
+
     return (
-        <div className="rounded-md border-2 border-neutral-200 bg-white p-4">
+        <div
+            ref={addedElementRef}
+            className="rounded-md border-2 border-neutral-200 bg-white p-4"
+        >
             <Label className="mb-2 font-semibold">{label}</Label>
             {helperText && <p className="text-xs text-neutral-500">{helperText}</p>}
 
@@ -40,10 +53,10 @@ export const DesignerComponent: FunctionComponent<FeatureDesignerComponentProps>
                             imageLeft ? "order-1 md:pl-16 lg:pl-24" : "order-0 md:pr-16 lg:pr-24"
                         )}
                     >
-                        <h2 className="text-balance text-xl md:text-3xl mb-2">{title}</h2>
-                        <p className="text-balance mb-3">{description}</p>
+                        <h2 className="mb-2 text-balance text-xl md:text-3xl">{title}</h2>
+                        <p className="mb-3 text-balance">{description}</p>
                         {cta && (
-                            <p className="inline-flex rounded border-2 border-transparent text-sm bg-white px-4 py-1">
+                            <p className="inline-flex rounded border-2 border-transparent bg-white px-4 py-1 text-sm">
                                 {cta.label}
                             </p>
                         )}

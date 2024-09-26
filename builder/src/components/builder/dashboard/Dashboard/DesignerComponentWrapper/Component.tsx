@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button"
 export const DesignerComponentWrapper = ({ component }: { component: ComponentElementInstance }) => {
     const { removeComponent, setSelectedComponent, addedComponent } = useDesigner()
     const [mouseIsOver, setMouseIsOver] = useState(false)
-    const addedElementRef = useRef<HTMLDivElement>(null)
+    // const addedElementRef = useRef<HTMLDivElement>(null)
 
     const DesignerElement = PageDesignerComponents[component.type].designerComponent
 
@@ -58,11 +58,11 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
         setSelectedComponent(null)
     }
 
-    useEffect(() => {
-        if (addedComponent && addedComponent === component.id && addedElementRef.current) {
-            addedElementRef.current.scrollIntoView({ behavior: "smooth", block: "center" })
-        }
-    }, [addedComponent])
+    // useEffect(() => {
+    //     if (addedComponent && addedComponent === component.id && addedElementRef.current) {
+    //         addedElementRef.current.scrollIntoView({ behavior: "smooth", block: "center" })
+    //     }
+    // }, [addedComponent])
 
     return (
         <div
@@ -104,7 +104,7 @@ export const DesignerComponentWrapper = ({ component }: { component: ComponentEl
             )}
             {topHalf.isOver && <div className="absolute h-2 w-full rounded-t-md bg-neutral-600" />}
             <div
-                ref={addedElementRef}
+                // ref={addedElementRef}
                 className={cn("rounded-md transition-opacity", mouseIsOver && "bg-neutral-600/20")}
             >
                 <DesignerElement instance={component} />
