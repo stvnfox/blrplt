@@ -27,9 +27,7 @@ export const componentSchemas = {
                 price: z.coerce.number().min(0).or(z.undefined()),
                 currency: z.string().default("EUR"),
                 mostPopular: z.boolean().default(false),
-                includes: z.array(
-                    z.string()
-                ),
+                includes: z.array(z.string()),
             })
         ),
     }),
@@ -47,11 +45,13 @@ export const componentSchemas = {
     feature: z.object({
         title: z.string().min(2),
         description: z.string(),
-        cta: z.object({
-            label: z.string().min(2),
-            href: z.string().min(1),
-            ariaLabel: z.string().min(2),
-        }).or(z.undefined()),
+        cta: z
+            .object({
+                label: z.string().min(2),
+                href: z.string().min(1),
+                ariaLabel: z.string().min(2),
+            })
+            .or(z.undefined()),
         image: z.object({
             src: z.object({
                 url: z.string(),
@@ -59,9 +59,19 @@ export const componentSchemas = {
                 path: z.string(),
             }),
             alt: z.string().min(2),
-            position: z.string().default('left'),
+            position: z.string().default("left"),
         }),
     }),
+    image: z.object({
+        src: z.object({
+            url: z.string(),
+            extension: z.string(),
+            path: z.string(),
+        }),
+        alt: z.string().optional(),
+        description: z.string().optional(),
+    }),
+
     // ... add more component schemas here
 }
 

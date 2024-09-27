@@ -18,7 +18,8 @@ export const PublishButton: FunctionComponent = () => {
         if (updatePage.isError) {
             toast({
                 title: "meh..",
-                description: "something went wrong while updating the page, please try again later",
+                description:
+                    "something went wrong while updating the page, please try again later or try to login again",
                 variant: "destructive",
             })
         }
@@ -45,11 +46,7 @@ export const PublishButton: FunctionComponent = () => {
                 })
             }
         >
-            {updatePage.isPending ? (
-                <Spinner/>
-            ) : (
-                "publish"
-            )}
+            {updatePage.isPending ? <Spinner /> : "publish"}
         </Button>
     )
 }

@@ -5,13 +5,14 @@ import { PricingComponent } from "./components/Pricing/Component"
 import { UspsComponent } from "./components/Usps/Component"
 import { FaqComponent } from "./components/Faq/Component"
 import { FeatureComponent } from "./components/Feature/Component"
+import { ImageComponent } from "./components/Image/Component"
 
 //TODO: Add more components here
-export type ComponentsType = "header" | "pricing" | "usps" | "faq" | "feature"
+export type ComponentsType = "header" | "pricing" | "usps" | "faq" | "feature" | "image"
 
 export type ComponentElementType = {
     type: ComponentsType
-    
+
     construct: (id: string) => ComponentElementInstance
 
     designerButtonElement: {
@@ -42,5 +43,6 @@ export const PageDesignerComponents: ComponentElementsType = {
     pricing: PricingComponent,
     usps: UspsComponent,
     faq: FaqComponent,
-    feature: FeatureComponent
+    feature: FeatureComponent,
+    image: ImageComponent,
 }

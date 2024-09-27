@@ -70,7 +70,7 @@ export const FileInput: FunctionComponent<FileInputProps> = ({
         }
 
         if (data) {
-            const { data: urlData } = await supabase.storage.from("images").getPublicUrl(data?.path)
+            const { data: urlData } = supabase.storage.from("images").getPublicUrl(data?.path)
 
             if (!urlData.publicUrl) {
                 setError(fieldName, {
@@ -88,7 +88,7 @@ export const FileInput: FunctionComponent<FileInputProps> = ({
                 path: data.path,
             })
 
-            if(submitFunction) submitFunction()
+            if (submitFunction) submitFunction()
         }
 
         setImageIsUploading(false)
@@ -113,7 +113,7 @@ export const FileInput: FunctionComponent<FileInputProps> = ({
             path: "",
         })
 
-        if(submitFunction) submitFunction()
+        if (submitFunction) submitFunction()
     }
 
     useEffect(() => {

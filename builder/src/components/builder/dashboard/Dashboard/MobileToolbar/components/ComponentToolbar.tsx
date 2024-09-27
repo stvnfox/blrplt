@@ -19,11 +19,16 @@ export const ComponentToolbar: FunctionComponent = () => {
                 <SheetHeader>
                     <SheetTitle>builder - components</SheetTitle>
                     <SheetDescription>click on a component to add it to your page</SheetDescription>
+                    <h3 className="!mt-3 text-sm text-gray-500">unique</h3>
                     <div className="grid gap-2 sm:grid-cols-2">
                         <ComponentToolbarItem item={PageDesignerComponents.pricing} />
                         <ComponentToolbarItem item={PageDesignerComponents.usps} />
                         <ComponentToolbarItem item={PageDesignerComponents.faq} />
+                    </div>
+                    <h3 className="!mt-3 text-sm text-gray-500">unlimited</h3>
+                    <div className="grid gap-2 sm:grid-cols-2">
                         <ComponentToolbarItem item={PageDesignerComponents.feature} />
+                        <ComponentToolbarItem item={PageDesignerComponents.image} />
                     </div>
                 </SheetHeader>
             </SheetContent>

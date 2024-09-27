@@ -22,7 +22,7 @@ export const componentDefaultValues: ComponentDefaultValues = {
             {
                 title: "blrplt builder - unique selling points",
                 description: "blrplt builder - unique selling points",
-            }
+            },
         ],
     },
     pricing: {
@@ -32,12 +32,10 @@ export const componentDefaultValues: ComponentDefaultValues = {
             {
                 title: "blrplt builder - free",
                 description: "blrplt builder - free",
-                price: 0.00,
+                price: 0.0,
                 currency: "EUR",
                 mostPopular: false,
-                includes: [
-                    "blrplt builder - free",
-                ]
+                includes: ["blrplt builder - free"],
             },
             {
                 title: "blrplt builder - basic",
@@ -45,9 +43,7 @@ export const componentDefaultValues: ComponentDefaultValues = {
                 price: 49.99,
                 currency: "EUR",
                 mostPopular: true,
-                includes: [
-                    "blrplt builder - basic",
-                ]
+                includes: ["blrplt builder - basic"],
             },
             {
                 title: "blrplt builder - pro",
@@ -55,11 +51,9 @@ export const componentDefaultValues: ComponentDefaultValues = {
                 price: 49.99,
                 currency: "EUR",
                 mostPopular: false,
-                includes: [
-                    "blrplt builder - pro",
-                ]
-            }
-        ]
+                includes: ["blrplt builder - pro"],
+            },
+        ],
     },
     faq: {
         title: "blrplt builder - frequently asked questions",
@@ -79,7 +73,7 @@ export const componentDefaultValues: ComponentDefaultValues = {
                 question: "blrplt builder - frequently asked questions",
                 answer: "blrplt builder - frequently asked questions",
                 id: createUuid(),
-            }
+            },
         ],
     },
     feature: {
@@ -99,7 +93,16 @@ export const componentDefaultValues: ComponentDefaultValues = {
             alt: "random image",
             position: "left",
         },
-    }
+    },
+    image: {
+        src: {
+            url: "",
+            extension: "",
+            path: "",
+        },
+        alt: "",
+        description: "this is an optional description to show below the image",
+    },
 }
 
 export const addDefaultComponentValues = (component: ComponentKey) => {
@@ -111,7 +114,7 @@ export const createDefaultFormValues = (
     existingData?: Partial<ComponentDefaultValues>
 ): Partial<ComponentDefaultValues> => {
     const formValues: Partial<ComponentDefaultValues> = {}
-    
+
     components.forEach((component) => {
         // @ts-expect-error because of different otions in components
         formValues[component] = {

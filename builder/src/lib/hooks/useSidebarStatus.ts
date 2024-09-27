@@ -1,6 +1,7 @@
 import { useDesigner } from "./useDesigner"
 
-const allowedMultipleTimes = ["feature"]
+// Add allowed types here
+const allowedMultipleTimes = ["feature", "image"]
 
 const canAddMultipleTimes = (type: string) => {
     return !allowedMultipleTimes.includes(type)
@@ -8,11 +9,11 @@ const canAddMultipleTimes = (type: string) => {
 
 export const useSidebarStatus = (type: string) => {
     const { components } = useDesigner()
-    
-    const isOnDesignerPage = components.some(c => c.type === type)
+
+    const isOnDesignerPage = components.some((c) => c.type === type)
     const isDisabled = isOnDesignerPage && canAddMultipleTimes(type)
-    
+
     return {
-        isDisabled
+        isDisabled,
     }
 }

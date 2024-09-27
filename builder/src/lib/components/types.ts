@@ -5,66 +5,76 @@ export type ComponentOption = {
 }
 
 export interface Feature {
-    title: string;
-    description?: string;
+    title: string
+    description?: string
     cta?: {
-        label: string;
-        href: string;
-        ariaLabel: string;
-    };
+        label: string
+        href: string
+        ariaLabel: string
+    }
     image: {
         src: {
-            url: string;
-            extension: string;
-            path: string;
-        };
-        alt: string;
-        position?: 'left' | 'right';
-    };
+            url: string
+            extension: string
+            path: string
+        }
+        alt: string
+        position?: "left" | "right"
+    }
 }
 
 export interface FaqItem {
-    question: string;
-    answer: string;
-    id: string;
+    question: string
+    answer: string
+    id: string
 }
 
 export interface Faq {
-    title: string;
-    description: string;
-    items: FaqItem[];
+    title: string
+    description: string
+    items: FaqItem[]
 }
 
 export interface PricingItem {
-    title: string;
-    description: string;
-    price: number | undefined;
-    currency: string;
-    mostPopular: boolean;
-    includes: string[];
+    title: string
+    description: string
+    price: number | undefined
+    currency: string
+    mostPopular: boolean
+    includes: string[]
 }
 
 export interface Pricing {
-    title: string;
-    description: string;
-    items: PricingItem[];
+    title: string
+    description: string
+    items: PricingItem[]
 }
 
 export interface UspItem {
-    title: string;
-    description: string;
+    title: string
+    description: string
 }
 
 export interface Usps {
-    title: string;
-    description: string;
-    items: UspItem[];
+    title: string
+    description: string
+    items: UspItem[]
 }
 
 export interface Header {
-    title: string;
-    subtitle: string;
-    description: string;
+    title: string
+    subtitle: string
+    description: string
+}
+
+export interface Image {
+    src: {
+        url: string
+        extension: string
+        path: string
+    }
+    alt?: string
+    description?: string
 }
 
 // TODO: Add types for form fields
@@ -73,16 +83,17 @@ export type ComponentProps = {
 }
 
 export interface ComponentDefaultValues {
-    header: Header;
-    usps: Usps;
-    pricing: Pricing;
-    faq: Faq;
-    feature: Feature;
+    header: Header
+    usps: Usps
+    pricing: Pricing
+    faq: Faq
+    feature: Feature
+    image: Image
 }
 
-export type ComponentKey = keyof ComponentDefaultValues;
+export type ComponentKey = keyof ComponentDefaultValues
 
-export type SelectorComponentKey = keyof ComponentDefaultValues;
-export const selectorComponentKeys = ['header', 'usps', 'pricing', 'faq', 'feature'] as const;
+export type SelectorComponentKey = keyof ComponentDefaultValues
+export const selectorComponentKeys = ["header", "usps", "pricing", "faq", "feature", "image"] as const
 
-export type SelectorComponentKeyType = typeof selectorComponentKeys[number];
+export type SelectorComponentKeyType = (typeof selectorComponentKeys)[number]

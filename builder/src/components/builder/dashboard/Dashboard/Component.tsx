@@ -1,4 +1,3 @@
-import { FunctionComponent } from "react"
 import { closestCenter, DndContext, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core"
 
 import { PageDesigner } from "./PageDesigner/Component"
@@ -6,7 +5,7 @@ import { PageDesignerSidebar } from "./PageDesignerSidebar/Component"
 import { DragOverlayWrapper } from "./DragOverlayWrapper/Component"
 import { MobileToolbar } from "./MobileToolbar/Component"
 
-export const DashboardComponent: FunctionComponent = () => {
+export default function DashboardComponent() {
     const id = "dnd-context-180920241201"
 
     const mouseSensor = useSensor(MouseSensor, {
@@ -23,6 +22,7 @@ export const DashboardComponent: FunctionComponent = () => {
     })
 
     const sensors = useSensors(mouseSensor, touchSensor)
+
     const isDesktop = window.matchMedia("(min-width: 1024px)").matches
 
     return (
