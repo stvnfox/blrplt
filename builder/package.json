@@ -53,9 +53,9 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@tanstack/eslint-plugin-query": "^5.57.2",
-    "@types/node": "^20.16.8",
-    "@types/react": "^18.3.9",
+    "@tanstack/eslint-plugin-query": "^5.58.1",
+    "@types/node": "^20.16.10",
+    "@types/react": "^18.3.10",
     "@types/react-dom": "^18.3.0",
     "@types/uuid": "^10.0.0",
     "eslint": "^8.57.1",
