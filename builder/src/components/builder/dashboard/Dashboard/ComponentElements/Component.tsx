@@ -6,9 +6,10 @@ import { UspsComponent } from "./components/Usps/Component"
 import { FaqComponent } from "./components/Faq/Component"
 import { FeatureComponent } from "./components/Feature/Component"
 import { ImageComponent } from "./components/Image/Component"
+import { FormComponent } from "./components/Form/Component"
 
 //TODO: Add more components here
-export type ComponentsType = "header" | "pricing" | "usps" | "faq" | "feature" | "image"
+export type ComponentsType = "header" | "pricing" | "usps" | "faq" | "feature" | "image" | "form"
 
 export type ComponentElementType = {
     type: ComponentsType
@@ -45,4 +46,5 @@ export const PageDesignerComponents: ComponentElementsType = {
     faq: FaqComponent,
     feature: FeatureComponent,
     image: ImageComponent,
+    form: FormComponent,
 }

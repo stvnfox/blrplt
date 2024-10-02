@@ -71,7 +71,12 @@ export const componentSchemas = {
         alt: z.string().optional(),
         description: z.string().optional(),
     }),
-
+    form: z.object({
+        title: z.string().min(2),
+        description: z.string(),
+        form: z.any(),
+        // Add more fields here
+    }),
     // ... add more component schemas here
 }
 

@@ -103,6 +103,12 @@ export const componentDefaultValues: ComponentDefaultValues = {
         alt: "",
         description: "this is an optional description to show below the image",
     },
+    form: {
+        title: "blrplt builder - contact us",
+        description: "blrplt builder - contact us",
+        form: null,
+        // add more fields here
+    },
 }
 
 export const addDefaultComponentValues = (component: ComponentKey) => {

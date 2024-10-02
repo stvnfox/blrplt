@@ -77,6 +77,13 @@ export interface Image {
     description?: string
 }
 
+export interface Form {
+    title: string
+    description: string
+    form: any
+    // add more here
+}
+
 // TODO: Add types for form fields
 export type ComponentProps = {
     form?: any
@@ -89,11 +96,12 @@ export interface ComponentDefaultValues {
     faq: Faq
     feature: Feature
     image: Image
+    form: Form
 }
 
 export type ComponentKey = keyof ComponentDefaultValues
 
 export type SelectorComponentKey = keyof ComponentDefaultValues
-export const selectorComponentKeys = ["header", "usps", "pricing", "faq", "feature", "image"] as const
+export const selectorComponentKeys = ["header", "usps", "pricing", "faq", "feature", "image", "form"] as const
 
 export type SelectorComponentKeyType = (typeof selectorComponentKeys)[number]

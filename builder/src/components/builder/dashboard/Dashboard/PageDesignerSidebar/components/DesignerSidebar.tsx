@@ -13,6 +13,7 @@ export const DesignerSidebar: FunctionComponent = () => {
                 <SidebarButton component={PageDesignerComponents.pricing} />
                 <SidebarButton component={PageDesignerComponents.usps} />
                 <SidebarButton component={PageDesignerComponents.faq} />
+                <SidebarButton component={PageDesignerComponents.form} />
                 <h3 className="mt-3 text-sm text-gray-500">unlimited</h3>
                 <SidebarButton component={PageDesignerComponents.feature} />
                 <SidebarButton component={PageDesignerComponents.image} />
